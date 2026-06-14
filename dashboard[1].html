@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAMU Java — Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+  :root {
+    --gold: #BF9B30;
+    --gold-light: #D4AF55;
+    --gold-dim: rgba(191,155,48,0.15);
+    --dark: #0D0D0B;
+    --dark-2: #141410;
+    --dark-3: #1C1C17;
+    --dark-4: #242420;
+    --text: #F0EAD6;
+    --text-dim: #8A8470;
+    --text-mid: #C4B99A;
+    --green: #4CAF7D;
+    --green-dim: rgba(76,175,125,0.12);
+    --red: #E05252;
+    --red-dim: rgba(224,82,82,0.12);
+    --orange: #E09B52;
+    --orange-dim: rgba(224,155,82,0.12);
+    --border: rgba(191,155,48,0.12);
+    --border-light: rgba(191,155,48,0.06);
+    --radius: 8px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    font-size: 13px;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: var(--dark-2);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+  }
+
+  .logo {
+    padding: 28px 24px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .logo-sub {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .nav {
+    padding: 16px 12px;
+    flex: 1;
+  }
+
+  .nav-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 0 12px;
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: all 0.2s;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-item:hover { background: var(--gold-dim); color: var(--text); }
+  .nav-item.active { background: var(--gold-dim); color: var(--gold); }
+  .nav-item .icon { font-size: 16px; width: 18px; text-align: center; }
+
+  .api-status {
+    padding: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+  }
+
+  .status-label { font-size: 11px; color: var(--text-dim); }
+
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  .status-dot.pending { background: var(--orange); }
+  .status-dot.connected { background: var(--green); }
+  .status-dot.disconnected { background: var(--red); }
+
+  .status-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .status-badge.pending { background: var(--orange-dim); color: var(--orange); }
+  .status-badge.connected { background: var(--green-dim); color: var(--green); }
+  .status-badge.disconnected { background: var(--red-dim); color: var(--red); }
+
+  /* MAIN */
+  .main {
+    margin-left: 220px;
+    min-height: 100vh;
+  }
+
+  .topbar {
+    background: var(--dark-2);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .page-title { font-size: 15px; font-weight: 600; }
+  .page-sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+  .btn {
+    padding: 9px 18px;
+    border-radius: var(--radius);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  .btn-gold:hover { background: var(--gold-light); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text-mid);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .btn-sm {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .btn-ebay { background: rgba(233,93,15,0.12); color: #E95D0F; border: 1px solid rgba(233,93,15,0.2); }
+  .btn-ebay:hover { background: rgba(233,93,15,0.22); }
+  .btn-etsy { background: rgba(241,100,30,0.12); color: #F1641E; border: 1px solid rgba(241,100,30,0.2); }
+  .btn-etsy:hover { background: rgba(241,100,30,0.22); }
+  .btn-both { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--border); }
+  .btn-both:hover { background: rgba(191,155,48,0.25); }
+
+  .content { padding: 32px; }
+
+  /* STATS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+
+  .stat-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
+  .stat-value { font-size: 28px; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--gold); }
+  .stat-sub { font-size: 10px; color: var(--text-dim); margin-top: 4px; }
+
+  /* SECTION HEADER */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .section-title { font-size: 13px; font-weight: 600; letter-spacing: 0.05em; }
+
+  /* PUBLISH ALL BANNER */
+  .publish-banner {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .publish-banner-text { font-size: 12px; color: var(--text-mid); }
+  .publish-banner-title { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+
+  /* PRODUCT TABLE */
+  .products-table {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .table-head {
+    display: grid;
+    grid-template-columns: 2fr 80px 80px 100px 1fr;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .product-row {
+    display: grid;
+    grid-template-columns: 2fr 80px 80px 100px 1fr;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-light);
+    align-items: center;
+    transition: background 0.15s;
+  }
+
+  .product-row:last-child { border-bottom: none; }
+  .product-row:hover { background: rgba(255,255,255,0.02); }
+
+  .product-name { font-size: 12px; font-weight: 500; color: var(--text); }
+  .product-sku { font-size: 10px; color: var(--text-dim); margin-top: 2px; font-family: monospace; }
+
+  .price-cell { font-size: 13px; font-weight: 600; color: var(--gold); }
+  .qty-cell { font-size: 12px; color: var(--text-mid); }
+
+  .platform-status {
+    display: flex;
+    gap: 6px;
+  }
+
+  .plat-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .plat-badge.published-ebay { background: rgba(233,93,15,0.15); color: #E95D0F; }
+  .plat-badge.published-etsy { background: rgba(241,100,30,0.15); color: #F1641E; }
+  .plat-badge.not-published { background: rgba(255,255,255,0.04); color: var(--text-dim); border: 1px solid var(--border); }
+
+  .actions-cell {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end;
+  }
+
+  /* PANEL — settings, add product */
+  .panel {
+    display: none;
+  }
+  .panel.active { display: block; }
+
+  .form-section {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .form-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .form-full { grid-column: 1 / -1; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); }
+
+  .field input, .field select, .field textarea {
+    background: var(--dark-4);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    outline: none;
+    transition: border 0.2s;
+  }
+
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .field textarea { resize: vertical; min-height: 100px; }
+  .field select option { background: var(--dark-4); }
+
+  /* TOAST */
+  .toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+  }
+
+  .toast {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 18px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.3s ease;
+    min-width: 280px;
+  }
+
+  .toast.success { border-color: rgba(76,175,125,0.3); }
+  .toast.error { border-color: rgba(224,82,82,0.3); }
+  .toast.info { border-color: var(--border); }
+
+  .toast-icon { font-size: 16px; }
+  .toast-msg { flex: 1; color: var(--text-mid); }
+
+  @keyframes slideIn {
+    from { transform: translateX(40px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    width: 480px;
+    max-width: 95vw;
+  }
+
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .modal-sub { font-size: 12px; color: var(--text-dim); margin-bottom: 24px; }
+  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
+
+  /* SPINNER */
+  .spinner {
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    display: inline-block;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* EMPTY STATE */
+  .empty {
+    text-align: center;
+    padding: 48px;
+    color: var(--text-dim);
+  }
+
+  .empty-icon { font-size: 36px; margin-bottom: 12px; }
+  .empty-title { font-size: 14px; color: var(--text-mid); margin-bottom: 6px; }
+
+  /* DRAFT ROW */
+  .product-row.draft { opacity: 0.45; }
+  .product-row.draft .product-name { font-style: italic; }
+
+  .draft-tag {
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--dark-4);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    margin-left: 6px;
+  }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 4px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+  .tab {
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text-dim);
+    border: none;
+    background: none;
+    transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .tab.active { background: var(--gold-dim); color: var(--gold); }
+  .tab:hover:not(.active) { color: var(--text); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-title">JAMU Java</div>
+    <div class="logo-sub">Seller Dashboard</div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-label">Gestion</div>
+    <button class="nav-item active" onclick="showPanel('produits')">
+      <span class="icon">📦</span> Mes produits
+    </button>
+    <button class="nav-item" onclick="showPanel('ajouter')">
+      <span class="icon">➕</span> Ajouter un produit
+    </button>
+
+    <div class="nav-label">Plateformes</div>
+    <button class="nav-item" onclick="showPanel('ebay')">
+      <span class="icon">🛒</span> eBay
+    </button>
+    <button class="nav-item" onclick="showPanel('etsy')">
+      <span class="icon">🧡</span> Etsy
+    </button>
+
+    <div class="nav-label">Compte</div>
+    <button class="nav-item" onclick="showPanel('settings')">
+      <span class="icon">⚙️</span> Paramètres API
+    </button>
+  </nav>
+
+  <div class="api-status">
+    <div class="status-row">
+      <span class="status-label"><span class="status-dot pending"></span>eBay API</span>
+      <span class="status-badge pending">En attente</span>
+    </div>
+    <div class="status-row">
+      <span class="status-label"><span class="status-dot pending"></span>Etsy API</span>
+      <span class="status-badge pending">En attente</span>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div>
+      <div class="page-title" id="topbar-title">Mes produits</div>
+      <div class="page-sub" id="topbar-sub">6 produits actifs · 3 brouillons</div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇ Exporter CSV</button>
+      <button class="btn btn-gold btn-sm" onclick="publishAll()">
+        🚀 Tout publier
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- PANEL : PRODUITS -->
+    <div id="panel-produits" class="panel active">
+
+      <!-- STATS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Produits actifs</div>
+          <div class="stat-value" id="stat-actifs">6</div>
+          <div class="stat-sub">3 brouillons exclus</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Publiés eBay</div>
+          <div class="stat-value" id="stat-ebay">0</div>
+          <div class="stat-sub">Sur 6 produits</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Publiés Etsy</div>
+          <div class="stat-value" id="stat-etsy">0</div>
+          <div class="stat-sub">Sur 6 produits</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Stock total</div>
+          <div class="stat-value" id="stat-stock">220</div>
+          <div class="stat-sub">Unités disponibles</div>
+        </div>
+      </div>
+
+      <!-- PUBLISH ALL -->
+      <div class="publish-banner">
+        <div>
+          <div class="publish-banner-title">Publier tous les produits</div>
+          <div class="publish-banner-text">Envoie tes 6 produits actifs sur eBay et Etsy simultanément</div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-ebay btn-sm" onclick="publishAllOn('ebay')">🛒 Tout sur eBay</button>
+          <button class="btn btn-etsy btn-sm" onclick="publishAllOn('etsy')">🧡 Tout sur Etsy</button>
+          <button class="btn btn-both btn-sm" onclick="publishAll()">✦ Les deux</button>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="section-header">
+        <div class="section-title">Catalogue produits</div>
+        <div class="tabs">
+          <button class="tab active" onclick="filterProducts('all', this)">Tous</button>
+          <button class="tab" onclick="filterProducts('active', this)">Actifs</button>
+          <button class="tab" onclick="filterProducts('draft', this)">Brouillons</button>
+        </div>
+      </div>
+
+      <div class="products-table">
+        <div class="table-head">
+          <div>Produit</div>
+          <div>Prix</div>
+          <div>Stock</div>
+          <div>Plateformes</div>
+          <div style="text-align:right">Actions</div>
+        </div>
+        <div id="products-list"></div>
+      </div>
+    </div>
+
+    <!-- PANEL : AJOUTER -->
+    <div id="panel-ajouter" class="panel">
+      <div class="form-section">
+        <div class="form-title">Nouveau produit</div>
+        <div class="form-grid">
+          <div class="field form-full">
+            <label>Titre du produit</label>
+            <input type="text" id="new-title" placeholder="ex: Jamu Temulawak Murni 100g">
+          </div>
+          <div class="field">
+            <label>SKU</label>
+            <input type="text" id="new-sku" placeholder="ex: JAMU-XXX-100">
+          </div>
+          <div class="field">
+            <label>Prix (€)</label>
+            <input type="number" id="new-price" placeholder="12.90" step="0.01">
+          </div>
+          <div class="field">
+            <label>Quantité en stock</label>
+            <input type="number" id="new-qty" placeholder="50">
+          </div>
+          <div class="field">
+            <label>Poids (kg)</label>
+            <input type="number" id="new-weight" placeholder="0.12" step="0.01">
+          </div>
+          <div class="field form-full">
+            <label>Description</label>
+            <textarea id="new-desc" placeholder="Description du produit..."></textarea>
+          </div>
+          <div class="field">
+            <label>URL image</label>
+            <input type="text" id="new-img" placeholder="https://...">
+          </div>
+          <div class="field">
+            <label>Statut</label>
+            <select id="new-status">
+              <option value="active">Actif — prêt à vendre</option>
+              <option value="draft_not_for_sale">Brouillon — pas en vente</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:10px;">
+          <button class="btn btn-gold" onclick="addProduct()">✦ Ajouter le produit</button>
+          <button class="btn btn-outline" onclick="showPanel('produits')">Annuler</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL : EBAY -->
+    <div id="panel-ebay" class="panel">
+      <div class="form-section">
+        <div class="form-title">Configuration eBay</div>
+        <div style="background:var(--orange-dim);border:1px solid rgba(224,155,82,0.2);border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;font-size:12px;color:var(--orange);">
+          ⏳ Ton compte développeur eBay est en attente d'approbation (1 jour ouvré). Une fois approuvé, colle tes clés ici.
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label>App ID (Client ID)</label>
+            <input type="text" id="ebay-appid" placeholder="JamuJava-xxx-PRD-xxx">
+          </div>
+          <div class="field">
+            <label>Cert ID (Client Secret)</label>
+            <input type="password" id="ebay-certid" placeholder="PRD-xxx...">
+          </div>
+          <div class="field">
+            <label>Dev ID</label>
+            <input type="text" id="ebay-devid" placeholder="xxx-xxx-xxx">
+          </div>
+          <div class="field">
+            <label>User Token OAuth</label>
+            <input type="password" id="ebay-token" placeholder="v^1.1#...">
+          </div>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:10px;">
+          <button class="btn btn-gold" onclick="saveEbayKeys()">💾 Sauvegarder les clés</button>
+          <button class="btn btn-outline" onclick="testEbayConnection()">🔌 Tester la connexion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL : ETSY -->
+    <div id="panel-etsy" class="panel">
+      <div class="form-section">
+        <div class="form-title">Configuration Etsy</div>
+        <div style="background:var(--orange-dim);border:1px solid rgba(224,155,82,0.2);border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;font-size:12px;color:var(--orange);">
+          ⏳ Ta clé Etsy est en attente d'approbation. Keystring déjà connu : <strong>3qyvlwguii4yiz4xlsu3me18</strong>
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label>Keystring (API Key)</label>
+            <input type="text" id="etsy-key" value="3qyvlwguii4yiz4xlsu3me18">
+          </div>
+          <div class="field">
+            <label>Shared Secret</label>
+            <input type="password" id="etsy-secret" placeholder="Ton shared secret Etsy">
+          </div>
+          <div class="field">
+            <label>Shop ID</label>
+            <input type="text" id="etsy-shop" placeholder="Ton Shop ID Etsy">
+          </div>
+          <div class="field">
+            <label>Access Token OAuth</label>
+            <input type="password" id="etsy-token" placeholder="OAuth token...">
+          </div>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:10px;">
+          <button class="btn btn-gold" onclick="saveEtsyKeys()">💾 Sauvegarder les clés</button>
+          <button class="btn btn-outline" onclick="testEtsyConnection()">🔌 Tester la connexion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL : SETTINGS -->
+    <div id="panel-settings" class="panel">
+      <div class="form-section">
+        <div class="form-title">Informations vendeur</div>
+        <div class="form-grid">
+          <div class="field">
+            <label>Nom de la boutique</label>
+            <input type="text" value="JAMU Java">
+          </div>
+          <div class="field">
+            <label>Email de contact</label>
+            <input type="email" value="omahsleman.tour@gmail.com">
+          </div>
+          <div class="field">
+            <label>Pays d'expédition</label>
+            <select>
+              <option>Indonésie (ID)</option>
+              <option>France (FR)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Délai d'expédition (jours)</label>
+            <input type="number" value="7">
+          </div>
+          <div class="field">
+            <label>Frais de livraison (€)</label>
+            <input type="number" value="6.90" step="0.01">
+          </div>
+          <div class="field">
+            <label>Livraison gratuite dès (€)</label>
+            <input type="number" value="25" step="0.01">
+          </div>
+        </div>
+        <div style="margin-top:20px;">
+          <button class="btn btn-gold" onclick="toast('Paramètres sauvegardés ✓', 'success')">💾 Sauvegarder</button>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-title">Données & Export</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-outline" onclick="exportCSV()">⬇ Exporter CSV eBay</button>
+          <button class="btn btn-outline" onclick="exportJSON()">⬇ Exporter products.json</button>
+          <button class="btn btn-outline" onclick="importJSON()">⬆ Importer products.json</button>
+        </div>
+        <input type="file" id="import-file" accept=".json" style="display:none" onchange="handleImport(event)">
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- MODAL CONFIRMATION -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-title" id="modal-title">Publier les produits</div>
+    <div class="modal-sub" id="modal-sub">Cette action va publier tous vos produits actifs.</div>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal()">Annuler</button>
+      <button class="btn btn-gold" id="modal-confirm">Confirmer</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toasts"></div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────
+let products = [
+  { sku:"JAMU-TEMULAWAK-100", title:"Jamu Temulawak Murni 100g", price:12.90, quantity:50, weight_kg:0.12, status:"active", ebay:false, etsy:false, image_url:"https://glowing-platypus-69b1bf.netlify.app/images/temulawak-100g.jpg", description:"Poudre de temulawak 100% pure, recette ancestrale de Yogyakarta." },
+  { sku:"JAMU-KUNYIT-100", title:"Jamu Kunyit Jahe 100g", price:12.90, quantity:50, weight_kg:0.12, status:"active", ebay:false, etsy:false, image_url:"https://glowing-platypus-69b1bf.netlify.app/images/kunyit-100g.jpg", description:"Curcuma et gingembre de Java, moulus selon la tradition." },
+  { sku:"JAMU-PACK-WELLNESS", title:"Pack Bien-être Jamu 2x100g", price:22.90, quantity:30, weight_kg:0.25, status:"active", ebay:false, etsy:false, image_url:"https://glowing-platypus-69b1bf.netlify.app/images/pack-wellness.jpg", description:"Temulawak + Kunyit Jahe, duo ancestral javanais." },
+  { sku:"JAMU-COFFRET-DECOUVERTE", title:"Coffret Découverte Java", price:36.90, quantity:20, weight_kg:0.55, status:"active", ebay:false, etsy:false, image_url:"https://glowing-platypus-69b1bf.netlify.app/images/coffret-decouverte.jpg", description:"Jamu Temulawak + Kunyit Jahe + Café Ijen 250g + livret." },
+  { sku:"CAFE-IJEN-250", title:"Café Java Ijen Arabica 250g", price:16.90, quantity:40, weight_kg:0.27, status:"active", ebay:false, etsy:false, image_url:"https://glowing-platypus-69b1bf.netlify.app/images/cafe-ijen-250g.jpg", description:"Arabica single origin, volcan Ijen 1400m, grains entiers." },
+  { sku:"CAFE-IJEN-500", title:"Café Java Ijen Arabica 500g", price:29.90, quantity:30, weight_kg:0.52, status:"active", ebay:false, etsy:false, image_url:"https://glowing-platypus-69b1bf.netlify.app/images/cafe-ijen-500g.jpg", description:"Arabica single origin grand format, expédié sous vide." },
+  { sku:"THE-SILVER-NEEDLE-50", title:"Thé Blanc Silver Needle 50g", price:0, quantity:0, weight_kg:0.07, status:"draft_not_for_sale", ebay:false, etsy:false, image_url:"", description:"Brouillon — pas encore disponible." },
+  { sku:"THE-OOLONG-JAVA-50", title:"Oolong Javanais Haute Altitude 50g", price:0, quantity:0, weight_kg:0.07, status:"draft_not_for_sale", ebay:false, etsy:false, image_url:"", description:"Brouillon — pas encore disponible." },
+  { sku:"THE-NOIR-SINGLE-ESTATE-75", title:"Thé Noir Single Estate 75g", price:0, quantity:0, weight_kg:0.10, status:"draft_not_for_sale", ebay:false, etsy:false, image_url:"", description:"Brouillon — pas encore disponible." },
+];
+
+let currentFilter = 'all';
+
+// ─── NAVIGATION ─────────────────────────────────────────────
+function showPanel(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+
+  const titles = {
+    produits: ['Mes produits', '6 produits actifs · 3 brouillons'],
+    ajouter: ['Ajouter un produit', 'Nouveau produit au catalogue'],
+    ebay: ['eBay', 'Configuration et publication'],
+    etsy: ['Etsy', 'Configuration et publication'],
+    settings: ['Paramètres', 'Compte vendeur et API'],
+  };
+
+  if (titles[name]) {
+    document.getElementById('topbar-title').textContent = titles[name][0];
+    document.getElementById('topbar-sub').textContent = titles[name][1];
+  }
+
+  event.currentTarget && event.currentTarget.classList.add('active');
+  if (name === 'produits') renderProducts();
+}
+
+// ─── RENDER PRODUCTS ────────────────────────────────────────
+function renderProducts() {
+  const list = document.getElementById('products-list');
+  const filtered = products.filter(p => {
+    if (currentFilter === 'active') return p.status === 'active';
+    if (currentFilter === 'draft') return p.status === 'draft_not_for_sale';
+    return true;
+  });
+
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty"><div class="empty-icon">📦</div><div class="empty-title">Aucun produit</div></div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map((p, i) => {
+    const isDraft = p.status === 'draft_not_for_sale';
+    const ebayBadge = p.ebay
+      ? '<span class="plat-badge published-ebay">eBay ✓</span>'
+      : '<span class="plat-badge not-published">eBay</span>';
+    const etsyBadge = p.etsy
+      ? '<span class="plat-badge published-etsy">Etsy ✓</span>'
+      : '<span class="plat-badge not-published">Etsy</span>';
+
+    const actions = isDraft
+      ? `<span style="font-size:10px;color:var(--text-dim)">Brouillon</span>`
+      : `
+        <button class="btn btn-ebay btn-sm" onclick="publishOne(${products.indexOf(p)}, 'ebay')">eBay</button>
+        <button class="btn btn-etsy btn-sm" onclick="publishOne(${products.indexOf(p)}, 'etsy')">Etsy</button>
+        <button class="btn btn-both btn-sm" onclick="publishOne(${products.indexOf(p)}, 'both')">✦ Les 2</button>
+        <button class="btn btn-outline btn-sm" onclick="editProduct(${products.indexOf(p)})" style="padding:6px 8px">✏️</button>
+      `;
+
+    return `
+      <div class="product-row ${isDraft ? 'draft' : ''}">
+        <div>
+          <div class="product-name">${p.title}${isDraft ? '<span class="draft-tag">brouillon</span>' : ''}</div>
+          <div class="product-sku">${p.sku}</div>
+        </div>
+        <div class="price-cell">${isDraft ? '—' : p.price.toFixed(2) + '€'}</div>
+        <div class="qty-cell">${isDraft ? '—' : p.quantity + ' unités'}</div>
+        <div class="platform-status">${isDraft ? '' : ebayBadge + etsyBadge}</div>
+        <div class="actions-cell">${actions}</div>
+      </div>
+    `;
+  }).join('');
+
+  updateStats();
+}
+
+// ─── STATS ──────────────────────────────────────────────────
+function updateStats() {
+  const active = products.filter(p => p.status === 'active');
+  document.getElementById('stat-actifs').textContent = active.length;
+  document.getElementById('stat-ebay').textContent = active.filter(p => p.ebay).length;
+  document.getElementById('stat-etsy').textContent = active.filter(p => p.etsy).length;
+  document.getElementById('stat-stock').textContent = active.reduce((s, p) => s + p.quantity, 0);
+}
+
+// ─── FILTER ─────────────────────────────────────────────────
+function filterProducts(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts();
+}
+
+// ─── PUBLISH ────────────────────────────────────────────────
+function publishOne(idx, platform) {
+  const p = products[idx];
+  const apiReady = false; // deviendra true quand les clés seront actives
+
+  if (!apiReady) {
+    openModal(
+      `Publier "${p.title.substring(0,30)}..."`,
+      `Les clés API sont en attente d'approbation (eBay et Etsy). Cette action sera disponible dès leur activation.<br><br>En attendant, le produit est marqué comme "à publier" dans le dashboard.`,
+      () => {
+        if (platform === 'ebay' || platform === 'both') p.ebay = true;
+        if (platform === 'etsy' || platform === 'both') p.etsy = true;
+        renderProducts();
+        const where = platform === 'both' ? 'eBay et Etsy' : platform;
+        toast(`"${p.title.substring(0,25)}..." marqué pour ${where} ✓`, 'success');
+        closeModal();
+      }
+    );
+    return;
+  }
+
+  // Publication réelle via API (quand clés actives)
+  simulatePublish(idx, platform);
+}
+
+function publishAll() {
+  const active = products.filter(p => p.status === 'active');
+  openModal(
+    'Publier tous les produits',
+    `Tu es sur le point de publier <strong>${active.length} produits</strong> sur eBay et Etsy simultanément.<br><br>⏳ Les clés API sont en attente — les produits seront marqués "à publier" dès activation.`,
+    () => {
+      active.forEach(p => { p.ebay = true; p.etsy = true; });
+      renderProducts();
+      toast(`${active.length} produits marqués pour eBay + Etsy ✓`, 'success');
+      closeModal();
+    }
+  );
+}
+
+function publishAllOn(platform) {
+  const active = products.filter(p => p.status === 'active');
+  const name = platform === 'ebay' ? 'eBay' : 'Etsy';
+  openModal(
+    `Publier sur ${name}`,
+    `Tu es sur le point de publier <strong>${active.length} produits</strong> sur ${name}.`,
+    () => {
+      active.forEach(p => { p[platform] = true; });
+      renderProducts();
+      toast(`${active.length} produits marqués pour ${name} ✓`, 'success');
+      closeModal();
+    }
+  );
+}
+
+function simulatePublish(idx, platform) {
+  // Placeholder pour la vraie publication API
+  toast('Publication en cours...', 'info');
+  setTimeout(() => {
+    if (platform === 'ebay' || platform === 'both') products[idx].ebay = true;
+    if (platform === 'etsy' || platform === 'both') products[idx].etsy = true;
+    renderProducts();
+    toast('Produit publié avec succès ✓', 'success');
+  }, 1500);
+}
+
+// ─── ADD PRODUCT ────────────────────────────────────────────
+function addProduct() {
+  const title = document.getElementById('new-title').value.trim();
+  const sku = document.getElementById('new-sku').value.trim();
+  const price = parseFloat(document.getElementById('new-price').value);
+  const qty = parseInt(document.getElementById('new-qty').value);
+  const weight = parseFloat(document.getElementById('new-weight').value);
+  const desc = document.getElementById('new-desc').value.trim();
+  const img = document.getElementById('new-img').value.trim();
+  const status = document.getElementById('new-status').value;
+
+  if (!title || !sku) {
+    toast('Titre et SKU sont obligatoires', 'error');
+    return;
+  }
+
+  products.push({ sku, title, price: price||0, quantity: qty||0, weight_kg: weight||0, status, ebay:false, etsy:false, image_url:img, description:desc });
+  toast(`"${title.substring(0,25)}..." ajouté au catalogue ✓`, 'success');
+
+  // Reset form
+  ['new-title','new-sku','new-price','new-qty','new-weight','new-desc','new-img'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+
+  showPanel('produits');
+}
+
+// ─── EDIT ───────────────────────────────────────────────────
+function editProduct(idx) {
+  const p = products[idx];
+  openModal(
+    `Modifier le stock`,
+    `Nouvelle quantité pour <strong>${p.title.substring(0,35)}</strong> :`,
+    () => {
+      const newQty = parseInt(document.getElementById('edit-qty').value);
+      if (!isNaN(newQty) && newQty >= 0) {
+        products[idx].quantity = newQty;
+        renderProducts();
+        toast('Stock mis à jour ✓', 'success');
+      }
+      closeModal();
+    },
+    `<div class="field" style="margin-top:12px"><label>Quantité</label><input class="field input" id="edit-qty" type="number" value="${p.quantity}" style="background:var(--dark-4);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-size:13px;width:100%;margin-top:6px;font-family:Montserrat,sans-serif;outline:none;"></div>`
+  );
+}
+
+// ─── EXPORT ─────────────────────────────────────────────────
+function exportCSV() {
+  const active = products.filter(p => p.status === 'active');
+  const headers = ['Action','Title','Category','Price','Quantity','Description','PicURL','Condition','CustomLabel','Duration','Format','Country','Currency','DispatchTimeMax','ShippingType','ShippingService-1:Option','ShippingService-1:Cost','ReturnsAcceptedOption','Brand'];
+  const catMap = { 'CAFE': '38179', 'THE': '57882' };
+  const getcat = sku => Object.entries(catMap).find(([k]) => sku.includes(k))?.[1] || '177836';
+
+  const rows = active.map(p => [
+    'Add', `"${p.title}"`, getcat(p.sku), p.price, p.quantity,
+    `"${p.description}"`, p.image_url, 'New', p.sku, 'GTC', 'FixedPrice',
+    'ID', 'EUR', '7', 'Flat', 'FR_ColissimoInternational', '6.90',
+    'ReturnsAccepted', 'JAMU Java'
+  ]);
+
+  const csv = [headers, ...rows].map(r => r.join(',')).join('\n');
+  download('ebay_annonces.csv', csv, 'text/csv');
+  toast('CSV eBay exporté ✓', 'success');
+}
+
+function exportJSON() {
+  download('products.json', JSON.stringify(products, null, 2), 'application/json');
+  toast('products.json exporté ✓', 'success');
+}
+
+function importJSON() {
+  document.getElementById('import-file').click();
+}
+
+function handleImport(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (Array.isArray(data)) {
+        products = data.map(p => ({ ...p, ebay: p.ebay||false, etsy: p.etsy||false }));
+        renderProducts();
+        toast(`${data.length} produits importés ✓`, 'success');
+      }
+    } catch {
+      toast('Fichier JSON invalide', 'error');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function download(filename, content, type) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type }));
+  a.download = filename;
+  a.click();
+}
+
+// ─── API SETTINGS ───────────────────────────────────────────
+function saveEbayKeys() {
+  const keys = {
+    appId: document.getElementById('ebay-appid').value,
+    certId: document.getElementById('ebay-certid').value,
+    devId: document.getElementById('ebay-devid').value,
+    token: document.getElementById('ebay-token').value,
+  };
+  localStorage.setItem('ebay_keys', JSON.stringify(keys));
+  toast('Clés eBay sauvegardées ✓', 'success');
+  updateApiStatus('ebay', keys.token ? 'connected' : 'pending');
+}
+
+function saveEtsyKeys() {
+  const keys = {
+    key: document.getElementById('etsy-key').value,
+    secret: document.getElementById('etsy-secret').value,
+    shop: document.getElementById('etsy-shop').value,
+    token: document.getElementById('etsy-token').value,
+  };
+  localStorage.setItem('etsy_keys', JSON.stringify(keys));
+  toast('Clés Etsy sauvegardées ✓', 'success');
+  updateApiStatus('etsy', keys.token ? 'connected' : 'pending');
+}
+
+function testEbayConnection() {
+  toast('Test de connexion eBay...', 'info');
+  setTimeout(() => toast('⏳ Clés en attente d\'approbation eBay', 'info'), 1000);
+}
+
+function testEtsyConnection() {
+  toast('Test de connexion Etsy...', 'info');
+  setTimeout(() => toast('⏳ Clés en attente d\'approbation Etsy', 'info'), 1000);
+}
+
+function updateApiStatus(platform, status) {
+  const labels = { pending: 'En attente', connected: 'Connecté', disconnected: 'Déconnecté' };
+  // Update sidebar dots & badges
+  document.querySelectorAll('.status-row').forEach(row => {
+    if (row.textContent.includes(platform === 'ebay' ? 'eBay' : 'Etsy')) {
+      const dot = row.querySelector('.status-dot');
+      const badge = row.querySelector('.status-badge');
+      dot.className = `status-dot ${status}`;
+      badge.className = `status-badge ${status}`;
+      badge.textContent = labels[status];
+    }
+  });
+}
+
+// ─── MODAL ──────────────────────────────────────────────────
+function openModal(title, sub, onConfirm, extraHTML = '') {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-sub').innerHTML = sub;
+  document.getElementById('modal-body').innerHTML = extraHTML;
+  document.getElementById('modal-confirm').onclick = onConfirm;
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+// ─── TOAST ──────────────────────────────────────────────────
+function toast(msg, type = 'info') {
+  const icons = { success: '✓', error: '✗', info: '◆' };
+  const colors = { success: 'var(--green)', error: 'var(--red)', info: 'var(--gold)' };
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.innerHTML = `<span class="toast-icon" style="color:${colors[type]}">${icons[type]}</span><span class="toast-msg">${msg}</span>`;
+  document.getElementById('toasts').appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+// ─── LOAD SAVED KEYS ────────────────────────────────────────
+function loadSavedKeys() {
+  const ebay = JSON.parse(localStorage.getItem('ebay_keys') || '{}');
+  const etsy = JSON.parse(localStorage.getItem('etsy_keys') || '{}');
+  if (ebay.appId) document.getElementById('ebay-appid').value = ebay.appId;
+  if (ebay.token) document.getElementById('ebay-token').value = ebay.token;
+  if (etsy.secret) document.getElementById('etsy-secret').value = etsy.secret;
+  if (etsy.shop) document.getElementById('etsy-shop').value = etsy.shop;
+  if (etsy.token) document.getElementById('etsy-token').value = etsy.token;
+}
+
+// ─── INIT ───────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+  loadSavedKeys();
+});
+
+// Close modal on overlay click
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
+
+<style>
+  #login-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    flex-direction: column;
+    gap: 0;
+  }
+  #login-screen.hidden { display: none; }
+  .login-box {
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 48px 40px;
+    width: 360px;
+    text-align: center;
+  }
+  .login-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .login-sub {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 36px;
+  }
+  .login-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-align: left;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .login-input {
+    width: 100%;
+    background: var(--dark-4);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 20px;
+    transition: border 0.2s;
+    box-sizing: border-box;
+  }
+  .login-input:focus { border-color: var(--gold); }
+  .login-btn {
+    width: 100%;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    transition: background 0.2s;
+  }
+  .login-btn:hover { background: var(--gold-light); }
+  .login-error {
+    color: #E05252;
+    font-size: 11px;
+    margin-top: 10px;
+    display: none;
+  }
+  .login-error.show { display: block; }
+</style>
+
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">JAMU Java</div>
+    <div class="login-sub">Seller Dashboard · Accès privé</div>
+    <label class="login-label">Mot de passe</label>
+    <input type="password" id="login-pwd" class="login-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkLogin()">
+    <button class="login-btn" onclick="checkLogin()">Accéder au dashboard</button>
+    <div class="login-error" id="login-error">Mot de passe incorrect</div>
+  </div>
+</div>
+
+<script>
+// Mot de passe dashboard — change "JamuJava2026" par le mot de passe de ton choix
+const DASHBOARD_PWD = 'JamuJava2026';
+
+function checkLogin() {
+  const input = document.getElementById('login-pwd').value;
+  const error = document.getElementById('login-error');
+  if (input === DASHBOARD_PWD) {
+    document.getElementById('login-screen').classList.add('hidden');
+    sessionStorage.setItem('jamu_auth', '1');
+    error.classList.remove('show');
+  } else {
+    error.classList.add('show');
+    document.getElementById('login-pwd').value = '';
+    document.getElementById('login-pwd').focus();
+  }
+}
+
+// Vérifier si déjà connecté dans cette session
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('jamu_auth') === '1') {
+    document.getElementById('login-screen').classList.add('hidden');
+  }
+});
+</script>
+
+</body>
+</html>
