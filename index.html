@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -7,7 +8,16 @@
 <meta property="og:title" content="JAMU Java — Le rituel javanais, depuis Yogyakarta">
 <meta property="og:description" content="Jamu ancestral et café d'altitude sourcés directement à Yogyakarta, sans intermédiaire.">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Prevent letter overlap during font load */
+.hero-title{opacity:0;transition:opacity .3s ease}
+.fonts-loaded .hero-title{opacity:1}
+/* Fallback font metrics to minimise layout shift */
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:local('Georgia')}
+</style>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -39,16 +49,12 @@ nav.scrolled .nav-cta{border-color:var(--gold);color:var(--gold)}
 .nav-cta:hover{background:var(--gold);color:var(--cream) !important;border-color:var(--gold)}
 
 /* HERO */
-.hero{position:relative;height:100vh;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#2D1F0E 0%,#1A3028 40%,#0D1F18 70%,#1A1510 100%);z-index:0}
-.hero-pattern{position:absolute;inset:0;opacity:.07;background-image:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%);background-size:24px 24px;z-index:1}
-.hero-circle{position:absolute;right:12%;top:12%;width:42%;aspect-ratio:1;border-radius:50%;background:conic-gradient(from 180deg,#2D4A3E,#1A3028,#4A7A6A,#2D4A3E);opacity:.6;z-index:2}
-.hero-glow{position:absolute;right:18%;top:18%;width:30%;aspect-ratio:1;border-radius:50%;background:radial-gradient(ellipse,rgba(184,150,90,.35),transparent 70%);z-index:3;animation:pulse 4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
-.hero-liquid{position:absolute;right:20%;top:20%;width:26%;aspect-ratio:.7;background:linear-gradient(175deg,rgba(184,150,90,.9) 0%,rgba(139,74,47,.8) 40%,rgba(45,74,62,.95) 100%);border-radius:50% 50% 48% 52%/60% 60% 40% 40%;z-index:4;box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 2px 20px rgba(212,180,122,.3)}
-.hero-content{position:relative;z-index:10;padding:0 3rem 6rem;max-width:700px}
+.hero{position:relative;height:100vh;min-height:580px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('images/hero-main.webp') center center/cover no-repeat;z-index:0}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,10,8,.82) 0%,rgba(10,10,8,.65) 45%,rgba(10,10,8,.3) 100%);z-index:1}
+.hero-content{position:relative;z-index:10;padding:0 3rem 5rem;max-width:640px}
 .hero-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:.9}
-.hero-title{font-family:var(--font-serif);font-size:clamp(3.5rem,7vw,6.5rem);font-weight:300;line-height:1.0;color:var(--cream);margin-bottom:1.8rem;letter-spacing:.01em}
+.hero-title{font-family:var(--font-serif);font-size:clamp(2.8rem,5.5vw,5.2rem);font-weight:300;line-height:1.1;color:var(--cream);margin-bottom:1.6rem;letter-spacing:.01em}
 .hero-title em{font-style:italic;color:var(--gold-light)}
 .hero-sub{font-size:.9rem;line-height:1.9;color:rgba(250,248,243,.65);max-width:420px;margin-bottom:2.5rem;letter-spacing:.02em}
 .hero-actions{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
@@ -312,19 +318,43 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   .trust-bar{padding:1rem 2rem;gap:1.5rem}
 }
 @media(max-width:768px){
-  section{padding:4rem 1.5rem}
+  section{padding:3.5rem 1.2rem}
   .products-grid,.testimonials-grid,.ritual-steps,.pp-details-grid,.pp-cross-grid{grid-template-columns:1fr}
   .benefits-grid{grid-template-columns:1fr}
   .ritual-steps::before{display:none}
   .faq-layout{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
-  .hero-content{padding:0 1.5rem 5rem}
-  .story-stat{gap:1.5rem;flex-wrap:wrap}
-  .pp-origin-map{gap:2rem}
-  .pp-info{padding:2.5rem 1.5rem}
-  .sticky-atc{padding:1rem 1.5rem}
-  nav{padding:1rem 1.5rem}
+  .hero-content{padding:0 1.2rem 4.5rem}
+  .hero-title{font-size:clamp(2.2rem,9vw,3.2rem);line-height:1.08}
+  .hero-sub{font-size:.82rem;max-width:100%}
+  .hero-actions{flex-direction:column;align-items:flex-start;gap:1.2rem}
+  .btn-primary{width:100%;text-align:center}
+      .story-stat{gap:1.5rem;flex-wrap:wrap}
+  .pp-origin-map{gap:2rem;flex-wrap:wrap}
+  .pp-info{padding:2rem 1.2rem}
+  .pp-name{font-size:2.2rem}
+  .sticky-atc{padding:1rem 1.2rem;gap:1rem}
+  nav{padding:1rem 1.2rem}
+  .nav-logo{font-size:1.2rem}
   .trust-bar{display:none}
+  .lifestyle-grid{grid-template-columns:1fr;grid-template-rows:auto}
+  .lifestyle-cell.big{grid-row:span 1;height:260px}
+  .lifestyle-cell{height:200px}
+  .products-tabs{gap:.5rem;flex-wrap:wrap}
+  .tab-btn{font-size:.62rem;padding:.35rem .8rem}
+  .section-title{font-size:clamp(1.8rem,6vw,2.5rem)}
+  .pp-hero{grid-template-columns:1fr;min-height:auto}
+  .pp-gallery{min-height:300px}
+  .pp-size-select{flex-wrap:wrap}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-certs{justify-content:center}
+}
+@media(max-width:480px){
+  .hero-title{font-size:clamp(2rem,10vw,2.8rem)}
+  .hero-content{padding:0 1rem 4rem}
+  section{padding:3rem 1rem}
+  .pp-info{padding:1.5rem 1rem}
+  .sticky-atc{flex-direction:column;gap:.8rem;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -341,7 +371,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   <ul class="nav-links">
     <li><a href="#produits">Produits</a></li>
     <li><a href="#story">Notre Histoire</a></li>
-    <li><a href="#ingredients">Origines</a></li>
+    <li><a href="#ingredients">Rituels</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#produits" class="nav-cta">Commander</a>
@@ -350,14 +380,10 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <!-- HERO -->
 <section class="hero" id="hero" aria-label="Hero">
   <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-pattern" aria-hidden="true"></div>
-  <div class="hero-circle" aria-hidden="true"></div>
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-liquid" aria-hidden="true"></div>
   <div class="hero-content">
-    <p class="hero-label">Jamu ancestral · Yogyakarta, Indonésie</p>
-    <h1 class="hero-title">Le rituel<br>javanais, depuis<br><em>Yogyakarta.</em></h1>
-    <p class="hero-sub">Jamu et café d'altitude sourcés directement auprès des producteurs de Yogyakarta, sans intermédiaire. Une racine pilée selon la tradition, pour un goût que rien ne remplace.</p>
+    <p class="hero-label">JAMU Java · Yogyakarta, Indonésie</p>
+    <h1 class="hero-title">Un goût que<br>Java garde<br><em>pour lui.</em></h1>
+    <p class="hero-sub">Boissons ancestrales de Yogyakarta.<br>Pilées selon la tradition. Livrées chez vous.</p>
     <div class="hero-actions">
       <a href="#produits" class="btn-primary">Découvrir la sélection</a>
       <a href="#story" class="btn-ghost">Notre histoire</a>
@@ -371,6 +397,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
+  <div class="trust-item"><div class="trust-dot"></div>Patrimoine UNESCO 2023</div>
   <div class="trust-item"><div class="trust-dot"></div>Paiement sécurisé · Stripe</div>
   <div class="trust-item"><div class="trust-dot"></div>Livraison 5–7 jours · Offerte dès 45€</div>
   <div class="trust-item"><div class="trust-dot"></div>100% naturel · Sans additifs</div>
@@ -380,15 +407,17 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <!-- MARQUEE -->
 <div class="marquee-bar" aria-hidden="true">
   <div class="marquee-inner">
+    <span class="marquee-item">Patrimoine UNESCO 2023</span>
     <span class="marquee-item">Sourcing direct Yogyakarta</span>
+    <span class="marquee-item">Synergie de plantes ancestrales</span>
     <span class="marquee-item">100% naturel</span>
-    <span class="marquee-item">Recettes ancestrales</span>
     <span class="marquee-item">Livraison France · Belgique · Suisse</span>
     <span class="marquee-item">Sans intermédiaire</span>
     <span class="marquee-item">Café Java Ijen d'altitude</span>
+    <span class="marquee-item">Patrimoine UNESCO 2023</span>
     <span class="marquee-item">Sourcing direct Yogyakarta</span>
+    <span class="marquee-item">Synergie de plantes ancestrales</span>
     <span class="marquee-item">100% naturel</span>
-    <span class="marquee-item">Recettes ancestrales</span>
     <span class="marquee-item">Livraison France · Belgique · Suisse</span>
     <span class="marquee-item">Sans intermédiaire</span>
     <span class="marquee-item">Café Java Ijen d'altitude</span>
@@ -404,10 +433,10 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   </div>
   <div class="story-body">
     <p class="section-label">Notre Histoire</p>
-    <h2 class="section-title">Une recette,<br>pas un <em>ingrédient.</em></h2>
+    <h2 class="section-title">Une tradition<br>de <em>2 500 ans.</em></h2>
     <div class="divider"></div>
-    <p class="story-text">À Yogyakarta, le jamu se transmet depuis des générations — une racine entière, pilée selon la tradition, jamais un actif isolé. C'est cette recette complète que JAMU Java apporte en Europe, fidèle à ce qu'elle a toujours été.</p>
-    <p class="story-text">Nos jamu et notre café sont sourcés directement auprès de petits producteurs de Yogyakarta et des flancs du volcan Ijen — sans intermédiaire, avec la même exigence que celle des familles qui les préparent depuis toujours.</p>
+    <p class="story-text">Le jamu n'est pas une tendance. C'est une tradition ancestrale javanaise vieille de plus de 2 500 ans, inscrite au <strong>Patrimoine Culturel Immatériel de l'UNESCO en 2023</strong>.</p>
+    <p class="story-text">Chaque formule JAMU Java est une synergie de plantes pilées ensemble à Yogyakarta — jamais un ingrédient isolé, jamais un actif extrait en laboratoire. Sourcé directement, sans intermédiaire.</p>
     <div class="story-stat">
       <div>
         <div class="stat-num">3</div>
@@ -477,8 +506,8 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       </div>
       <div class="product-info">
         <div class="product-tag">La résistance · Jamu ancestral</div>
-        <h3 class="product-name">Jamu Temulawak Murni</h3>
-        <p class="product-desc">Ce n'est pas du curcuma. Le temulawak est une racine cousine, bien plus rare et bien plus puissante, qui ne pousse qu'à Java. Pur par défaut — à vous d'ajouter miel ou sucre de coco. Format 100g.</p>
+        <h3 class="product-name">Jamu Temulawak</h3>
+        <p class="product-desc">Une synergie de plantes javanaises — temulawak, poivre noir, gingembre rouge, pilés ensemble selon la recette ancestrale de Yogyakarta. Patrimoine UNESCO 2023.</p>
         <div class="product-footer">
           <span class="product-price">12,90€</span>
           <button class="product-btn" onclick="event.stopPropagation();showProductPage('temulawak')">Explorer</button>
@@ -509,7 +538,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       <div class="product-info">
         <div class="product-tag">Le tonus · Jamu ancestral</div>
         <h3 class="product-name">Jamu Beras Kencur</h3>
-        <p class="product-desc">Riz et kencur pilés selon la recette des marchés de Yogyakarta. Un goût incomparable, frais et épicé, qu'aucune poudre de supermarché n'approche. Format 100g.</p>
+        <p class="product-desc">Riz et kencur pilés selon la recette des marchés de Yogyakarta. Un goût frais, épicé et incomparable — une synergie de plantes que Java cultive depuis des générations. Format 100g.</p>
         <div class="product-footer">
           <span class="product-price">13,90€</span>
           <button class="product-btn" onclick="event.stopPropagation();showProductPage('beraskencur')">Explorer</button>
@@ -585,45 +614,45 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <!-- INGREDIENTS -->
 <section class="ingredients" id="ingredients">
   <div class="ingredients-left">
-    <p class="section-label">Les Origines</p>
-    <h2 class="section-title">Sourcé depuis<br><em style="color:var(--gold-light)">Java.</em></h2>
+    <p class="section-label">Les Rituels</p>
+    <h2 class="section-title">Choisissez<br><em style="color:var(--gold-light)">votre moment.</em></h2>
     <div style="height:1px;width:40px;background:rgba(250,248,243,.2);margin:2rem 0"></div>
     <div class="ingredient-list">
       <div class="ingredient-item active" onclick="selectIngredient(this,0)" tabindex="0" role="button">
         <div class="ingredient-num">01</div>
         <div>
-          <div class="ingredient-name">Temulawak</div>
-          <div class="ingredient-benefit">Curcuma xanthorrhiza · Racine reine de Java</div>
+          <div class="ingredient-name">La Résistance</div>
+          <div class="ingredient-benefit">Jamu Temulawak · Le rituel du matin</div>
         </div>
       </div>
       <div class="ingredient-item" onclick="selectIngredient(this,1)" tabindex="0" role="button">
         <div class="ingredient-num">02</div>
         <div>
-          <div class="ingredient-name">Kunyit & Jahe</div>
-          <div class="ingredient-benefit">Curcuma & gingembre rouge · Duo de vitalité</div>
+          <div class="ingredient-name">Le Confort</div>
+          <div class="ingredient-benefit">Jamu Kunyit Jahe · Après le repas</div>
         </div>
       </div>
       <div class="ingredient-item" onclick="selectIngredient(this,2)" tabindex="0" role="button">
         <div class="ingredient-num">03</div>
         <div>
-          <div class="ingredient-name">Café Ijen</div>
-          <div class="ingredient-benefit">Arabica volcanique · Flancs du Gunung Ijen</div>
+          <div class="ingredient-name">Le Tonus</div>
+          <div class="ingredient-benefit">Jamu Beras Kencur · L'élan du quotidien</div>
         </div>
       </div>
       <div class="ingredient-item" onclick="selectIngredient(this,3)" tabindex="0" role="button">
         <div class="ingredient-num">04</div>
         <div>
-          <div class="ingredient-name">Terroir javanais</div>
-          <div class="ingredient-benefit">Sol volcanique · Yogyakarta · Altitude</div>
+          <div class="ingredient-name">L'Altitude</div>
+          <div class="ingredient-benefit">Café Java Ijen · Le café qui a de la terre dessus</div>
         </div>
       </div>
     </div>
   </div>
   <div class="ingredients-right">
     <div class="ingredient-circle" id="ingredientCircle" style="background:linear-gradient(135deg,#D4B47A,#8B4A2F)">
-      <div class="ic-name" id="icName">Temulawak</div>
-      <div class="ic-origin" id="icOrigin">Yogyakarta, Java centrale</div>
-      <div class="ic-desc" id="icDesc">La reine des racines javanaises. Plus puissante que le curcuma commun, elle est au cœur de la tradition jamu depuis des siècles.</div>
+      <div class="ic-name" id="icName">La Résistance</div>
+      <div class="ic-origin" id="icOrigin">Jamu Temulawak · Yogyakarta</div>
+      <div class="ic-desc" id="icDesc">Une synergie de racines et d'épices pilées ensemble selon la tradition javanaise. Pour commencer la journée avec solidité — pur, en latté de coco, ou en smoothie.</div>
     </div>
   </div>
 </section>
@@ -661,29 +690,64 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <!-- RITUAL -->
 <section class="ritual">
   <p class="section-label">La Pratique</p>
-  <h2 class="section-title" style="margin-bottom:1rem">Votre rituel <em>jamu quotidien.</em></h2>
-  <p class="ritual-intro">Le jamu n'est pas un complément. C'est une pratique. Un moment de présence. Une conversation avec votre corps héritée de Java.</p>
+  <h2 class="section-title" style="margin-bottom:1rem">Votre jamu, <em>votre façon.</em></h2>
+  <p class="ritual-intro">Le jamu s'adapte à votre moment et à votre goût. Pur et minimaliste, crémeux au lait de coco, frais en smoothie ou chaud comme à Yogyakarta — il n'y a pas de mauvaise façon.</p>
   <div class="ritual-steps">
     <div class="ritual-step">
       <div class="step-num" aria-hidden="true">I</div>
-      <h3 class="step-title">Chauffer l'eau</h3>
-      <p class="step-text">Portez l'eau à 70°C — jamais à ébullition. La chaleur excessive détruit les huiles essentielles des plantes.</p>
+      <h3 class="step-title">Pur · La tradition</h3>
+      <p class="step-text">1 c.à.c dans 200ml d'eau à 70°C. Infuser 3–5 min. Un trait de miel ou de sucre de coco selon la tradition de Yogyakarta. Le rituel originel.</p>
     </div>
     <div class="ritual-step">
       <div class="step-num" aria-hidden="true">II</div>
-      <h3 class="step-title">Infuser le jamu</h3>
-      <p class="step-text">Versez une cuillère à café dans votre tasse. Regardez la couleur se déployer dans l'eau comme un coucher de soleil.</p>
+      <h3 class="step-title">Latté · Le réconfort</h3>
+      <p class="step-text">1 c.à.c dans 100ml d'eau chaude, puis 150ml de lait de coco tiède moussé. Doux, crémeux, parfumé. Le jamu du matin qui remplace le café en douceur.</p>
     </div>
     <div class="ritual-step">
       <div class="step-num" aria-hidden="true">III</div>
-      <h3 class="step-title">Respirer</h3>
-      <p class="step-text">Trois respirations profondes avant la première gorgée. Le rituel commence dans l'esprit, pas dans la bouche.</p>
+      <h3 class="step-title">Smoothie · La fraîcheur</h3>
+      <p class="step-text">1 c.à.c mixée avec banane, lait de coco froid, gingembre frais et une pincée de poivre noir. La version estivale, dense et vivifiante.</p>
     </div>
     <div class="ritual-step">
       <div class="step-num" aria-hidden="true">IV</div>
-      <h3 class="step-title">Boire avec présence</h3>
-      <p class="step-text">Accordez-vous 10 minutes. Sans téléphone. Juste la chaleur, le goût, la reconnexion à l'instant.</p>
+      <h3 class="step-title">À votre convenance</h3>
+      <p class="step-text">Lait d'amande, d'avoine, d'épeautre — chaque lait végétal change le profil. Sucré au miel, épicé au poivre, citronnée : le rituel vous appartient.</p>
     </div>
+  </div>
+</section>
+
+<!-- ORIGIN JAVA -->
+<section style="background:var(--deep);padding:8rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center" id="origin">
+  <div>
+    <p class="section-label" style="color:var(--gold)">L'Origine</p>
+    <h2 class="section-title" style="color:var(--cream);margin-bottom:1.5rem">Yogyakarta.<br><em style="color:var(--gold-light)">Java, Indonésie.</em></h2>
+    <div style="width:40px;height:1px;background:var(--gold);opacity:.5;margin:2rem 0"></div>
+    <p style="font-size:.95rem;line-height:2;color:rgba(250,248,243,.55);margin-bottom:1.5rem">Au cœur de l'île de Java, à l'ombre du volcan Merapi, Yogyakarta est la capitale culturelle de l'Indonésie. C'est ici que le jamu n'a jamais cessé d'être préparé — dans les cuisines, sur les marchés, transmis par ceux qui en gardent la tradition.</p>
+    <p style="font-size:.95rem;line-height:2;color:rgba(250,248,243,.55);margin-bottom:2.5rem">Le sol volcanique, l'humidité équatoriale, l'altitude — tout confère aux plantes de Java une densité aromatique qu'aucun autre terroir ne reproduit.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;padding-top:2rem;border-top:1px solid rgba(250,248,243,.08)">
+      <div>
+        <div style="font-family:var(--font-serif);font-size:2.2rem;font-weight:300;color:var(--gold);line-height:1">2 500</div>
+        <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,248,243,.35);margin-top:.4rem">Ans de tradition</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-serif);font-size:2.2rem;font-weight:300;color:var(--gold);line-height:1">UNESCO</div>
+        <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,248,243,.35);margin-top:.4rem">Patrimoine 2023</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-serif);font-size:2.2rem;font-weight:300;color:var(--gold);line-height:1">0</div>
+        <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,248,243,.35);margin-top:.4rem">Intermédiaire</div>
+      </div>
+    </div>
+  </div>
+  <div style="position:relative;height:520px">
+    <div style="position:absolute;top:0;left:0;right:1.5rem;bottom:1.5rem;background:linear-gradient(145deg,#1A3028,#2D4A3E);border-radius:2px;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(184,150,90,.1),transparent)"></div>
+      <div style="position:absolute;bottom:2rem;left:2rem;right:2rem">
+        <p style="font-family:var(--font-serif);font-size:1.1rem;font-style:italic;color:rgba(250,248,243,.65);line-height:1.6">"Chaque racine se souvient<br>du sol dont elle vient."</p>
+        <p style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(184,150,90,.55);margin-top:.8rem">Yogyakarta · Java</p>
+      </div>
+    </div>
+    <div style="position:absolute;right:0;bottom:0;width:45%;height:45%;background:linear-gradient(135deg,var(--terracotta),#5A2010);border-radius:2px"></div>
   </div>
 </section>
 
@@ -691,12 +755,13 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <section class="testimonials">
   <div class="testimonials-header">
     <p class="section-label">Ils ont découvert Java</p>
-    <h2 class="section-title">Ceux qui ont trouvé <em>le rituel.</em></h2>
+    <h2 class="section-title">Le rituel, <em>vécu.</em></h2>
   </div>
   <div class="testimonials-grid">
     <div class="testimonial-card">
+      <div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem">Jamu Temulawak · Lyon</div>
       <div class="stars" aria-label="5 étoiles">★★★★★</div>
-      <p class="testimonial-text">"J'ai essayé beaucoup de marques de bien-être. Rien n'approche JAMU Java. Ce n'est pas un produit — c'est une fenêtre ouverte sur Java."</p>
+      <p class="testimonial-text">"Je cherchais quelque chose qui ne ressemble pas aux autres marques de bien-être. JAMU Java n'y ressemble pas. C'est plus proche d'une découverte que d'un achat."</p>
       <div class="testimonial-author">
         <div class="author-avatar" aria-hidden="true">ML</div>
         <div>
@@ -706,8 +771,9 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       </div>
     </div>
     <div class="testimonial-card">
+      <div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem">Jamu Temulawak · Paris</div>
       <div class="stars" aria-label="5 étoiles">★★★★★</div>
-      <p class="testimonial-text">"Le Temulawak a remplacé mon café matinal. Mon énergie est plus propre, plus durable. Et le rituel en lui-même est devenu un moment que j'attends chaque matin."</p>
+      <p class="testimonial-text">"J'ai remplacé mon café du matin par le Temulawak. Ce n'est pas une substitution — c'est un rituel différent. Le goût est incomparable à tout ce que j'avais essayé."</p>
       <div class="testimonial-author">
         <div class="author-avatar" aria-hidden="true">SK</div>
         <div>
@@ -717,14 +783,24 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       </div>
     </div>
     <div class="testimonial-card">
+      <div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem">Coffret Découverte · Bordeaux</div>
       <div class="stars" aria-label="5 étoiles">★★★★★</div>
-      <p class="testimonial-text">"Le Coffret Découverte est un cadeau parfait. J'en ai offert trois. Le packaging seul raconte une histoire. Le goût fait le reste."</p>
+      <p class="testimonial-text">"Offert à plusieurs reprises. Le coffret parle de lui-même avant même qu'on l'ouvre. Et le goût confirme tout ce que l'emballage promet."</p>
       <div class="testimonial-author">
         <div class="author-avatar" aria-hidden="true">TP</div>
         <div>
           <div class="author-name">Thomas P.</div>
           <div class="author-loc">Bordeaux · Achat vérifié</div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--warm)">
+    <div style="display:flex;align-items:center;justify-content:center;gap:.8rem;margin-bottom:.5rem">
+      <span style="font-family:var(--font-serif);font-size:2.5rem;font-weight:300;color:var(--deep)">4.9</span>
+      <div>
+        <div style="color:var(--gold);font-size:.9rem;letter-spacing:.05em">★★★★★</div>
+        <div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Note moyenne · 47 avis</div>
       </div>
     </div>
   </div>
@@ -745,7 +821,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
           <span>Comment commander ?</span><span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
-          <p>Envoyez-nous un email à <strong>contact@jamujava.com</strong> en précisant vos produits souhaités. Nous vous confirmeons votre commande sous 24h depuis Yogyakarta et vous adressons les instructions de paiement. Réponse garantie sous 24h.</p>
+          <p>Sélectionnez votre produit, choisissez votre format et cliquez sur "Réserver ce rituel". Vous serez redirigé vers notre page de paiement sécurisé Stripe (carte bancaire). La commande est confirmée immédiatement après paiement. Pour toute question avant ou après commande, écrivez-nous à <strong>contact@jamujava.com</strong> — réponse garantie sous 24h.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -761,7 +837,11 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
           <span>Comment préparer le jamu ?</span><span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
-          <p>Versez une cuillère à café (environ 2g) dans 200ml d'eau chaude à 70°C — jamais bouillante. Laissez infuser 3 à 5 minutes, filtrez si nécessaire. Peut se consommer chaud ou froid, matin ou soir. Certains ajoutent un filet de miel ou de jus de citron selon la tradition javanaise.</p>
+          <p><strong>Pur (tradition) :</strong> 1 cuillère à café (2g) dans 200ml d'eau à 70°C — jamais bouillante. Infuser 3 à 5 minutes, filtrer. Ajoutez un trait de miel ou de sucre de coco selon votre goût, comme à Yogyakarta.<br><br>
+          <strong>Latté végétal :</strong> 1 c.à.c dans 100ml d'eau chaude, puis complétez avec 150ml de lait de coco (ou amande, avoine) tiède et moussé. Doux et crémeux, idéal le matin.<br><br>
+          <strong>Smoothie :</strong> Mixez 1 c.à.c avec une banane, 200ml de lait de coco froid, du gingembre frais et une pincée de poivre noir. La version fraîche et énergisante.<br><br>
+          <strong>Cold brew :</strong> Laissez infuser 1 c.à.c dans 200ml d'eau froide au réfrigérateur pendant 8h. À boire directement ou sur glaçons.<br><br>
+          Le jamu s'adapte à votre moment et à votre goût — il n'y a pas de mauvaise façon.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -785,20 +865,64 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 </section>
 
 <!-- NEWSLETTER -->
+<!-- MONTHLY RITUAL -->
+<section style="background:var(--cream);padding:8rem 3rem;text-align:center">
+  <p class="section-label">Le Rituel Mensuel</p>
+  <h2 class="section-title" style="margin-bottom:1rem">Ne manquez jamais<br><em>votre rituel.</em></h2>
+  <p style="font-size:.9rem;line-height:1.9;color:var(--muted);max-width:440px;margin:0 auto 3rem">Recevez votre sélection JAMU Java chaque mois, directement depuis Yogyakarta. Moins 15% sur chaque commande. Pause ou annulation à tout moment.</p>
+  <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:3rem">
+    <div style="background:var(--warm);padding:2.5rem 2rem;min-width:220px;text-align:center;position:relative">
+      <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem">Le Rituel Jamu</div>
+      <div style="font-family:var(--font-serif);font-size:2.4rem;font-weight:300;color:var(--deep);line-height:1">32,90€</div>
+      <div style="font-size:.72rem;color:var(--muted);margin:.4rem 0 1.5rem">/ mois · 3 Jamu ancestraux</div>
+      <div style="font-size:.75rem;color:var(--green);margin-bottom:1.5rem">Économie de 12%</div>
+      <a href="mailto:contact@jamujava.com?subject=Abonnement Monthly Ritual Jamu&body=Bonjour, je souhaite m'abonner au Rituel Mensuel Jamu (32,90€/mois)." style="display:block;background:var(--deep);color:var(--cream);padding:.8rem 1.5rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:background .3s">S'abonner</a>
+    </div>
+    <div style="background:var(--deep);padding:2.5rem 2rem;min-width:220px;text-align:center;position:relative">
+      <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .9rem;white-space:nowrap">Le plus populaire</div>
+      <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,248,243,.4);margin-bottom:.8rem;margin-top:.5rem">L'Intégrale Java</div>
+      <div style="font-family:var(--font-serif);font-size:2.4rem;font-weight:300;color:var(--cream);line-height:1">49,90€</div>
+      <div style="font-size:.72rem;color:rgba(250,248,243,.4);margin:.4rem 0 1.5rem">/ mois · 3 Jamu + Café Ijen</div>
+      <div style="font-size:.75rem;color:var(--gold-light);margin-bottom:1.5rem">Économie de 15%</div>
+      <a href="mailto:contact@jamujava.com?subject=Abonnement Monthly Ritual Intégrale&body=Bonjour, je souhaite m'abonner à L'Intégrale Java (49,90€/mois)." style="display:block;background:var(--gold);color:var(--cream);padding:.8rem 1.5rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:background .3s">S'abonner</a>
+    </div>
+  </div>
+  <p style="font-size:.72rem;color:var(--muted);letter-spacing:.05em">Pause ou annulation à tout moment · Livraison offerte incluse · Expédié depuis Yogyakarta</p>
+</section>
+
+<!-- NEWSLETTER -->
 <section class="newsletter">
   <div>
     <p class="section-label">Restez connecté</p>
     <h2 class="section-title">Lettres depuis <em style="color:var(--gold-light)">Java.</em></h2>
-    <p class="newsletter-sub">Dispatches saisonniers, recettes ancestrales, nouveaux produits en avant-première et coulisses de nos producteurs à Yogyakarta — une fois par mois, pas plus.</p>
+    <p class="newsletter-sub">Recettes ancestrales, nouveaux produits en avant-première, coulisses de Yogyakarta — une fois par mois.</p>
   </div>
   <div>
-    <form onsubmit="return false;">
+    <form id="newsletterForm">
       <div class="input-group">
-        <input type="email" class="nl-input" placeholder="Votre adresse email" aria-label="Adresse email">
+        <input type="email" id="nlEmail" class="nl-input" placeholder="Votre adresse email" aria-label="Adresse email" required>
         <button class="nl-btn" type="submit">Rejoindre →</button>
       </div>
-      <p class="newsletter-note">Une lettre par mois. Pas de bruit. Désinscription libre à tout moment.</p>
+      <p class="newsletter-note" id="nlNote">Une lettre par mois. Pas de bruit. Désinscription libre à tout moment.</p>
+      <p class="newsletter-note" id="nlConfirm" style="display:none;color:var(--gold-light)">Merci — nous vous écrirons depuis Yogyakarta. 🌿</p>
     </form>
+    <script>
+    document.getElementById('newsletterForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      var email=document.getElementById('nlEmail').value;
+      fetch('https://formspree.io/f/mwvjvvoz',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({email:email,_subject:'Nouvelle inscription newsletter — JAMU Java'})
+      }).then(function(r){
+        if(r.ok){
+          document.getElementById('nlNote').style.display='none';
+          document.getElementById('nlConfirm').style.display='block';
+          document.getElementById('nlEmail').value='';
+        }
+      }).catch(function(){});
+    });
+    </script>
   </div>
 </section>
 
@@ -847,6 +971,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 JAMU Java · Tous droits réservés · Boissons de Java, Indonésie</div>
     <div class="footer-certs">
+      <a href="/cgv.html" style="font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,248,243,.25);text-decoration:none;border:1px solid rgba(250,248,243,.1);padding:.3rem .7rem;transition:color .3s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(250,248,243,.25)'">CGV & Mentions légales</a>
       <span class="cert-badge">100% Naturel</span>
       <span class="cert-badge">Sourcing Direct</span>
       <span class="cert-badge">Sans Additifs</span>
@@ -935,17 +1060,17 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 const PRODUCTS={
   temulawak:{
     stripeUrl:'https://buy.stripe.com/aFa8wPdJYdsbatdeEY4wM00',
-    name:'Jamu Temulawak Murni',subtitle:'La racine introuvable en Europe · 100g',price:'12,90€',
+    name:'Jamu Temulawak',subtitle:'Synergie de plantes ancestrales · 100g',price:'12,90€',
     priceNote:'Format 100g · Env. 20 préparations',
     bg:'linear-gradient(145deg,#B8965A 0%,#8B6A2F 50%,#5A3A10 100%)',
     image:'images/temulawak-hero.webp',
     cat:'La résistance · Jamu ancestral',
     tastes:['Racine terreuse','Légère amertume noble','Notes boisées','Finish épicé'],
-    benefits:'Ce n\'est pas du curcuma. Le temulawak (Curcuma xanthorrhiza) est une racine cousine, bien plus rare et bien plus concentrée, qui ne pousse qu\'à Java. Son goût n\'a rien à voir avec ce que l\'on trouve en Europe sous le nom de curcuma : plus profond, plus complexe, sans l\'amertume plate de la poudre de supermarché. Réputé depuis des générations à Yogyakarta comme la racine du quotidien.',
-    prep:'1 cuillère à café (2g) pour 200ml d\'eau à 70°C. Infuser 3 à 5 minutes, filtrer. Notre racine est pure, sans sucre ajouté — fidèle à la tradition de Yogyakarta où chaque foyer dose le jamu selon son goût. Un trait de miel, une touche de sucre de coco, ou rien du tout : le rituel vous appartient.',
-    ingredients:'Curcuma xanthorrhiza (Temulawak) séché et pilé selon la méthode artisanale. Pur, sans additif, sans conservateur, sans sucre ajouté. Récolté à la main dans les plaines de Yogyakarta, Java centrale.',
-    origin:'Notre Temulawak est cultivé par des familles de producteurs dans les plaines fertiles autour de Yogyakarta, sur un sol volcanique riche en minéraux. Cette racine ne se cultive pas en Europe — c\'est l\'une des raisons pour lesquelles son goût reste introuvable ailleurs. Sélectionné directement sur place, sans intermédiaire.',
-    originFacts:[{num:'Yogyakarta',label:'Région d\'origine'},{num:'100%',label:'Pur, sans sucre ajouté'},{num:'0',label:'Intermédiaire'},{num:'Java',label:'Seule terre d\'origine'}],
+    benefits:'Ce n\'est pas du curcuma. Le Jamu Temulawak est une synergie de plantes javanaises — temulawak, poivre noir, gingembre rouge, racines et herbes pilées ensemble selon la recette ancestrale de Yogyakarta. Un Patrimoine UNESCO 2023. Son goût est incomparable à tout ce qu\'on trouve en Europe : plus profond, plus complexe, vivant.',
+    prep:'Pur : 1 c.à.c dans 200ml d\'eau à 70°C, infuser 3–5 min. Latté : avec 150ml de lait de coco tiède moussé. Smoothie : mixé avec banane, lait de coco froid et poivre noir. À votre convenance : ajoutez miel, sucre de coco, lait d\'amande — le rituel vous appartient.',
+    ingredients:'Synergie de plantes : Curcuma xanthorrhiza (Temulawak), poivre noir de Java, gingembre rouge indonésien, herbes et racines complémentaires. Pilé selon la méthode artisanale de Yogyakarta. Sans additif, sans conservateur, sans sucre ajouté.',
+    origin:'Notre Jamu Temulawak est élaboré à partir de plantes cultivées dans les plaines fertiles de Yogyakarta, sur un sol volcanique riche en minéraux. Ces racines ne se cultivent pas en Europe — leur goût reste introuvable ailleurs. Sourcé directement, sans intermédiaire.',
+    originFacts:[{num:'UNESCO',label:'Patrimoine 2023'},{num:'Yogyakarta',label:'Région d\'origine'},{num:'0',label:'Intermédiaire'},{num:'Synergie',label:'De plantes ancestrales'}],
     cross:['kunyit','beraskencur','coffret']
   },
   kunyit:{
@@ -971,7 +1096,7 @@ const PRODUCTS={
     image:'images/beraskencur-hero.webp',
     cat:'Le tonus · Jamu ancestral',
     tastes:['Riz doux','Kencur frais et épicé','Notes florales','Fond chaleureux'],
-    benefits:'Le beras kencur est l\'un des jamu les plus appréciés sur les marchés de Yogyakarta — un accord de riz trempé et de kencur (une racine aromatique propre à l\'Asie du Sud-Est) que l\'on ne retrouve dans aucune poudre vendue en Europe. Sa texture même est différente : on sent la racine pilée, pas un colorant soluble. Réputé pour accompagner le tonus au quotidien.',
+    benefits:'Le beras kencur est l\'un des jamu les plus appréciés sur les marchés de Yogyakarta — un accord de riz trempé et de kencur, une racine aromatique propre à l\'Asie du Sud-Est, introuvable sous cette forme en Europe. Sa texture est celle d\'une vraie infusion de plante pilée : on sent le travail, pas le laboratoire. Réputé pour accompagner le tonus au quotidien.',
     prep:'1 cuillère à café (2g) pour 200ml d\'eau à 70°C. Infuser 5 minutes, filtrer légèrement — un léger dépôt naturel au fond de la tasse est normal et signe d\'une vraie infusion de plante. Pur par défaut ; un trait de miel ou de sucre de coco selon votre goût, comme sur les marchés de Yogyakarta.',
     ingredients:'Riz trempé et kencur (Kaempferia galanga) pilés selon la méthode artisanale, gingembre. Pur, sans additif, sans conservateur, sans sucre ajouté. Recette transmise par les vendeuses de jamu de Yogyakarta.',
     origin:'Le kencur ne se cultive pas en Europe — c\'est une racine propre aux sous-bois d\'Asie du Sud-Est, à l\'arôme plus frais et plus prononcé que le gingembre commun. Notre riz et notre kencur sont sourcés directement auprès de petits producteurs de la région de Yogyakarta.',
@@ -1137,10 +1262,10 @@ function toggleFaq(btn){
 }
 
 const ING=[
-  {name:'Temulawak',origin:'Plaines de Yogyakarta',desc:'La reine des racines javanaises. Plus puissante que le curcuma commun, anti-inflammatoire et hépatoprotectrice — au cœur de la pharmacopée de Yogyakarta depuis le XIIIe siècle.',bg:'linear-gradient(135deg,#D4B47A,#8B4A2F)'},
-  {name:'Kunyit & Jahe',origin:'Java centrale & côtière',desc:'Le curcuma javanais et le gingembre rouge — jahe merah. Ce duo ancestral est la base de la majorité des préparations jamu. Chaud, vivifiant, digestif.',bg:'linear-gradient(135deg,#D4A843,#8B6A2F)'},
-  {name:'Café Ijen',origin:'Volcan Ijen, Java Est',desc:'Arabica d\'altitude récolté à 1800m sur les flancs du Gunung Ijen. Sol volcanique acide, brume matinale, cueillette manuelle. Un café de contemplation.',bg:'linear-gradient(135deg,#5A2D14,#2D1408)'},
-  {name:'Terroir javanais',origin:'Yogyakarta & Java Est',desc:'Java est l\'une des îles les plus fertiles au monde. Sol volcanique, équateur, altitude, biodiversité — une combinaison qui confère à chaque plante une densité aromatique et nutritive incomparable.',bg:'linear-gradient(135deg,#2D4A3E,#1A3028)'}
+  {name:'La Résistance',origin:'Jamu Temulawak · Yogyakarta',desc:'Une synergie de racines et d\'épices de Yogyakarta, pilées ensemble selon la tradition. Pour commencer la journée avec solidité — pur, en latté de coco, ou en smoothie. Patrimoine UNESCO 2023.',bg:'linear-gradient(135deg,#D4B47A,#8B4A2F)'},
+  {name:'Le Confort',origin:'Jamu Kunyit Jahe · Java',desc:'Curcuma de Java et gingembre rouge exclusivement récolté en Indonésie. Deux racines qui réchauffent de l\'intérieur. Le rituel d\'après repas, chaud ou en latté végétal.',bg:'linear-gradient(135deg,#D4A843,#8B6A2F)'},
+  {name:'Le Tonus',origin:'Jamu Beras Kencur · Yogyakarta',desc:'Riz et kencur pilés selon la recette des marchés de Yogyakarta. Un goût frais et épicé, incomparable. Pour les moments où l\'on a besoin de s\'élancer — pur ou en smoothie.',bg:'linear-gradient(135deg,#C9B07A,#8B6A2F)'},
+  {name:'L\'Altitude',origin:'Café Ijen · Volcan Ijen, 1800m',desc:'Arabica cueilli à la main sur les flancs du volcan Ijen, à 1800m. Sol volcanique acide, brume matinale, torréfaction artisanale. Le café qui a encore de la terre dessus.',bg:'linear-gradient(135deg,#5A2D14,#2D1408)'}
 ];
 
 function selectIngredient(el,i){
@@ -1167,6 +1292,16 @@ window.addEventListener('scroll',()=>{
 document.querySelectorAll('.product-card[data-cat]').forEach(card=>{
   card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')card.click()});
 });
+</script>
+<script>
+// Font load observer — removes overlap flash on hero title
+if(document.fonts){
+  document.fonts.ready.then(()=>{
+    document.documentElement.classList.add('fonts-loaded');
+  });
+}else{
+  document.documentElement.classList.add('fonts-loaded');
+}
 </script>
 </body>
 </html>
