@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -53,7 +53,7 @@ nav.scrolled .nav-cta{border-color:var(--gold);color:var(--gold)}
 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,10,8,.82) 0%,rgba(10,10,8,.65) 45%,rgba(10,10,8,.3) 100%);z-index:1}
-.hero-content{position:relative;z-index:10;padding:0 3rem 5rem;max-width:640px}
+.hero-content{position:relative;z-index:10;padding:6rem 3rem 5rem;max-width:640px}
 .hero-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:.9}
 .hero-title{font-family:var(--font-serif);font-size:clamp(2.8rem,5.5vw,5.2rem);font-weight:300;line-height:1.1;color:var(--cream);margin-bottom:1.6rem;letter-spacing:.01em}
 .hero-title em{font-style:italic;color:var(--gold-light)}
@@ -84,6 +84,16 @@ nav.scrolled .nav-cta{border-color:var(--gold);color:var(--gold)}
 
 /* SECTIONS */
 section{padding:8rem 3rem}
+
+/* BILINGUE FR/EN */
+[data-en]{display:none}
+html.lang-en [data-fr]{display:none}
+html.lang-en [data-en]{display:inline}
+html.lang-en [data-en].block{display:block}
+.lang-switch{display:flex;align-items:center;gap:.3rem;font-size:.68rem;letter-spacing:.1em}
+.lang-btn{background:none;border:none;color:inherit;cursor:pointer;padding:.2rem .4rem;opacity:.5;transition:opacity .3s;font-family:var(--font-sans)}
+.lang-btn.active{opacity:1;font-weight:500}
+.lang-sep{opacity:.3}
 
 /* ORIGIN JAVA */
 .origin-section{background:var(--deep);padding:8rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
@@ -392,63 +402,77 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <nav id="mainNav">
   <a href="#" class="nav-logo">JAMU Java</a>
   <ul class="nav-links">
-    <li><a href="#produits">Produits</a></li>
-    <li><a href="qu-est-ce-que-le-jamu.html">Qu'est-ce que le Jamu</a></li>
-    <li><a href="#story">Notre Histoire</a></li>
-    <li><a href="#ingredients">Rituels</a></li>
+    <li><a href="#produits"><span data-fr="Produits">Produits</span><span data-en="Products">Products</span></a></li>
+    <li><a href="qu-est-ce-que-le-jamu.html"><span data-fr="Qu'est-ce que le Jamu">Qu'est-ce que le Jamu</span><span data-en="What is Jamu">What is Jamu</span></a></li>
+    <li><a href="#story"><span data-fr="Notre Histoire">Notre Histoire</span><span data-en="Our Story">Our Story</span></a></li>
+    <li><a href="#ingredients"><span data-fr="Rituels">Rituels</span><span data-en="Rituals">Rituals</span></a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="#produits" class="nav-cta">Commander</a>
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+  <a href="#produits" class="nav-cta"><span data-fr="Commander">Commander</span><span data-en="Order">Order</span></a>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="hero" aria-label="Hero">
   <div class="hero-bg" aria-hidden="true">
-    <video autoplay muted loop playsinline poster="images/hero-main.webp">
+    <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline="true" poster="images/hero-main.webp">
       <source src="images/hero-video.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-content">
-    <p class="hero-label">Boisson ancestrale javanaise à base de plantes</p>
-    <h1 class="hero-title">Un goût que<br>Java garde<br><em>pour lui.</em></h1>
-    <p class="hero-sub">JAMU Java — boissons traditionnelles de Yogyakarta, préparées à partir de racines et plantes pilées selon la tradition. À boire chaud, en latté ou en smoothie.</p>
+    <p class="hero-label">
+      <span data-fr="Rituels ancestraux javanais, pour la vie moderne">Rituels ancestraux javanais, pour la vie moderne</span>
+      <span data-en="Ancient Javanese wellness rituals, crafted for modern living">Ancient Javanese wellness rituals, crafted for modern living</span>
+    </p>
+    <h1 class="hero-title">
+      <span data-fr="block">JAMU<br>Rituels ancestraux<br><em>javanais.</em></span>
+      <span data-en="block">JAMU<br>Ancient Javanese<br><em>wellness.</em></span>
+    </h1>
+    <p class="hero-sub">
+      <span data-fr="JAMU Java — boissons traditionnelles de Yogyakarta, préparées à partir de racines et plantes pilées selon la tradition. À boire chaud, en latté ou en smoothie.">JAMU Java — boissons traditionnelles de Yogyakarta, préparées à partir de racines et plantes pilées selon la tradition. À boire chaud, en latté ou en smoothie.</span>
+      <span data-en="JAMU Java — traditional Yogyakarta drinks, made from roots and plants pounded by hand following age-old recipes. Served hot, as a latte, or blended into a smoothie.">JAMU Java — traditional Yogyakarta drinks, made from roots and plants pounded by hand following age-old recipes. Served hot, as a latte, or blended into a smoothie.</span>
+    </p>
     <div class="hero-actions">
-      <a href="#produits" class="btn-primary">Découvrir la sélection</a>
-      <a href="#story" class="btn-ghost">Notre histoire</a>
+      <a href="#produits" class="btn-primary"><span data-fr="Découvrir la sélection">Découvrir la sélection</span><span data-en="Discover the collection">Discover the collection</span></a>
+      <a href="#story" class="btn-ghost"><span data-fr="Notre histoire">Notre histoire</span><span data-en="Our story">Our story</span></a>
     </div>
   </div>
   <div class="hero-scroll" aria-hidden="true">
     <div class="scroll-line"></div>
-    <span>Scroll</span>
+    <span data-fr="Scroll">Scroll</span><span data-en="Scroll">Scroll</span>
   </div>
 </section>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-item"><div class="trust-dot"></div>Patrimoine UNESCO 2023</div>
-  <div class="trust-item"><div class="trust-dot"></div>Paiement sécurisé · Stripe</div>
-  <div class="trust-item"><div class="trust-dot"></div>Livraison 5–7 jours · Offerte dès 45€</div>
-  <div class="trust-item"><div class="trust-dot"></div>100% naturel · Sans additifs</div>
-  <div class="trust-item"><div class="trust-dot"></div>Satisfait ou remboursé · 14 jours</div>
+  <div class="trust-item"><div class="trust-dot"></div><span data-fr="Patrimoine UNESCO 2023">Patrimoine UNESCO 2023</span><span data-en="UNESCO Heritage 2023">UNESCO Heritage 2023</span></div>
+  <div class="trust-item"><div class="trust-dot"></div><span data-fr="Paiement sécurisé · Stripe">Paiement sécurisé · Stripe</span><span data-en="Secure payment · Stripe">Secure payment · Stripe</span></div>
+  <div class="trust-item"><div class="trust-dot"></div><span data-fr="Livraison 5–7 jours · Offerte dès 45€">Livraison 5–7 jours · Offerte dès 45€</span><span data-en="5–7 day delivery · Free from €45">5–7 day delivery · Free from €45</span></div>
+  <div class="trust-item"><div class="trust-dot"></div><span data-fr="100% naturel · Sans additifs">100% naturel · Sans additifs</span><span data-en="100% natural · No additives">100% natural · No additives</span></div>
+  <div class="trust-item"><div class="trust-dot"></div><span data-fr="Satisfait ou remboursé · 14 jours">Satisfait ou remboursé · 14 jours</span><span data-en="Satisfaction guaranteed · 14 days">Satisfaction guaranteed · 14 days</span></div>
 </div>
 
 <!-- MARQUEE -->
 <div class="marquee-bar" aria-hidden="true">
   <div class="marquee-inner">
-    <span class="marquee-item">Patrimoine UNESCO 2023</span>
-    <span class="marquee-item">Sourcing direct Yogyakarta</span>
-    <span class="marquee-item">Synergie de plantes ancestrales</span>
-    <span class="marquee-item">100% naturel</span>
-    <span class="marquee-item">Livraison France · Belgique · Suisse</span>
-    <span class="marquee-item">Sans intermédiaire</span>
-    <span class="marquee-item">Café Java Ijen d'altitude</span>
-    <span class="marquee-item">Patrimoine UNESCO 2023</span>
-    <span class="marquee-item">Sourcing direct Yogyakarta</span>
-    <span class="marquee-item">Synergie de plantes ancestrales</span>
-    <span class="marquee-item">100% naturel</span>
-    <span class="marquee-item">Livraison France · Belgique · Suisse</span>
-    <span class="marquee-item">Sans intermédiaire</span>
-    <span class="marquee-item">Café Java Ijen d'altitude</span>
+    <span class="marquee-item"><span data-fr="Patrimoine UNESCO 2023">Patrimoine UNESCO 2023</span><span data-en="UNESCO Heritage 2023">UNESCO Heritage 2023</span></span>
+    <span class="marquee-item"><span data-fr="Sourcing direct Yogyakarta">Sourcing direct Yogyakarta</span><span data-en="Direct sourced from Yogyakarta">Direct sourced from Yogyakarta</span></span>
+    <span class="marquee-item"><span data-fr="Synergie de plantes ancestrales">Synergie de plantes ancestrales</span><span data-en="Ancestral plant synergy">Ancestral plant synergy</span></span>
+    <span class="marquee-item"><span data-fr="100% naturel">100% naturel</span><span data-en="100% natural">100% natural</span></span>
+    <span class="marquee-item"><span data-fr="Livraison France · Belgique · Suisse">Livraison France · Belgique · Suisse</span><span data-en="Shipping France · Belgium · Switzerland">Shipping France · Belgium · Switzerland</span></span>
+    <span class="marquee-item"><span data-fr="Sans intermédiaire">Sans intermédiaire</span><span data-en="No middleman">No middleman</span></span>
+    <span class="marquee-item"><span data-fr="Café Java Ijen d'altitude">Café Java Ijen d'altitude</span><span data-en="High-altitude Java Ijen coffee">High-altitude Java Ijen coffee</span></span>
+    <span class="marquee-item"><span data-fr="Patrimoine UNESCO 2023">Patrimoine UNESCO 2023</span><span data-en="UNESCO Heritage 2023">UNESCO Heritage 2023</span></span>
+    <span class="marquee-item"><span data-fr="Sourcing direct Yogyakarta">Sourcing direct Yogyakarta</span><span data-en="Direct sourced from Yogyakarta">Direct sourced from Yogyakarta</span></span>
+    <span class="marquee-item"><span data-fr="Synergie de plantes ancestrales">Synergie de plantes ancestrales</span><span data-en="Ancestral plant synergy">Ancestral plant synergy</span></span>
+    <span class="marquee-item"><span data-fr="100% naturel">100% naturel</span><span data-en="100% natural">100% natural</span></span>
+    <span class="marquee-item"><span data-fr="Livraison France · Belgique · Suisse">Livraison France · Belgique · Suisse</span><span data-en="Shipping France · Belgium · Switzerland">Shipping France · Belgium · Switzerland</span></span>
+    <span class="marquee-item"><span data-fr="Sans intermédiaire">Sans intermédiaire</span><span data-en="No middleman">No middleman</span></span>
+    <span class="marquee-item"><span data-fr="Café Java Ijen d'altitude">Café Java Ijen d'altitude</span><span data-en="High-altitude Java Ijen coffee">High-altitude Java Ijen coffee</span></span>
   </div>
 </div>
 
@@ -1333,6 +1357,52 @@ if(document.fonts){
 }else{
   document.documentElement.classList.add('fonts-loaded');
 }
+// Safety net — force visibility after 1.2s even if fonts.ready never resolves
+setTimeout(()=>{
+  document.documentElement.classList.add('fonts-loaded');
+},1200);
+</script>
+<script>
+// Force hero video autoplay on Safari iOS — HTML attributes alone are sometimes ignored
+var heroVideo = document.getElementById('heroVideo');
+if(heroVideo){
+  heroVideo.muted = true;
+  heroVideo.defaultMuted = true;
+  heroVideo.setAttribute('muted','');
+  var tryPlay = function(){
+    var p = heroVideo.play();
+    if(p !== undefined){
+      p.catch(function(){
+        // Autoplay blocked — retry on first user interaction
+        var resumeOnInteraction = function(){
+          heroVideo.play().catch(function(){});
+          document.removeEventListener('touchstart', resumeOnInteraction);
+          document.removeEventListener('click', resumeOnInteraction);
+        };
+        document.addEventListener('touchstart', resumeOnInteraction, {once:true});
+        document.addEventListener('click', resumeOnInteraction, {once:true});
+      });
+    }
+  };
+  if(heroVideo.readyState >= 2){
+    tryPlay();
+  }else{
+    heroVideo.addEventListener('loadeddata', tryPlay, {once:true});
+  }
+}
+</script>
+<script>
+function setLang(lang){
+  document.documentElement.classList.toggle('lang-en', lang==='en');
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  try{localStorage.setItem('jamuLang', lang);}catch(e){}
+}
+(function(){
+  try{
+    var saved = localStorage.getItem('jamuLang');
+    if(saved === 'en') setLang('en');
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
