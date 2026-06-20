@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -49,11 +49,11 @@ nav.scrolled .nav-cta{border-color:var(--gold);color:var(--gold)}
 .nav-cta:hover{background:var(--gold);color:var(--cream) !important;border-color:var(--gold)}
 
 /* HERO */
-.hero{position:relative;height:100vh;min-height:580px;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:#0D1208}
 .hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,10,8,.82) 0%,rgba(10,10,8,.65) 45%,rgba(10,10,8,.3) 100%);z-index:1}
-.hero-content{position:relative;z-index:10;padding:6rem 3rem 5rem;max-width:640px}
+.hero-content{position:relative;z-index:10;padding:3rem 3rem 5rem;max-width:640px;margin-top:140px}
 .hero-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:.9}
 .hero-title{font-family:var(--font-serif);font-size:clamp(2.8rem,5.5vw,5.2rem);font-weight:300;line-height:1.1;color:var(--cream);margin-bottom:1.6rem;letter-spacing:.01em}
 .hero-title em{font-style:italic;color:var(--gold-light)}
@@ -356,7 +356,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   .ritual-steps::before{display:none}
   .faq-layout{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
-  .hero-content{padding:0 1.2rem 4.5rem}
+  .hero-content{padding:1.5rem 1.2rem 4.5rem;margin-top:120px}
   .hero-bg video{object-position:62% center}
   .hero-title{font-size:clamp(2.2rem,9vw,3.2rem);line-height:1.08}
   .hero-sub{font-size:.82rem;max-width:100%}
@@ -384,7 +384,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 }
 @media(max-width:480px){
   .hero-title{font-size:clamp(2rem,10vw,2.8rem)}
-  .hero-content{padding:0 1rem 4rem}
+  .hero-content{padding:1rem 1rem 4rem;margin-top:110px}
   section{padding:3rem 1rem}
   .pp-info{padding:1.5rem 1rem}
   .sticky-atc{flex-direction:column;gap:.8rem;text-align:center}
@@ -419,7 +419,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <!-- HERO -->
 <section class="hero" id="hero" aria-label="Hero">
   <div class="hero-bg" aria-hidden="true">
-    <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline="true" poster="images/hero-main.webp">
+    <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline="true">
       <source src="images/hero-video.mp4" type="video/mp4">
     </video>
   </div>
@@ -541,6 +541,9 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       <p class="section-label">Notre Sélection</p>
       <h2 class="section-title">Java dans <em>votre quotidien.</em></h2>
     </div>
+  </div>
+  <div style="margin-bottom:3rem;border-radius:2px;overflow:hidden">
+    <img src="images/collection-4-pouches.webp" alt="Collection JAMU Java — Beras Kencur, Temulawak, Kunyit Asem, Ijen Coffee" style="width:100%;height:auto;display:block;max-height:480px;object-fit:cover;object-position:center 35%">
   </div>
   <div class="products-tabs">
     <button class="tab-btn active" onclick="filterProducts(this,'all')">Tout voir</button>
