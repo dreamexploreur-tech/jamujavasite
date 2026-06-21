@@ -485,23 +485,33 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
     <div class="story-tag">Yogyakarta, Java</div>
   </div>
   <div class="story-body">
-    <p class="section-label">Notre Histoire</p>
-    <h2 class="section-title">Une tradition<br>de <em>2 500 ans.</em></h2>
+    <p class="section-label"><span data-fr="Notre Histoire">Notre Histoire</span><span data-en="Our Story">Our Story</span></p>
+    <h2 class="section-title">
+      <span data-fr="block">Une tradition<br>de <em>2 500 ans.</em></span>
+      <span data-en="block">A tradition<br><em>2,500 years</em> old.</span>
+    </h2>
     <div class="divider"></div>
-    <p class="story-text">Le jamu n'est pas une tendance. C'est une tradition ancestrale javanaise vieille de plus de 2 500 ans, inscrite au <strong>Patrimoine Culturel Immatériel de l'UNESCO en 2023</strong>.</p>
-    <p class="story-text">Chaque formule JAMU Java est une synergie de plantes pilées ensemble à Yogyakarta — jamais un ingrédient isolé, jamais un actif extrait en laboratoire. Sourcé directement, sans intermédiaire.</p>
+    <p class="story-text">
+      <span data-fr="Le jamu n'est pas une tendance. C'est une tradition ancestrale javanaise vieille de plus de 2 500 ans, inscrite au">Le jamu n'est pas une tendance. C'est une tradition ancestrale javanaise vieille de plus de 2 500 ans, inscrite au</span>
+      <span data-en="Jamu is not a trend. It is an ancestral Javanese tradition more than 2,500 years old, inscribed on the">Jamu is not a trend. It is an ancestral Javanese tradition more than 2,500 years old, inscribed on the</span>
+      <strong><span data-fr="Patrimoine Culturel Immatériel de l'UNESCO en 2023">Patrimoine Culturel Immatériel de l'UNESCO en 2023</span><span data-en="UNESCO Intangible Cultural Heritage list in 2023">UNESCO Intangible Cultural Heritage list in 2023</span></strong>.
+    </p>
+    <p class="story-text">
+      <span data-fr="Chaque formule JAMU Java est une synergie de plantes pilées ensemble à Yogyakarta — jamais un ingrédient isolé, jamais un actif extrait en laboratoire. Sourcé directement, sans intermédiaire.">Chaque formule JAMU Java est une synergie de plantes pilées ensemble à Yogyakarta — jamais un ingrédient isolé, jamais un actif extrait en laboratoire. Sourcé directement, sans intermédiaire.</span>
+      <span data-en="Every JAMU Java blend is a synergy of plants pounded together in Yogyakarta — never a single isolated ingredient, never a lab-extracted compound. Sourced directly, with no middleman.">Every JAMU Java blend is a synergy of plants pounded together in Yogyakarta — never a single isolated ingredient, never a lab-extracted compound. Sourced directly, with no middleman.</span>
+    </p>
     <div class="story-stat">
       <div>
         <div class="stat-num">3</div>
-        <div class="stat-label">Gammes de produits</div>
+        <div class="stat-label"><span data-fr="Gammes de produits">Gammes de produits</span><span data-en="Product ranges">Product ranges</span></div>
       </div>
       <div>
         <div class="stat-num">100%</div>
-        <div class="stat-label">Sourcing direct</div>
+        <div class="stat-label"><span data-fr="Sourcing direct">Sourcing direct</span><span data-en="Direct sourcing">Direct sourcing</span></div>
       </div>
       <div>
         <div class="stat-num">0</div>
-        <div class="stat-label">Intermédiaire</div>
+        <div class="stat-label"><span data-fr="Intermédiaire">Intermédiaire</span><span data-en="Middleman">Middleman</span></div>
       </div>
     </div>
   </div>
@@ -555,10 +565,41 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   </div>
   <div class="products-grid" id="productsGrid">
 
+    <div class="product-card" data-cat="energie" onclick="showProductPage('premierrituel')" role="button" tabindex="0">
+      <div class="product-img">
+        <div class="product-img-inner bg-beraskencur"></div>
+        <div class="product-badge">Découverte</div>
+      </div>
+      <div class="product-info">
+        <div class="product-tag">Le tonus · Format découverte</div>
+        <h3 class="product-name">Premier Rituel — Beras Kencur</h3>
+        <p class="product-desc">Vous découvrez le jamu pour la première fois ? Un format réduit pour goûter sans engagement — 6 préparations, juste assez pour faire connaissance avec le rituel.</p>
+        <div class="product-footer">
+          <span class="product-price">6,90€</span>
+          <button class="product-btn" onclick="event.stopPropagation();showProductPage('premierrituel')">Explorer</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="energie" onclick="showProductPage('beraskencur')" role="button" tabindex="0">
+      <div class="product-img">
+        <div class="product-img-inner bg-beraskencur"></div>
+        <div class="product-badge">Signature</div>
+      </div>
+      <div class="product-info">
+        <div class="product-tag">Le tonus · Jamu ancestral</div>
+        <h3 class="product-name">Jamu Beras Kencur</h3>
+        <p class="product-desc">Riz et kencur pilés selon la recette des marchés de Yogyakarta. Un goût frais, épicé et incomparable — une synergie de plantes que Java cultive depuis des générations. Format 150g.</p>
+        <div class="product-footer">
+          <span class="product-price">17,90€</span>
+          <button class="product-btn" onclick="event.stopPropagation();showProductPage('beraskencur')">Explorer</button>
+        </div>
+      </div>
+    </div>
+
     <div class="product-card" data-cat="immunite" onclick="showProductPage('temulawak')" role="button" tabindex="0">
       <div class="product-img">
         <div class="product-img-inner bg-temulawak"></div>
-        <div class="product-badge">Signature</div>
       </div>
       <div class="product-info">
         <div class="product-tag">La résistance · Jamu ancestral</div>
@@ -582,22 +623,6 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
         <div class="product-footer">
           <span class="product-price">16,90€</span>
           <button class="product-btn" onclick="event.stopPropagation();showProductPage('kunyit')">Explorer</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card" data-cat="energie" onclick="showProductPage('beraskencur')" role="button" tabindex="0">
-      <div class="product-img">
-        <div class="product-img-inner bg-beraskencur"></div>
-        <div class="product-badge">Nouveau</div>
-      </div>
-      <div class="product-info">
-        <div class="product-tag">Le tonus · Jamu ancestral</div>
-        <h3 class="product-name">Jamu Beras Kencur</h3>
-        <p class="product-desc">Riz et kencur pilés selon la recette des marchés de Yogyakarta. Un goût frais, épicé et incomparable — une synergie de plantes que Java cultive depuis des générations. Format 150g.</p>
-        <div class="product-footer">
-          <span class="product-price">17,90€</span>
-          <button class="product-btn" onclick="event.stopPropagation();showProductPage('beraskencur')">Explorer</button>
         </div>
       </div>
     </div>
@@ -640,7 +665,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       <div class="product-info">
         <div class="product-tag">Le rituel complet · Coffret</div>
         <h3 class="product-name">Pack Bien-être Jamu</h3>
-        <p class="product-desc">Les deux Jamu ancestraux réunis : Temulawak Murni + Kunyit Jahe. Le rituel complet pour démarrer votre pratique javanaise.</p>
+        <p class="product-desc">Les trois Jamu ancestraux réunis : Beras Kencur, Temulawak et Kunyit Jahe. Le rituel complet pour démarrer votre pratique javanaise.</p>
         <div class="product-footer">
           <span class="product-price">44,90€</span>
           <button class="product-btn" onclick="event.stopPropagation();showProductPage('packbien')">Explorer</button>
@@ -1115,6 +1140,21 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 
 <script>
 const PRODUCTS={
+  premierrituel:{
+    stripeUrl:'https://buy.stripe.com/7sY8wPgWabk3gRB54o4wM09',
+    name:'Premier Rituel — Beras Kencur',subtitle:'Le format découverte · 30g',price:'6,90€',
+    priceNote:'Format 30g · Env. 6 préparations',
+    bg:'linear-gradient(145deg,#E8DCC0 0%,#C9B07A 45%,#8B6A2F 100%)',
+    image:'images/beraskencur-hero.webp',
+    cat:'Le tonus · Format découverte',
+    tastes:['Riz doux','Kencur frais et épicé','Notes florales','Fond chaleureux'],
+    benefits:'Vous découvrez le jamu pour la première fois ? Ce format réduit existe pour une seule raison : vous laisser goûter sans engagement. Le Beras Kencur — riz et kencur pilés selon la recette des marchés de Yogyakarta — est notre porte d\'entrée la plus douce vers cette tradition. Si le goût vous convient, la version complète (150g) vous attend.',
+    prep:'1 c.à.c dans 200ml d\'eau à 70°C, infuser 5 min, filtrer. Pur par défaut ; un trait de miel ou de sucre de coco selon votre goût, comme sur les marchés de Yogyakarta.',
+    ingredients:'Riz trempé et kencur (Kaempferia galanga) pilés selon la méthode artisanale, gingembre. Pur, sans additif, sans conservateur, sans sucre ajouté. Format réduit de notre Jamu Beras Kencur signature.',
+    origin:'Le kencur ne se cultive pas en Europe — c\'est une racine propre aux sous-bois d\'Asie du Sud-Est. Ce petit format est sourcé exactement comme notre format complet, directement auprès de petits producteurs de la région de Yogyakarta.',
+    originFacts:[{num:'30g',label:'Format découverte'},{num:'6',label:'Préparations'},{num:'0',label:'Engagement'},{num:'100%',label:'Même qualité'}],
+    cross:['beraskencur','temulawak','kunyit']
+  },
   temulawak:{
     stripeUrl:'https://buy.stripe.com/aFa8wPdJYdsbatdeEY4wM00',
     name:'Jamu Temulawak',subtitle:'Synergie de plantes ancestrales · 150g',price:'16,90€',
@@ -1233,7 +1273,7 @@ const BG_MAP={
 };
 
 const CROSS_CSS={
-  temulawak:'bg-temulawak',kunyit:'bg-kunyit',beraskencur:'bg-beraskencur',
+  premierrituel:'bg-beraskencur',temulawak:'bg-temulawak',kunyit:'bg-kunyit',beraskencur:'bg-beraskencur',
   cafe250:'bg-cafeijen250',cafe500:'bg-cafeijen500',
   packbien:'bg-pack-bien',coffret:'bg-coffret'
 };
