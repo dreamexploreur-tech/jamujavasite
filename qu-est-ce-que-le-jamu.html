@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -44,6 +45,38 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Le jamu se prépare traditionnellement en infusant les racines et plantes pilées dans de l'eau chaude (jamais bouillante), puis en filtrant. Il peut aussi se préparer en latté avec du lait végétal, en smoothie avec des fruits, ou en cold brew. Chaque préparation est une variation autour de la même base botanique."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Le jamu contient-il de la caféine ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non, le jamu à base de racines et plantes comme le temulawak, le kunyit ou le kencur ne contient pas de caféine. C'est une différence importante avec le café, qui peut aussi être consommé selon la tradition javanaise mais reste une boisson distincte."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Peut-on boire du jamu tous les jours ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "À Java, le jamu fait partie des habitudes quotidiennes de nombreuses familles, au même titre qu'une tisane ou un café. Comme pour toute boisson à base de plantes, il est recommandé d'être attentif à sa propre tolérance et de demander conseil à un professionnel de santé en cas de doute, de grossesse ou de traitement médicamenteux."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quel goût a le jamu ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le goût du jamu varie selon la recette, mais reste généralement terreux, légèrement épicé et parfois acidulé, avec une amertume naturelle propre aux racines pilées. Le Beras Kencur, à base de riz et de kencur, est réputé pour son goût plus frais et accessible, souvent recommandé en première découverte."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qu'est-ce qu'une jamu gendong ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Une jamu gendong est une vendeuse traditionnelle de jamu qui porte ses préparations dans des paniers tressés, attachés sur son dos à l'aide d'une écharpe, et les propose de maison en maison ou sur les marchés de Java. Le terme gendong signifie littéralement « porter sur le dos »."
       }
     }
   ]
@@ -137,8 +170,8 @@ footer{background:var(--deep);padding:3rem;text-align:center}
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">JAMU Java</a>
-  <a href="/" class="nav-back">← Retour au site</a>
+  <a href="jamujava.html" class="nav-logo">JAMU Java</a>
+  <a href="jamujava.html" class="nav-back">← Retour au site</a>
 </nav>
 
 <header class="article-hero">
@@ -200,7 +233,7 @@ footer{background:var(--deep);padding:3rem;text-align:center}
     <div class="recipe-card">
       <span class="recipe-card-tag">Riz & épices</span>
       <div class="recipe-card-name">Beras Kencur</div>
-      <p class="recipe-card-desc">Riz et kencur pilés, une recette de marché appréciée pour son goût frais et légèrement épicé.</p>
+      <p class="recipe-card-desc">Riz et kencur pilés, une recette de marché vendue chaque matin par les <em>jamu gendong</em>. Goût frais, légèrement épicé — souvent la première recette qu'on découvre. <a href="jamujava.html#produits">Notre version signature →</a></p>
     </div>
   </div>
 
@@ -230,17 +263,25 @@ footer{background:var(--deep);padding:3rem;text-align:center}
     <button class="faq-q" onclick="toggleFaq(this)"><span>Peut-on boire du jamu tous les jours ?</span><span class="faq-icon">+</span></button>
     <div class="faq-a"><p>À Java, le jamu fait partie des habitudes quotidiennes de nombreuses familles, au même titre qu'une tisane ou un café. Comme pour toute boisson à base de plantes, il est recommandé d'être attentif à sa propre tolérance et de demander conseil à un professionnel de santé en cas de doute, de grossesse ou de traitement médicamenteux.</p></div>
   </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)"><span>Quel goût a le jamu ?</span><span class="faq-icon">+</span></button>
+    <div class="faq-a"><p>Le goût du jamu varie selon la recette, mais reste généralement terreux, légèrement épicé et parfois acidulé, avec une amertume naturelle propre aux racines pilées. Le Beras Kencur, à base de riz et de kencur, est réputé pour son goût plus frais et accessible, souvent recommandé en première découverte.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)"><span>Qu'est-ce qu'une jamu gendong ?</span><span class="faq-icon">+</span></button>
+    <div class="faq-a"><p>Une jamu gendong est une vendeuse traditionnelle de jamu qui porte ses préparations dans des paniers tressés, attachés sur son dos à l'aide d'une écharpe, et les propose de maison en maison ou sur les marchés de Java. Le terme <em>gendong</em> signifie littéralement « porter sur le dos ».</p></div>
+  </div>
 
   <div class="cta-block">
     <div class="cta-title">Découvrir le jamu, <em style="font-style:italic">en pratique</em></div>
     <p class="cta-text">JAMU Java sélectionne ses recettes directement auprès de Yogyakarta, sans intermédiaire — pour vous faire goûter cette tradition telle qu'elle a toujours existé.</p>
-    <a href="/#produits" class="cta-btn">Voir la sélection</a>
+    <a href="jamujava.html#produits" class="cta-btn">Voir la sélection</a>
   </div>
 
 </article>
 
 <footer>
-  <p class="footer-copy">© 2026 JAMU Java · <a href="/cgv.html">CGV & Mentions légales</a></p>
+  <p class="footer-copy">© 2026 JAMU Java · <a href="cgv.html">CGV & Mentions légales</a></p>
 </footer>
 
 <script>
