@@ -95,9 +95,9 @@ html.lang-en [data-fr]{display:none}
 html.lang-en [data-en]{display:inline}
 html.lang-en [data-en].block{display:block}
 .lang-switch{display:flex;align-items:center;gap:.3rem;font-size:.68rem;letter-spacing:.1em}
-.lang-btn{background:none;border:none;color:var(--cream);cursor:pointer;padding:.2rem .4rem;opacity:.6;transition:opacity .3s;font-family:var(--font-sans)}
-.lang-btn.active{opacity:1;font-weight:500}
-.lang-sep{opacity:.3}
+.lang-btn{background:none;border:none;color:var(--muted);cursor:pointer;padding:.2rem .4rem;opacity:.7;transition:opacity .3s,color .3s;font-family:var(--font-sans);font-size:.78rem;letter-spacing:.05em}
+.lang-btn.active{opacity:1;font-weight:600;color:var(--deep)}
+.lang-sep{opacity:.4;color:var(--muted)}
 
 /* ORIGIN JAVA */
 .origin-section{background:var(--deep);padding:8rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
@@ -461,19 +461,19 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <section class="hero" id="hero" aria-label="Hero">
   <div class="hero-inner">
     <div>
-      <p class="hero-eyebrow"><span data-fr="Yogyakarta, Java — depuis 2 500 ans">Yogyakarta, Java — depuis 2 500 ans</span><span data-en="Yogyakarta, Java — for 2,500 years">Yogyakarta, Java — for 2,500 years</span></p>
+      <p class="hero-eyebrow"><span data-fr="Boisson ancestrale javanaise — Yogyakarta, depuis 2 500 ans">Boisson ancestrale javanaise — Yogyakarta, depuis 2 500 ans</span><span data-en="Ancestral Javanese drink — Yogyakarta, for 2,500 years">Ancestral Javanese drink — Yogyakarta, for 2,500 years</span></p>
       <h1 class="hero-title">
         <span data-fr="block">Le jamu,<br><em>sans détour.</em></span>
         <span data-en="block">Jamu,<br><em>unaltered.</em></span>
       </h1>
-      <p class="hero-sub"><span data-fr="Racines, épices et plantes pilées à Yogyakarta selon une pharmacopée javanaise vieille de 2 500 ans. Aucun extrait, aucun laboratoire — la plante entière, sourcée directement.">Racines, épices et plantes pilées à Yogyakarta selon une pharmacopée javanaise vieille de 2 500 ans. Aucun extrait, aucun laboratoire — la plante entière, sourcée directement.</span><span data-en="Roots, spices and plants pounded in Yogyakarta following a 2,500-year-old Javanese pharmacopoeia. No extracts, no lab — the whole plant, sourced directly.">Roots, spices and plants pounded in Yogyakarta following a 2,500-year-old Javanese pharmacopoeia. No extracts, no lab — the whole plant, sourced directly.</span></p>
+      <p class="hero-sub"><span data-fr="Le jamu est une boisson traditionnelle javanaise — racines, épices et plantes pilées à Yogyakarta selon une pharmacopée vieille de 2 500 ans. Aucun extrait, aucun laboratoire — la plante entière, sourcée directement.">Le jamu est une boisson traditionnelle javanaise — racines, épices et plantes pilées à Yogyakarta selon une pharmacopée vieille de 2 500 ans. Aucun extrait, aucun laboratoire — la plante entière, sourcée directement.</span><span data-en="Jamu is a traditional Javanese drink — roots, spices and plants pounded in Yogyakarta following a 2,500-year-old pharmacopoeia. No extracts, no lab — the whole plant, sourced directly.">Jamu is a traditional Javanese drink — roots, spices and plants pounded in Yogyakarta following a 2,500-year-old pharmacopoeia. No extracts, no lab — the whole plant, sourced directly.</span></p>
       <div class="hero-actions">
         <a href="#produits" class="btn-primary"><span data-fr="Voir la collection">Voir la collection</span><span data-en="See the collection">See the collection</span></a>
         <a href="#story" class="btn-ghost"><span data-fr="Notre histoire">Notre histoire</span><span data-en="Our story">Our story</span></a>
       </div>
     </div>
     <div class="hero-visual">
-      <video autoplay muted loop playsinline webkit-playsinline="true" poster="images/rituel-matin.jpg">
+      <video autoplay muted loop playsinline webkit-playsinline="true" poster="images/origin-volcano.jpg">
         <source src="images/hero-video.mp4" type="video/mp4">
       </video>
       <div class="hero-unesco"><span data-fr="Le jamu, Patrimoine UNESCO">Le jamu, Patrimoine UNESCO</span><span data-en="Jamu, UNESCO Heritage">Jamu, UNESCO Heritage</span></div>
@@ -667,8 +667,8 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <section class="story" id="story">
   <div class="story-visual">
     <div class="story-img-main">
-      <img src="images/marche-racines.jpg" alt="Racines séchées sur un marché de Yogyakarta">
-      <div class="story-tag">Yogyakarta, Java</div>
+      <img src="images/origin-volcano.jpg" alt="Récolte au pied du volcan Ijen, Java">
+      <div class="story-tag">Volcan Ijen, Java</div>
     </div>
   </div>
   <div class="story-body">
@@ -785,6 +785,12 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <div class="lifestyle" aria-label="Univers JAMU Java">
   <div class="lifestyle-grid">
     <div class="lifestyle-cell">
+      <img src="images/origin-volcano.jpg" alt="Récolte au pied du volcan Ijen, Java" class="lifestyle-img" style="object-fit:cover;width:100%;height:100%">
+      <div class="lifestyle-overlay">
+        <p class="lifestyle-caption"><span data-fr="Le volcan Ijen, Java">Le volcan Ijen, Java</span><span data-en="Mount Ijen, Java">Mount Ijen, Java</span></p>
+      </div>
+    </div>
+    <div class="lifestyle-cell">
       <img src="images/rituel-matin.jpg" alt="Préparation du jamu au mortier en pierre, geste traditionnel javanais" class="lifestyle-img" style="object-fit:cover;width:100%;height:100%">
       <div class="lifestyle-overlay">
         <p class="lifestyle-caption"><span data-fr="Le rituel du matin, hauts plateaux de Java">Le rituel du matin, hauts plateaux de Java</span><span data-en="The morning ritual, Java highlands">The morning ritual, Java highlands</span></p>
@@ -794,12 +800,6 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       <img src="images/marche-racines.jpg" alt="Racines séchées sur un marché de Yogyakarta" class="lifestyle-img" style="object-fit:cover;width:100%;height:100%">
       <div class="lifestyle-overlay">
         <p class="lifestyle-caption"><span data-fr="Racines séchées, marché de Yogyakarta">Racines séchées, marché de Yogyakarta</span><span data-en="Dried roots, Yogyakarta market">Dried roots, Yogyakarta market</span></p>
-      </div>
-    </div>
-    <div class="lifestyle-cell">
-      <img src="images/origin-volcano.jpg" alt="Récolte au pied du volcan, Java" class="lifestyle-img" style="object-fit:cover;width:100%;height:100%">
-      <div class="lifestyle-overlay">
-        <p class="lifestyle-caption"><span data-fr="Récolte au pied du volcan Ijen">Récolte au pied du volcan Ijen</span><span data-en="Harvest at the foot of Mount Ijen">Harvest at the foot of Mount Ijen</span></p>
       </div>
     </div>
   </div>
@@ -859,10 +859,11 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   </div>
   <div class="origin-visual">
     <div class="origin-visual-main">
-      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(184,150,90,.1),transparent)"></div>
+      <img src="images/origin-volcano.jpg" alt="Le volcan Ijen, Java" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(28,33,24,.85),rgba(28,33,24,.15) 60%)"></div>
       <div class="origin-quote">
-        <p style="font-family:var(--font-serif);font-size:1.1rem;font-style:italic;color:rgba(250,248,243,.65);line-height:1.6"><span data-fr="block">"Chaque racine se souvient<br>du sol dont elle vient."</span><span data-en="block">"Every root remembers<br>the soil it came from."</span></p>
-        <p style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(184,150,90,.55);margin-top:.8rem">Yogyakarta · Java</p>
+        <p style="font-family:var(--font-serif);font-size:1.1rem;font-style:italic;color:rgba(250,248,243,.9);line-height:1.6"><span data-fr="block">"Chaque racine se souvient<br>du sol dont elle vient."</span><span data-en="block">"Every root remembers<br>the soil it came from."</span></p>
+        <p style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,155,92,.85);margin-top:.8rem">Volcan Ijen · Java</p>
       </div>
     </div>
     <div class="origin-visual-accent"></div>
@@ -1045,7 +1046,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
         <li><a href="mailto:contact@jamujava.com">contact@jamujava.com</a></li>
-        <li><a href="#produits"><span data-fr="Commander">Commander</span><span data-en="Order">Order</span></a></li>
+        <li><a href="#liste-attente"><span data-fr="Liste d'attente">Liste d'attente</span><span data-en="Waitlist">Waitlist</span></a></li>
         <li><a href="#faq"><span data-fr="Livraison & retours">Livraison & retours</span><span data-en="Shipping & returns">Shipping & returns</span></a></li>
         <li><a href="https://www.instagram.com/jamu_rituel_bien_etre_naturel/" target="_blank">@jamu_rituel_bien_etre_naturel</a></li>
       </ul>
@@ -1089,11 +1090,11 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
           <div class="pp-price-note" id="ppPriceNote">Format 150g · Livraison offerte dès 45€</div>
         </div>
         <a href="#liste-attente" class="pp-add" id="ppAddLink">Rejoindre la liste d'attente</a>
-        <a href="mailto:contact@jamujava.com" class="pp-contact">Une question avant de commander ?</a>
+        <a href="mailto:contact@jamujava.com" class="pp-contact">Une question avant de vous inscrire ?</a>
         <div class="pp-perks">
-          <div class="perk"><div class="perk-dot"></div>Réponse sous 24h</div>
-          <div class="perk"><div class="perk-dot"></div>Livraison 5–7 jours</div>
-          <div class="perk"><div class="perk-dot"></div>Satisfait ou remboursé</div>
+          <div class="perk"><div class="perk-dot"></div><span data-fr="Réponse sous 24h">Réponse sous 24h</span><span data-en="Reply within 24h">Reply within 24h</span></div>
+          <div class="perk"><div class="perk-dot"></div><span data-fr="Patrimoine UNESCO 2023">Patrimoine UNESCO 2023</span><span data-en="UNESCO Heritage 2023">UNESCO Heritage 2023</span></div>
+          <div class="perk"><div class="perk-dot"></div><span data-fr="Liste d'attente prioritaire">Liste d'attente prioritaire</span><span data-en="Priority waitlist">Priority waitlist</span></div>
         </div>
       </div>
     </div>
@@ -1134,7 +1135,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <div class="sticky-atc" id="stickyAtc">
   <div>
     <div class="sticky-product-name" id="stickyName">Jamu Temulawak</div>
-    <div class="sticky-price" id="stickyPrice">12,90€ · 150g</div>
+    <div class="sticky-price" id="stickyPrice">16,90€ · 150g</div>
   </div>
   <a href="#liste-attente" class="sticky-add" id="stickyLink">Liste d'attente</a>
 </div>
