@@ -202,7 +202,7 @@ html.lang-en [data-en].block{display:block}
 /* LIFESTYLE */
 .lifestyle{background:var(--deep);padding:0}
 .lifestyle-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.lifestyle-cell{overflow:hidden;position:relative;height:420px}
+.lifestyle-cell{overflow:hidden;position:relative;height:420px;box-shadow:0 0 0 1px rgba(247,242,231,.08)}
 .lifestyle-img{width:100%;height:100%;transition:transform .6s ease;display:block}
 .lifestyle-cell:hover .lifestyle-img{transform:scale(1.04)}
 .lifestyle-overlay{position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(0,0,0,.6),transparent)}
@@ -346,7 +346,9 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 @media(max-width:768px){
   section{padding:3.5rem 1.2rem}
   .products-grid,.testimonials-grid,.ritual-steps,.pp-details-grid,.pp-cross-grid{grid-template-columns:1fr}
-  .benefits-grid{grid-template-columns:1fr}
+  .benefits-grid{grid-template-columns:1fr;gap:2.5rem}
+  .benefit-card{border-left:none;border-top:1px solid rgba(247,242,231,.14);padding:2rem 0 0}
+  .benefit-card:first-child{border-top:none;padding-top:0}
   .ritual-steps::before{display:none}
   .faq-layout{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
@@ -364,8 +366,8 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   nav{padding:1rem 1.2rem}
   .nav-logo{font-size:1.2rem}
   .trust-bar{display:none}
-  .lifestyle-grid{grid-template-columns:1fr;gap:12px}
-  .lifestyle-cell{height:280px}
+  .lifestyle-grid{grid-template-columns:1fr;gap:3px;background:var(--cream)}
+  .lifestyle-cell{height:280px;box-shadow:none}
   .products-tabs{gap:.5rem;flex-wrap:wrap}
   .tab-btn{font-size:.62rem;padding:.35rem .8rem}
   .section-title{font-size:clamp(1.8rem,6vw,2.5rem)}
@@ -441,13 +443,13 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 <div class="main-site" id="mainSite">
 
 <nav id="mainNav">
-  <a href="#" class="nav-logo">JAMU Java</a>
+  <a href="index.html" class="nav-logo">JAMU Java</a>
   <ul class="nav-links">
     <li><a href="#produits"><span data-fr="Produits">Produits</span><span data-en="Products">Products</span></a></li>
     <li><a href="qu-est-ce-que-le-jamu.html"><span data-fr="Qu'est-ce que le Jamu">Qu'est-ce que le Jamu</span><span data-en="What is Jamu">What is Jamu</span></a></li>
-    <li><a href="#story"><span data-fr="Notre Histoire">Notre Histoire</span><span data-en="Our Story">Our Story</span></a></li>
-    <li><a href="#ingredients"><span data-fr="Rituels">Rituels</span><span data-en="Rituals">Rituals</span></a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="notre-histoire.html"><span data-fr="Notre Histoire">Notre Histoire</span><span data-en="Our Story">Our Story</span></a></li>
+    <li><a href="rituels.html"><span data-fr="Rituels">Rituels</span><span data-en="Rituals">Rituals</span></a></li>
+    <li><a href="faq.html">FAQ</a></li>
   </ul>
   <div class="lang-switch">
     <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
@@ -456,6 +458,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   </div>
   <a href="#produits" class="nav-cta"><span data-fr="Commander">Commander</span><span data-en="Order">Order</span></a>
 </nav>
+
 
 <!-- HERO -->
 <section class="hero" id="hero" aria-label="Hero">
@@ -469,19 +472,13 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       <p class="hero-sub"><span data-fr="Le jamu est une boisson traditionnelle javanaise — racines, épices et plantes pilées à Yogyakarta selon une pharmacopée vieille de 2 500 ans. Aucun extrait, aucun laboratoire — la plante entière, sourcée directement.">Le jamu est une boisson traditionnelle javanaise — racines, épices et plantes pilées à Yogyakarta selon une pharmacopée vieille de 2 500 ans. Aucun extrait, aucun laboratoire — la plante entière, sourcée directement.</span><span data-en="Jamu is a traditional Javanese drink — roots, spices and plants pounded in Yogyakarta following a 2,500-year-old pharmacopoeia. No extracts, no lab — the whole plant, sourced directly.">Jamu is a traditional Javanese drink — roots, spices and plants pounded in Yogyakarta following a 2,500-year-old pharmacopoeia. No extracts, no lab — the whole plant, sourced directly.</span></p>
       <div class="hero-actions">
         <a href="#produits" class="btn-primary"><span data-fr="Voir la collection">Voir la collection</span><span data-en="See the collection">See the collection</span></a>
-        <a href="#story" class="btn-ghost"><span data-fr="Notre histoire">Notre histoire</span><span data-en="Our story">Our story</span></a>
+        <a href="notre-histoire.html" class="btn-ghost"><span data-fr="Notre histoire">Notre histoire</span><span data-en="Our story">Our story</span></a>
       </div>
     </div>
     <div class="hero-visual">
       <img src="images/jamu-icon-pour.jpg" alt="Jamu doré versé dans un verre glacé, geste de dégustation" style="width:100%;height:100%;object-fit:cover;object-position:center 35%">
       <div class="hero-unesco"><span data-fr="Le jamu, Patrimoine UNESCO">Le jamu, Patrimoine UNESCO</span><span data-en="Jamu, UNESCO Heritage">Jamu, UNESCO Heritage</span></div>
     </div>
-  </div>
-  <div class="hero-foot">
-    <span class="hero-foot-item" style="color:var(--terracotta);font-weight:500"><span data-fr="Le jamu, Patrimoine UNESCO 2023">Le jamu, Patrimoine UNESCO 2023</span><span data-en="Jamu, UNESCO Heritage 2023">Jamu, UNESCO Heritage 2023</span></span>
-    <span class="hero-foot-item"><span data-fr="Sourcing direct Yogyakarta">Sourcing direct Yogyakarta</span><span data-en="Direct sourced from Yogyakarta">Direct sourced from Yogyakarta</span></span>
-    <span class="hero-foot-item"><span data-fr="100% naturel · Sans additifs">100% naturel · Sans additifs</span><span data-en="100% natural · No additives">100% natural · No additives</span></span>
-    <span class="hero-foot-item"><span data-fr="Sans intermédiaire">Sans intermédiaire</span><span data-en="No middleman">No middleman</span></span>
   </div>
 </section>
 
@@ -660,280 +657,36 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   </div>
 </section>
 
-
-<!-- STORY -->
-<section class="story" id="story">
-  <div class="story-visual">
-    <div class="story-img-main">
-      <img src="images/producteur-souriant.jpg" alt="Producteur javanais avec sa récolte de temulawak">
-      <div class="story-tag">Récolte, hauts plateaux de Java</div>
-    </div>
-  </div>
-  <div class="story-body">
-    <p class="section-label"><span data-fr="Notre Histoire">Notre Histoire</span><span data-en="Our Story">Our Story</span></p>
-    <h2 class="section-title">
-      <span data-fr="block">Une tradition<br>de <em>2 500 ans.</em></span>
-      <span data-en="block">A tradition<br><em>2,500 years</em> old.</span>
-    </h2>
-    <div class="divider"></div>
-    <p class="story-text">
-      <span data-fr="Le jamu n'est pas une tendance. C'est une tradition ancestrale javanaise vieille de plus de 2 500 ans, inscrite au">Le jamu n'est pas une tendance. C'est une tradition ancestrale javanaise vieille de plus de 2 500 ans, inscrite au</span>
-      <span data-en="Jamu is not a trend. It is an ancestral Javanese tradition more than 2,500 years old, inscribed on the">Jamu is not a trend. It is an ancestral Javanese tradition more than 2,500 years old, inscribed on the</span>
-      <strong><span data-fr="Patrimoine Culturel Immatériel de l'UNESCO en 2023">Patrimoine Culturel Immatériel de l'UNESCO en 2023</span><span data-en="UNESCO Intangible Cultural Heritage list in 2023">UNESCO Intangible Cultural Heritage list in 2023</span></strong>.
-    </p>
-    <p class="story-text">
-      <span data-fr="Chaque formule JAMU Java est une synergie de plantes pilées ensemble à Yogyakarta — jamais un ingrédient isolé, jamais un actif extrait en laboratoire. Sourcé directement, sans intermédiaire.">Chaque formule JAMU Java est une synergie de plantes pilées ensemble à Yogyakarta — jamais un ingrédient isolé, jamais un actif extrait en laboratoire. Sourcé directement, sans intermédiaire.</span>
-      <span data-en="Every JAMU Java blend is a synergy of plants pounded together in Yogyakarta — never a single isolated ingredient, never a lab-extracted compound. Sourced directly, with no middleman.">Every JAMU Java blend is a synergy of plants pounded together in Yogyakarta — never a single isolated ingredient, never a lab-extracted compound. Sourced directly, with no middleman.</span>
-    </p>
-    <div class="story-stat">
-      <div>
-        <div class="stat-num">3</div>
-        <div class="stat-label"><span data-fr="Gammes de produits">Gammes de produits</span><span data-en="Product ranges">Product ranges</span></div>
+<!-- EXPLORE LINKS -->
+<section style="background:var(--warm);padding:6rem 3rem">
+  <p class="section-label" style="text-align:center;justify-content:center;display:flex"><span data-fr="Aller plus loin">Aller plus loin</span><span data-en="Go further">Go further</span></p>
+  <h2 class="section-title" style="text-align:center;margin:0 auto 3rem"><span data-fr="block">L'univers <em>JAMU Java.</em></span><span data-en="block">The <em>JAMU Java</em> world.</span></h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto">
+    <a href="notre-histoire.html" style="display:block;text-decoration:none;border:1px solid rgba(28,26,22,.1);transition:border-color .3s" onmouseover="this.style.borderColor='var(--terracotta)'" onmouseout="this.style.borderColor='rgba(28,26,22,.1)'">
+      <div style="height:240px;overflow:hidden"><img src="images/producteur-souriant.jpg" alt="Notre Histoire" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="padding:1.8rem">
+        <p style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:.6rem"><span data-fr="Notre Histoire">Notre Histoire</span><span data-en="Our Story">Our Story</span></p>
+        <h3 style="font-family:var(--font-serif);font-size:1.3rem;font-weight:400;color:var(--deep)"><span data-fr="2 500 ans de tradition">2 500 ans de tradition</span><span data-en="2,500 years of tradition">2,500 years of tradition</span></h3>
       </div>
-      <div>
-        <div class="stat-num">100%</div>
-        <div class="stat-label"><span data-fr="Sourcing direct">Sourcing direct</span><span data-en="Direct sourcing">Direct sourcing</span></div>
+    </a>
+    <a href="rituels.html" style="display:block;text-decoration:none;border:1px solid rgba(28,26,22,.1);transition:border-color .3s" onmouseover="this.style.borderColor='var(--terracotta)'" onmouseout="this.style.borderColor='rgba(28,26,22,.1)'">
+      <div style="height:240px;overflow:hidden"><img src="images/mortier-action.jpg" alt="Les Rituels" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="padding:1.8rem">
+        <p style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:.6rem"><span data-fr="Les Rituels">Les Rituels</span><span data-en="The Rituals">The Rituals</span></p>
+        <h3 style="font-family:var(--font-serif);font-size:1.3rem;font-weight:400;color:var(--deep)"><span data-fr="Choisissez votre moment">Choisissez votre moment</span><span data-en="Choose your moment">Choose your moment</span></h3>
       </div>
-      <div>
-        <div class="stat-num">0</div>
-        <div class="stat-label"><span data-fr="Intermédiaire">Intermédiaire</span><span data-en="Middleman">Middleman</span></div>
+    </a>
+    <a href="faq.html" style="display:block;text-decoration:none;border:1px solid rgba(28,26,22,.1);transition:border-color .3s" onmouseover="this.style.borderColor='var(--terracotta)'" onmouseout="this.style.borderColor='rgba(28,26,22,.1)'">
+      <div style="height:240px;overflow:hidden"><img src="images/marche-vivant.jpg" alt="FAQ" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="padding:1.8rem">
+        <p style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:.6rem">FAQ</p>
+        <h3 style="font-family:var(--font-serif);font-size:1.3rem;font-weight:400;color:var(--deep)"><span data-fr="Toutes les réponses">Toutes les réponses</span><span data-en="All the answers">All the answers</span></h3>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
-<!-- BENEFITS -->
-<section class="benefits" id="bienfaits">
-  <p class="section-label"><span data-fr="Pourquoi JAMU Java">Pourquoi JAMU Java</span><span data-en="Why JAMU Java">Why JAMU Java</span></p>
-  <h2 class="section-title">
-    <span data-fr="block">Une tradition,<br><em>quatre promesses.</em></span>
-    <span data-en="block">One tradition,<br><em>four promises.</em></span>
-  </h2>
-  <div class="benefits-grid">
-    <div class="benefit-card">
-      <div class="benefit-icon" aria-hidden="true">N° 01</div>
-      <h3 class="benefit-title"><span data-fr="Authenticité absolue">Authenticité absolue</span><span data-en="Absolute authenticity">Absolute authenticity</span></h3>
-      <p class="benefit-text"><span data-fr="Des recettes ancestrales javanaises, transmises de génération en génération. Aucun compromis sur l'origine ni sur la formule.">Des recettes ancestrales javanaises, transmises de génération en génération. Aucun compromis sur l'origine ni sur la formule.</span><span data-en="Ancestral Javanese recipes, passed down through generations. No compromise on origin or formula.">Ancestral Javanese recipes, passed down through generations. No compromise on origin or formula.</span></p>
-    </div>
-    <div class="benefit-card">
-      <div class="benefit-icon" aria-hidden="true">N° 02</div>
-      <h3 class="benefit-title"><span data-fr="Sourcing direct">Sourcing direct</span><span data-en="Direct sourcing">Direct sourcing</span></h3>
-      <p class="benefit-text"><span data-fr="Nous travaillons directement avec de petits producteurs locaux à Yogyakarta — sans intermédiaire, pour une traçabilité totale.">Nous travaillons directement avec de petits producteurs locaux à Yogyakarta — sans intermédiaire, pour une traçabilité totale.</span><span data-en="We work directly with small local producers in Yogyakarta — no middleman, for complete traceability.">We work directly with small local producers in Yogyakarta — no middleman, for complete traceability.</span></p>
-    </div>
-    <div class="benefit-card">
-      <div class="benefit-icon" aria-hidden="true">N° 03</div>
-      <h3 class="benefit-title"><span data-fr="100% naturel">100% naturel</span><span data-en="100% natural">100% natural</span></h3>
-      <p class="benefit-text"><span data-fr="Aucun additif, aucun conservateur. Uniquement des plantes, des racines et des épices telles que Java les cultive depuis des siècles.">Aucun additif, aucun conservateur. Uniquement des plantes, des racines et des épices telles que Java les cultive depuis des siècles.</span><span data-en="No additives, no preservatives. Just plants, roots and spices, grown in Java as they have been for centuries.">No additives, no preservatives. Just plants, roots and spices, grown in Java as they have been for centuries.</span></p>
-    </div>
-    <div class="benefit-card">
-      <div class="benefit-icon" aria-hidden="true">N° 04</div>
-      <h3 class="benefit-title"><span data-fr="Livraison soignée">Livraison soignée</span><span data-en="Careful delivery">Careful delivery</span></h3>
-      <p class="benefit-text"><span data-fr="Expédition depuis Java, conditionnement artisanal, livraison suivie en France, Belgique et Suisse. Offerte dès 45€ de commande.">Expédition depuis Java, conditionnement artisanal, livraison suivie en France, Belgique et Suisse. Offerte dès 45€ de commande.</span><span data-en="Shipped from Java, packaged by hand, tracked delivery to France, Belgium and Switzerland. Free from €45 of purchase.">Shipped from Java, packaged by hand, tracked delivery to France, Belgium and Switzerland. Free from €45 of purchase.</span></p>
-    </div>
-  </div>
-</section>
 
-<!-- INGREDIENTS -->
-<section class="ingredients" id="ingredients">
-  <div class="ingredients-left">
-    <p class="section-label"><span data-fr="Les Rituels">Les Rituels</span><span data-en="The Rituals">The Rituals</span></p>
-    <h2 class="section-title"><span data-fr="block">Choisissez<br><em style="color:var(--gold-light)">votre moment.</em></span><span data-en="block">Choose<br><em style="color:var(--gold-light)">your moment.</em></span></h2>
-    <div style="height:1px;width:40px;background:rgba(250,248,243,.2);margin:2rem 0"></div>
-    <div class="ingredient-list">
-      <div class="ingredient-item active" onclick="selectIngredient(this,0)" tabindex="0" role="button">
-        <div class="ingredient-num">01</div>
-        <div>
-          <div class="ingredient-name"><span data-fr="La Résistance">La Résistance</span><span data-en="Resilience">Resilience</span></div>
-          <div class="ingredient-benefit"><span data-fr="Jamu Temulawak · Le rituel du matin">Jamu Temulawak · Le rituel du matin</span><span data-en="Jamu Temulawak · The morning ritual">Jamu Temulawak · The morning ritual</span></div>
-        </div>
-      </div>
-      <div class="ingredient-item" onclick="selectIngredient(this,1)" tabindex="0" role="button">
-        <div class="ingredient-num">02</div>
-        <div>
-          <div class="ingredient-name"><span data-fr="Le Confort">Le Confort</span><span data-en="Comfort">Comfort</span></div>
-          <div class="ingredient-benefit"><span data-fr="Jamu Kunyit Jahe · Après le repas">Jamu Kunyit Jahe · Après le repas</span><span data-en="Jamu Kunyit Jahe · After the meal">Jamu Kunyit Jahe · After the meal</span></div>
-        </div>
-      </div>
-      <div class="ingredient-item" onclick="selectIngredient(this,2)" tabindex="0" role="button">
-        <div class="ingredient-num">03</div>
-        <div>
-          <div class="ingredient-name"><span data-fr="Le Tonus">Le Tonus</span><span data-en="Energy">Energy</span></div>
-          <div class="ingredient-benefit"><span data-fr="Jamu Beras Kencur · L'élan du quotidien">Jamu Beras Kencur · L'élan du quotidien</span><span data-en="Jamu Beras Kencur · Your daily lift">Jamu Beras Kencur · Your daily lift</span></div>
-        </div>
-      </div>
-      <div class="ingredient-item" onclick="selectIngredient(this,3)" tabindex="0" role="button">
-        <div class="ingredient-num">04</div>
-        <div>
-          <div class="ingredient-name"><span data-fr="L'Altitude">L'Altitude</span><span data-en="The Altitude">The Altitude</span></div>
-          <div class="ingredient-benefit"><span data-fr="Café Java Ijen · Le café qui a de la terre dessus">Café Java Ijen · Le café qui a de la terre dessus</span><span data-en="Java Ijen Coffee · The coffee still wearing its soil">Java Ijen Coffee · The coffee still wearing its soil</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="ingredients-right">
-    <div class="ingredient-circle" id="ingredientCircle" style="background:linear-gradient(135deg,#D4B47A,#8B4A2F)">
-      <div class="ic-name" id="icName">La Résistance</div>
-      <div class="ic-origin" id="icOrigin">Jamu Temulawak · Yogyakarta</div>
-      <div class="ic-desc" id="icDesc">Une synergie de racines et d'épices pilées ensemble selon la tradition javanaise. Pour commencer la journée avec solidité — pur, en latté de coco, ou en smoothie.</div>
-    </div>
-  </div>
-</section>
-
-<!-- LIFESTYLE -->
-<div class="lifestyle" aria-label="Univers JAMU Java">
-  <div class="lifestyle-grid">
-    <div class="lifestyle-cell">
-      <img src="images/origin-volcano.jpg" alt="Récolte au pied du volcan Ijen, Java" class="lifestyle-img" style="object-fit:cover;width:100%;height:100%">
-      <div class="lifestyle-overlay">
-        <p class="lifestyle-caption"><span data-fr="Le volcan Ijen, Java">Le volcan Ijen, Java</span><span data-en="Mount Ijen, Java">Mount Ijen, Java</span></p>
-      </div>
-    </div>
-    <div class="lifestyle-cell">
-      <img src="images/mortier-action.jpg" alt="Préparation du jamu au mortier en pierre, geste traditionnel javanais" class="lifestyle-img" style="object-fit:cover;width:100%;height:100%">
-      <div class="lifestyle-overlay">
-        <p class="lifestyle-caption"><span data-fr="Le rituel du matin, hauts plateaux de Java">Le rituel du matin, hauts plateaux de Java</span><span data-en="The morning ritual, Java highlands">The morning ritual, Java highlands</span></p>
-      </div>
-    </div>
-    <div class="lifestyle-cell">
-      <img src="images/marche-vivant.jpg" alt="Marché traditionnel de Yogyakarta à l'aube" class="lifestyle-img" style="object-fit:cover;width:100%;height:100%">
-      <div class="lifestyle-overlay">
-        <p class="lifestyle-caption"><span data-fr="Le marché aux racines, Yogyakarta">Le marché aux racines, Yogyakarta</span><span data-en="The root market, Yogyakarta">The root market, Yogyakarta</span></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TERROIR JOURNEY -->
-<section class="story" id="terroir" style="background:var(--warm)">
-  <div>
-    <p class="section-label"><span data-fr="Le Geste">Le Geste</span><span data-en="The Gesture">The Gesture</span></p>
-    <h2 class="section-title">
-      <span data-fr="block">De la terre<br>à la <em>tasse.</em></span>
-      <span data-en="block">From the soil<br>to the <em>cup.</em></span>
-    </h2>
-    <div class="divider"></div>
-    <p class="story-text">
-      <span data-fr="Aucune machine entre la racine et votre tasse. Récoltée à la main, séchée au soleil, pilée au mortier — chaque étape porte la marque d'un geste humain, pas d'une chaîne de production.">Aucune machine entre la racine et votre tasse. Récoltée à la main, séchée au soleil, pilée au mortier — chaque étape porte la marque d'un geste humain, pas d'une chaîne de production.</span>
-      <span data-en="No machine stands between the root and your cup. Hand-harvested, sun-dried, stone-pounded — every step carries the mark of a human gesture, never a production line.">No machine stands between the root and your cup. Hand-harvested, sun-dried, stone-pounded — every step carries the mark of a human gesture, never a production line.</span>
-    </p>
-  </div>
-  <div class="story-visual">
-    <div class="story-img-main" style="aspect-ratio:1/1">
-      <img src="images/mains-recolte.jpg" alt="Mains tenant des racines de curcuma fraîchement récoltées">
-      <div class="story-tag"><span data-fr="La récolte">La récolte</span><span data-en="The harvest">The harvest</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="story" style="background:var(--warm);padding-top:0">
-  <div class="story-visual" style="order:-1">
-    <div class="story-img-main" style="aspect-ratio:1/1">
-      <img src="images/sechage-cour.jpg" alt="Séchage des racines de curcuma dans une cour javanaise">
-      <div class="story-tag"><span data-fr="Le séchage">Le séchage</span><span data-en="The drying">The drying</span></div>
-    </div>
-  </div>
-  <div>
-    <p class="story-text" style="font-size:1.15rem;font-family:var(--font-serif);font-style:italic;color:var(--deep)">
-      <span data-fr="block">"Le soleil et le temps font le travail qu'aucune usine ne peut accélérer."</span>
-      <span data-en="block">"Sun and time do the work no factory can speed up."</span>
-    </p>
-  </div>
-</section>
-
-<section class="story" style="background:var(--warm);padding-top:0">
-  <div>
-    <p class="story-text" style="font-size:1.15rem;font-family:var(--font-serif);font-style:italic;color:var(--deep)">
-      <span data-fr="block">"Le feu de bois, le mortier en pierre — rien n'a changé depuis des générations."</span>
-      <span data-en="block">"Wood fire, stone mortar — nothing has changed in generations."</span>
-    </p>
-  </div>
-  <div class="story-visual" style="order:-1">
-    <div class="story-img-main" style="aspect-ratio:1/1">
-      <img src="images/femme-feu-bois.jpg" alt="Femme javanaise préparant le jamu au mortier près du feu de bois" style="object-position:62% center">
-      <div class="story-tag"><span data-fr="La préparation">La préparation</span><span data-en="The preparation">The preparation</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="story" style="background:var(--warm);padding-top:0">
-  <div>
-    <p class="story-text" style="font-size:1.15rem;font-family:var(--font-serif);font-style:italic;color:var(--deep);text-align:right">
-      <span data-fr="block">"Et puis, enfin — la tasse."</span>
-      <span data-en="block">"And then, finally — the cup."</span>
-    </p>
-  </div>
-  <div class="story-visual">
-    <div class="story-img-main" style="aspect-ratio:1/1">
-      <img src="images/theiere-versee.jpg" alt="Jamu versé d'une théière traditionnelle dans un verre">
-      <div class="story-tag"><span data-fr="La dégustation">La dégustation</span><span data-en="The tasting">The tasting</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- RITUAL -->
-<section class="ritual">
-  <p class="section-label"><span data-fr="La Pratique">La Pratique</span><span data-en="The Practice">The Practice</span></p>
-  <h2 class="section-title" style="margin-bottom:1rem"><span data-fr="block">Votre jamu, <em>votre façon.</em></span><span data-en="block">Your jamu, <em>your way.</em></span></h2>
-  <p class="ritual-intro"><span data-fr="Le jamu s'adapte à votre moment et à votre goût. Pur et minimaliste, crémeux au lait de coco, frais en smoothie ou chaud comme à Yogyakarta — il n'y a pas de mauvaise façon.">Le jamu s'adapte à votre moment et à votre goût. Pur et minimaliste, crémeux au lait de coco, frais en smoothie ou chaud comme à Yogyakarta — il n'y a pas de mauvaise façon.</span><span data-en="Jamu adapts to your moment and your taste. Pure and minimal, creamy with coconut milk, fresh as a smoothie, or warm as in Yogyakarta — there's no wrong way.">Jamu adapts to your moment and your taste. Pure and minimal, creamy with coconut milk, fresh as a smoothie, or warm as in Yogyakarta — there's no wrong way.</span></p>
-  <div class="ritual-steps">
-    <div class="ritual-step">
-      <div class="step-num" aria-hidden="true">I</div>
-      <h3 class="step-title"><span data-fr="Pur · La tradition">Pur · La tradition</span><span data-en="Pure · The tradition">Pure · The tradition</span></h3>
-      <p class="step-text"><span data-fr="1 c.à.c dans 200ml d'eau à 70°C. Infuser 3–5 min. Un trait de miel ou de sucre de coco selon la tradition de Yogyakarta. Le rituel originel.">1 c.à.c dans 200ml d'eau à 70°C. Infuser 3–5 min. Un trait de miel ou de sucre de coco selon la tradition de Yogyakarta. Le rituel originel.</span><span data-en="1 tsp in 200ml water at 70°C. Steep 3–5 min. A touch of honey or coconut sugar, as in Yogyakarta tradition. The original ritual.">1 tsp in 200ml water at 70°C. Steep 3–5 min. A touch of honey or coconut sugar, as in Yogyakarta tradition. The original ritual.</span></p>
-    </div>
-    <div class="ritual-step">
-      <div class="step-num" aria-hidden="true">II</div>
-      <h3 class="step-title"><span data-fr="Latté · Le réconfort">Latté · Le réconfort</span><span data-en="Latte · The comfort">Latte · The comfort</span></h3>
-      <p class="step-text"><span data-fr="1 c.à.c dans 100ml d'eau chaude, puis 150ml de lait de coco tiède moussé. Doux, crémeux, parfumé. Le jamu du matin qui remplace le café en douceur.">1 c.à.c dans 100ml d'eau chaude, puis 150ml de lait de coco tiède moussé. Doux, crémeux, parfumé. Le jamu du matin qui remplace le café en douceur.</span><span data-en="1 tsp in 100ml hot water, then 150ml warm frothed coconut milk. Soft, creamy, fragrant. The morning jamu that gently replaces coffee.">1 tsp in 100ml hot water, then 150ml warm frothed coconut milk. Soft, creamy, fragrant. The morning jamu that gently replaces coffee.</span></p>
-    </div>
-    <div class="ritual-step">
-      <div class="step-num" aria-hidden="true">III</div>
-      <h3 class="step-title"><span data-fr="Smoothie · La fraîcheur">Smoothie · La fraîcheur</span><span data-en="Smoothie · The freshness">Smoothie · The freshness</span></h3>
-      <p class="step-text"><span data-fr="1 c.à.c mixée avec banane, lait de coco froid, gingembre frais et une pincée de poivre noir. La version estivale, dense et vivifiante.">1 c.à.c mixée avec banane, lait de coco froid, gingembre frais et une pincée de poivre noir. La version estivale, dense et vivifiante.</span><span data-en="1 tsp blended with banana, cold coconut milk, fresh ginger and a pinch of black pepper. The summer version, dense and invigorating.">1 tsp blended with banana, cold coconut milk, fresh ginger and a pinch of black pepper. The summer version, dense and invigorating.</span></p>
-    </div>
-    <div class="ritual-step">
-      <div class="step-num" aria-hidden="true">IV</div>
-      <h3 class="step-title"><span data-fr="À votre convenance">À votre convenance</span><span data-en="To your liking">To your liking</span></h3>
-      <p class="step-text"><span data-fr="Lait d'amande, d'avoine, d'épeautre — chaque lait végétal change le profil. Sucré au miel, épicé au poivre, citronnée : le rituel vous appartient.">Lait d'amande, d'avoine, d'épeautre — chaque lait végétal change le profil. Sucré au miel, épicé au poivre, citronnée : le rituel vous appartient.</span><span data-en="Almond, oat, or spelt milk — each plant-based milk changes the profile. Sweetened with honey, spiced with pepper, or with lemon: the ritual is yours.">Almond, oat, or spelt milk — each plant-based milk changes the profile. Sweetened with honey, spiced with pepper, or with lemon: the ritual is yours.</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- ORIGIN JAVA -->
-<section class="origin-section" id="origin">
-  <div class="origin-text">
-    <p class="section-label" style="color:var(--gold)"><span data-fr="L'Origine">L'Origine</span><span data-en="The Origin">The Origin</span></p>
-    <h2 class="section-title" style="color:var(--cream);margin-bottom:1.5rem"><span data-fr="block">Yogyakarta.<br><em style="color:var(--gold-light)">Java, Indonésie.</em></span><span data-en="block">Yogyakarta.<br><em style="color:var(--gold-light)">Java, Indonesia.</em></span></h2>
-    <div style="width:40px;height:1px;background:var(--gold);opacity:.5;margin:2rem 0"></div>
-    <p class="origin-paragraph"><span data-fr="Au cœur de l'île de Java, à l'ombre du volcan Merapi, Yogyakarta est la capitale culturelle de l'Indonésie. C'est ici que le jamu n'a jamais cessé d'être préparé — dans les cuisines, sur les marchés, transmis par ceux qui en gardent la tradition.">Au cœur de l'île de Java, à l'ombre du volcan Merapi, Yogyakarta est la capitale culturelle de l'Indonésie. C'est ici que le jamu n'a jamais cessé d'être préparé — dans les cuisines, sur les marchés, transmis par ceux qui en gardent la tradition.</span><span data-en="At the heart of Java, in the shadow of Mount Merapi, Yogyakarta is Indonesia's cultural capital. This is where jamu has never stopped being made — in kitchens, in markets, passed down by those who keep the tradition alive.">At the heart of Java, in the shadow of Mount Merapi, Yogyakarta is Indonesia's cultural capital. This is where jamu has never stopped being made — in kitchens, in markets, passed down by those who keep the tradition alive.</span></p>
-    <p class="origin-paragraph" style="margin-bottom:2.5rem"><span data-fr="Le sol volcanique, l'humidité équatoriale, l'altitude — tout confère aux plantes de Java une densité aromatique qu'aucun autre terroir ne reproduit.">Le sol volcanique, l'humidité équatoriale, l'altitude — tout confère aux plantes de Java une densité aromatique qu'aucun autre terroir ne reproduit.</span><span data-en="Volcanic soil, equatorial humidity, altitude — together they give Java's plants an aromatic density no other terroir can match.">Volcanic soil, equatorial humidity, altitude — together they give Java's plants an aromatic density no other terroir can match.</span></p>
-    <div class="origin-stats">
-      <div>
-        <div class="origin-stat-num">2 500</div>
-        <div class="origin-stat-label"><span data-fr="Ans de tradition">Ans de tradition</span><span data-en="Years of tradition">Years of tradition</span></div>
-      </div>
-      <div>
-        <div class="origin-stat-num">UNESCO</div>
-        <div class="origin-stat-label"><span data-fr="Patrimoine 2023">Patrimoine 2023</span><span data-en="Heritage 2023">Heritage 2023</span></div>
-      </div>
-      <div>
-        <div class="origin-stat-num">0</div>
-        <div class="origin-stat-label"><span data-fr="Intermédiaire">Intermédiaire</span><span data-en="Middleman">Middleman</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="origin-visual">
-    <div class="origin-visual-main">
-      <img src="images/origin-volcano.jpg" alt="Le volcan Ijen, Java" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(28,33,24,.85),rgba(28,33,24,.15) 60%)"></div>
-      <div class="origin-quote">
-        <p style="font-family:var(--font-serif);font-size:1.1rem;font-style:italic;color:rgba(250,248,243,.9);line-height:1.6"><span data-fr="block">"Chaque racine se souvient<br>du sol dont elle vient."</span><span data-en="block">"Every root remembers<br>the soil it came from."</span></p>
-        <p style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,155,92,.85);margin-top:.8rem">Volcan Ijen · Java</p>
-      </div>
-    </div>
-    <div class="origin-visual-accent"></div>
-  </div>
-</section>
 
 <!-- TESTIMONIALS -->
 <section class="testimonials">
@@ -1013,31 +766,6 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   </div>
 </section>
 
-<!-- MONTHLY RITUAL -->
-<section style="background:var(--cream);padding:8rem 3rem;text-align:center">
-  <p class="section-label"><span data-fr="Le Rituel Mensuel">Le Rituel Mensuel</span><span data-en="The Monthly Ritual">The Monthly Ritual</span></p>
-  <h2 class="section-title" style="margin-bottom:1rem"><span data-fr="block">Ne manquez jamais<br><em>votre rituel.</em></span><span data-en="block">Never miss<br><em>your ritual.</em></span></h2>
-  <p style="font-size:.9rem;line-height:1.9;color:var(--muted);max-width:440px;margin:0 auto 3rem"><span data-fr="Recevez votre sélection JAMU Java chaque mois, directement depuis Yogyakarta. Moins 15% sur chaque commande. Pause ou annulation à tout moment.">Recevez votre sélection JAMU Java chaque mois, directement depuis Yogyakarta. Moins 15% sur chaque commande. Pause ou annulation à tout moment.</span><span data-en="Receive your JAMU Java selection every month, sent directly from Yogyakarta. 15% off every order. Pause or cancel anytime.">Receive your JAMU Java selection every month, sent directly from Yogyakarta. 15% off every order. Pause or cancel anytime.</span></p>
-  <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:3rem">
-    <div style="background:var(--warm);padding:2.5rem 2rem;min-width:220px;text-align:center;position:relative">
-      <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem"><span data-fr="Le Rituel Jamu">Le Rituel Jamu</span><span data-en="The Jamu Ritual">The Jamu Ritual</span></div>
-      <div style="font-family:var(--font-serif);font-size:2.4rem;font-weight:300;color:var(--deep);line-height:1">32,90€</div>
-      <div style="font-size:.72rem;color:var(--muted);margin:.4rem 0 1.5rem"><span data-fr="/ mois · 3 Jamu ancestraux">/ mois · 3 Jamu ancestraux</span><span data-en="/ month · 3 ancestral jamu">/ month · 3 ancestral jamu</span></div>
-      <div style="font-size:.75rem;color:var(--green);margin-bottom:1.5rem"><span data-fr="Économie de 12%">Économie de 12%</span><span data-en="Save 12%">Save 12%</span></div>
-      <a href="mailto:contact@jamujava.com?subject=Abonnement Monthly Ritual Jamu&body=Bonjour, je souhaite m'abonner au Rituel Mensuel Jamu (32,90€/mois)." style="display:block;background:var(--deep);color:var(--cream);padding:.8rem 1.5rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:background .3s"><span data-fr="S'abonner">S'abonner</span><span data-en="Subscribe">Subscribe</span></a>
-    </div>
-    <div style="background:var(--deep);padding:2.5rem 2rem;min-width:220px;text-align:center;position:relative">
-      <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .9rem;white-space:nowrap"><span data-fr="Le plus populaire">Le plus populaire</span><span data-en="Most popular">Most popular</span></div>
-      <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,248,243,.4);margin-bottom:.8rem;margin-top:.5rem"><span data-fr="L'Intégrale Java">L'Intégrale Java</span><span data-en="The Complete Java">The Complete Java</span></div>
-      <div style="font-family:var(--font-serif);font-size:2.4rem;font-weight:300;color:var(--cream);line-height:1">49,90€</div>
-      <div style="font-size:.72rem;color:rgba(250,248,243,.4);margin:.4rem 0 1.5rem"><span data-fr="/ mois · 3 Jamu + Café Ijen">/ mois · 3 Jamu + Café Ijen</span><span data-en="/ month · 3 jamu + Ijen Coffee">/ month · 3 jamu + Ijen Coffee</span></div>
-      <div style="font-size:.75rem;color:var(--gold-light);margin-bottom:1.5rem"><span data-fr="Économie de 15%">Économie de 15%</span><span data-en="Save 15%">Save 15%</span></div>
-      <a href="mailto:contact@jamujava.com?subject=Abonnement Monthly Ritual Intégrale&body=Bonjour, je souhaite m'abonner à L'Intégrale Java (49,90€/mois)." style="display:block;background:var(--gold);color:var(--cream);padding:.8rem 1.5rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:background .3s"><span data-fr="S'abonner">S'abonner</span><span data-en="Subscribe">Subscribe</span></a>
-    </div>
-  </div>
-  <p style="font-size:.72rem;color:var(--muted);letter-spacing:.05em"><span data-fr="Pause ou annulation à tout moment · Livraison offerte incluse · Expédié depuis Yogyakarta">Pause ou annulation à tout moment · Livraison offerte incluse · Expédié depuis Yogyakarta</span><span data-en="Pause or cancel anytime · Free shipping included · Shipped from Yogyakarta">Pause or cancel anytime · Free shipping included · Shipped from Yogyakarta</span></p>
-</section>
-
 <!-- NEWSLETTER -->
 <section class="newsletter" id="newsletter">
   <div>
@@ -1074,6 +802,15 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   </div>
 </section>
 
+
+<!-- MONTHLY RITUAL TEASER -->
+<section style="background:var(--deep);padding:5rem 3rem;text-align:center">
+  <p class="section-label" style="color:var(--gold-light);justify-content:center;display:flex"><span data-fr="Le Rituel Mensuel">Le Rituel Mensuel</span><span data-en="The Monthly Ritual">The Monthly Ritual</span></p>
+  <h2 class="section-title" style="color:var(--cream);margin-bottom:1.5rem"><span data-fr="block">Ne manquez jamais<br><em style="color:var(--gold-light)">votre rituel.</em></span><span data-en="block">Never miss<br><em style="color:var(--gold-light)">your ritual.</em></span></h2>
+  <a href="abonnement.html" class="btn-primary" style="display:inline-block"><span data-fr="Découvrir l'abonnement">Découvrir l'abonnement</span><span data-en="Discover the subscription">Discover the subscription</span></a>
+</section>
+
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -1101,9 +838,9 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       <div class="footer-col-title"><span data-fr="La Marque">La Marque</span><span data-en="The Brand">The Brand</span></div>
       <ul class="footer-links">
         <li><a href="blog.html"><span data-fr="Notre Blog">Notre Blog</span><span data-en="Our Blog">Our Blog</span></a></li>
-        <li><a href="#story"><span data-fr="La tradition">La tradition</span><span data-en="The tradition">The tradition</span></a></li>
-        <li><a href="#ingredients"><span data-fr="Les Origines">Les Origines</span><span data-en="The Origins">The Origins</span></a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="notre-histoire.html"><span data-fr="La tradition">La tradition</span><span data-en="The tradition">The tradition</span></a></li>
+        <li><a href="rituels.html"><span data-fr="Les Origines">Les Origines</span><span data-en="The Origins">The Origins</span></a></li>
+        <li><a href="faq.html">FAQ</a></li>
         <li><a href="https://www.instagram.com/jamu_rituel_bien_etre_naturel/" target="_blank">Instagram</a></li>
       </ul>
     </div>
@@ -1112,7 +849,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       <ul class="footer-links">
         <li><a href="mailto:contact@jamujava.com">contact@jamujava.com</a></li>
         <li><a href="#produits"><span data-fr="Commander">Commander</span><span data-en="Order">Order</span></a></li>
-        <li><a href="#faq"><span data-fr="Livraison & retours">Livraison & retours</span><span data-en="Shipping & returns">Shipping & returns</span></a></li>
+        <li><a href="faq.html"><span data-fr="Livraison & retours">Livraison & retours</span><span data-en="Shipping & returns">Shipping & returns</span></a></li>
         <li><a href="https://www.instagram.com/jamu_rituel_bien_etre_naturel/" target="_blank">@jamu_rituel_bien_etre_naturel</a></li>
       </ul>
     </div>
