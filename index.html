@@ -454,7 +454,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
     <span class="lang-sep">/</span>
     <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
   </div>
-  <a href="#liste-attente" class="nav-cta"><span data-fr="Liste d'attente">Liste d'attente</span><span data-en="Waitlist">Waitlist</span></a>
+  <a href="#produits" class="nav-cta"><span data-fr="Commander">Commander</span><span data-en="Order">Order</span></a>
 </nav>
 
 <!-- HERO -->
@@ -1013,8 +1013,8 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
   </div>
 </section>
 
-<!-- MONTHLY RITUAL — MASQUÉ TEMPORAIREMENT (rupture de stock, à réactiver au retour en stock) -->
-<section style="background:var(--cream);padding:8rem 3rem;text-align:center;display:none">
+<!-- MONTHLY RITUAL -->
+<section style="background:var(--cream);padding:8rem 3rem;text-align:center">
   <p class="section-label"><span data-fr="Le Rituel Mensuel">Le Rituel Mensuel</span><span data-en="The Monthly Ritual">The Monthly Ritual</span></p>
   <h2 class="section-title" style="margin-bottom:1rem"><span data-fr="block">Ne manquez jamais<br><em>votre rituel.</em></span><span data-en="block">Never miss<br><em>your ritual.</em></span></h2>
   <p style="font-size:.9rem;line-height:1.9;color:var(--muted);max-width:440px;margin:0 auto 3rem"><span data-fr="Recevez votre sélection JAMU Java chaque mois, directement depuis Yogyakarta. Moins 15% sur chaque commande. Pause ou annulation à tout moment.">Recevez votre sélection JAMU Java chaque mois, directement depuis Yogyakarta. Moins 15% sur chaque commande. Pause ou annulation à tout moment.</span><span data-en="Receive your JAMU Java selection every month, sent directly from Yogyakarta. 15% off every order. Pause or cancel anytime.">Receive your JAMU Java selection every month, sent directly from Yogyakarta. 15% off every order. Pause or cancel anytime.</span></p>
@@ -1039,20 +1039,20 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 </section>
 
 <!-- NEWSLETTER -->
-<section class="newsletter" id="liste-attente">
+<section class="newsletter" id="newsletter">
   <div>
-    <p class="section-label"><span data-fr="Édition limitée · Bientôt de retour">Édition limitée · Bientôt de retour</span><span data-en="Limited edition · Coming back soon">Limited edition · Coming back soon</span></p>
-    <h2 class="section-title"><span data-fr="block">Réservez votre <em style="color:var(--gold-light)">place.</em></span><span data-en="block">Reserve your <em style="color:var(--gold-light)">place.</em></span></h2>
-    <p class="newsletter-sub"><span data-fr="Notre prochaine récolte arrive directement de Yogyakarta. Rejoignez la liste d'attente pour être informé en premier — et bénéficier de 15% de réduction, réservés aux 100 premiers inscrits.">Notre prochaine récolte arrive directement de Yogyakarta. Rejoignez la liste d'attente pour être informé en premier — et bénéficier de 15% de réduction, réservés aux 100 premiers inscrits.</span><span data-en="Our next harvest is arriving directly from Yogyakarta. Join the waitlist to be notified first — and get 15% off, reserved for the first 100 members.">Our next harvest is arriving directly from Yogyakarta. Join the waitlist to be notified first — and get 15% off, reserved for the first 100 members.</span></p>
+    <p class="section-label"><span data-fr="Restons en contact">Restons en contact</span><span data-en="Stay in touch">Stay in touch</span></p>
+    <h2 class="section-title"><span data-fr="block">Le rituel, <em style="color:var(--gold-light)">chaque mois.</em></span><span data-en="block">The ritual, <em style="color:var(--gold-light)">every month.</em></span></h2>
+    <p class="newsletter-sub"><span data-fr="Recettes, nouveautés et coulisses de Yogyakarta, directement dans votre boîte mail — sans spam, juste l'essentiel.">Recettes, nouveautés et coulisses de Yogyakarta, directement dans votre boîte mail — sans spam, juste l'essentiel.</span><span data-en="Recipes, new arrivals and behind-the-scenes from Yogyakarta, straight to your inbox — no spam, just the essentials.">Recipes, new arrivals and behind-the-scenes from Yogyakarta, straight to your inbox — no spam, just the essentials.</span></p>
   </div>
   <div>
     <form id="newsletterForm">
       <div class="input-group">
         <input type="email" id="nlEmail" class="nl-input" placeholder="Votre adresse email" aria-label="Adresse email" required>
-        <button class="nl-btn" type="submit"><span data-fr="Je réserve →">Je réserve →</span><span data-en="Reserve my spot →">Reserve my spot →</span></button>
+        <button class="nl-btn" type="submit"><span data-fr="Je m'inscris →">Je m'inscris →</span><span data-en="Subscribe →">Subscribe →</span></button>
       </div>
-      <p class="newsletter-note" id="nlNote"><span data-fr="Aucun engagement. Vous serez prévenu dès le retour en stock, en priorité.">Aucun engagement. Vous serez prévenu dès le retour en stock, en priorité.</span><span data-en="No commitment. You'll be notified as soon as we're back in stock, first.">No commitment. You'll be notified as soon as we're back in stock, first.</span></p>
-      <p class="newsletter-note" id="nlConfirm" style="display:none;color:var(--gold-light)"><span data-fr="C'est noté — vous serez parmi les premiers informés. 🌿">C'est noté — vous serez parmi les premiers informés. 🌿</span><span data-en="You're on the list — you'll be among the first to know. 🌿">You're on the list — you'll be among the first to know. 🌿</span></p>
+      <p class="newsletter-note" id="nlNote"><span data-fr="Pas de spam, désinscription en un clic.">Pas de spam, désinscription en un clic.</span><span data-en="No spam, unsubscribe anytime.">No spam, unsubscribe anytime.</span></p>
+      <p class="newsletter-note" id="nlConfirm" style="display:none;color:var(--gold-light)"><span data-fr="Merci ! À très vite. 🌿">Merci ! À très vite. 🌿</span><span data-en="Thank you! See you soon. 🌿">Thank you! See you soon. 🌿</span></p>
     </form>
     <script>
     document.getElementById('newsletterForm').addEventListener('submit',function(e){
@@ -1111,7 +1111,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
         <li><a href="mailto:contact@jamujava.com">contact@jamujava.com</a></li>
-        <li><a href="#liste-attente"><span data-fr="Liste d'attente">Liste d'attente</span><span data-en="Waitlist">Waitlist</span></a></li>
+        <li><a href="#produits"><span data-fr="Commander">Commander</span><span data-en="Order">Order</span></a></li>
         <li><a href="#faq"><span data-fr="Livraison & retours">Livraison & retours</span><span data-en="Shipping & returns">Shipping & returns</span></a></li>
         <li><a href="https://www.instagram.com/jamu_rituel_bien_etre_naturel/" target="_blank">@jamu_rituel_bien_etre_naturel</a></li>
       </ul>
@@ -1154,12 +1154,12 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
           <div class="pp-price" id="ppPrice">16,90€</div>
           <div class="pp-price-note" id="ppPriceNote">Format 150g · Livraison offerte dès 45€</div>
         </div>
-        <a href="#liste-attente" class="pp-add" id="ppAddLink">Rejoindre la liste d'attente</a>
-        <a href="mailto:contact@jamujava.com" class="pp-contact">Une question avant de vous inscrire ?</a>
+        <a href="#" class="pp-add" id="ppAddLink" target="_blank" rel="noopener"><span data-fr="Commander">Commander</span><span data-en="Order now">Order now</span></a>
+        <a href="mailto:contact@jamujava.com" class="pp-contact"><span data-fr="Une question avant de commander ?">Une question avant de commander ?</span><span data-en="A question before ordering?">A question before ordering?</span></a>
         <div class="pp-perks">
-          <div class="perk"><div class="perk-dot"></div><span data-fr="Réponse sous 24h">Réponse sous 24h</span><span data-en="Reply within 24h">Reply within 24h</span></div>
-          <div class="perk"><div class="perk-dot"></div><span data-fr="Patrimoine UNESCO 2023">Patrimoine UNESCO 2023</span><span data-en="UNESCO Heritage 2023">UNESCO Heritage 2023</span></div>
-          <div class="perk"><div class="perk-dot"></div><span data-fr="Liste d'attente prioritaire">Liste d'attente prioritaire</span><span data-en="Priority waitlist">Priority waitlist</span></div>
+          <div class="perk"><div class="perk-dot"></div><span data-fr="Paiement sécurisé · Stripe">Paiement sécurisé · Stripe</span><span data-en="Secure payment · Stripe">Secure payment · Stripe</span></div>
+          <div class="perk"><div class="perk-dot"></div><span data-fr="Livraison 5–7 jours">Livraison 5–7 jours</span><span data-en="5–7 day delivery">5–7 day delivery</span></div>
+          <div class="perk"><div class="perk-dot"></div><span data-fr="Satisfait ou remboursé · 14 jours">Satisfait ou remboursé · 14 jours</span><span data-en="Satisfaction guaranteed · 14 days">Satisfaction guaranteed · 14 days</span></div>
         </div>
       </div>
     </div>
@@ -1202,7 +1202,7 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
     <div class="sticky-product-name" id="stickyName">Jamu Temulawak</div>
     <div class="sticky-price" id="stickyPrice">16,90€ · 150g</div>
   </div>
-  <a href="#liste-attente" class="sticky-add" id="stickyLink">Liste d'attente</a>
+  <a href="#" class="sticky-add" id="stickyLink" target="_blank" rel="noopener"><span data-fr="Commander">Commander</span><span data-en="Order now">Order now</span></a>
 </div>
 
 <script>
@@ -1367,12 +1367,12 @@ function showProductPage(id){
   document.getElementById('ppOriginText').textContent=p.origin;
   document.getElementById('stickyName').textContent=p.name;
   document.getElementById('stickyPrice').textContent=p.price;
-  document.getElementById('ppAddLink').href='index.html#liste-attente';
-  document.getElementById('ppAddLink').removeAttribute('target');
-  document.getElementById('ppAddLink').removeAttribute('rel');
-  document.getElementById('stickyLink').href='index.html#liste-attente';
-  document.getElementById('stickyLink').removeAttribute('target');
-  document.getElementById('stickyLink').removeAttribute('rel');
+  document.getElementById('ppAddLink').href=p.stripeUrl;
+  document.getElementById('ppAddLink').setAttribute('target','_blank');
+  document.getElementById('ppAddLink').setAttribute('rel','noopener');
+  document.getElementById('stickyLink').href=p.stripeUrl;
+  document.getElementById('stickyLink').setAttribute('target','_blank');
+  document.getElementById('stickyLink').setAttribute('rel','noopener');
   document.getElementById('ppTasteNotes').innerHTML=p.tastes.map(t=>`<span class="taste-note">${t}</span>`).join('');
   document.getElementById('ppOriginMap').innerHTML=p.originFacts.map(f=>`<div><div class="origin-fact-num">${f.num}</div><div class="origin-fact-label">${f.label}</div></div>`).join('');
   document.getElementById('crossSell').innerHTML=p.cross.map(cid=>{
