@@ -1,26 +1,42 @@
-<urlset>
-<URL >
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
 <loc>https://jamujava.com/</loc>
-<lastmod>2026-06-22</lastmod>
-</URL >
-<URL >
+<lastmod>2026-06-27</lastmod>
+</url>
+<url>
+<loc>https://jamujava.com/notre-histoire.html</loc>
+<lastmod>2026-06-27</lastmod>
+</url>
+<url>
+<loc>https://jamujava.com/rituels.html</loc>
+<lastmod>2026-06-27</lastmod>
+</url>
+<url>
+<loc>https://jamujava.com/faq.html</loc>
+<lastmod>2026-06-27</lastmod>
+</url>
+<url>
+<loc>https://jamujava.com/abonnement.html</loc>
+<lastmod>2026-06-27</lastmod>
+</url>
+<url>
 <loc>https://jamujava.com/qu-est-ce-que-le-jamu.html</loc>
 <lastmod>2026-06-22</lastmod>
-</URL >
-<URL >
+</url>
+<url>
 <loc>https://jamujava.com/blog.html</loc>
 <lastmod>2026-06-23</lastmod>
-</URL >
-<URL >
+</url>
+<url>
 <loc>https://jamujava.com/jamu-vs-curcuma-latte.html</loc>
 <lastmod>2026-06-23</lastmod>
-</URL >
-<URL >
+</url>
+<url>
 <loc>https://jamujava.com/jamu-champignons-fonctionnels.html</loc>
 <lastmod>2026-06-23</lastmod>
-</URL >
-<URL >
+</url>
+<url>
 <loc>https://jamujava.com/cgv.html</loc>
 <lastmod>2026-06-18</lastmod>
-</URL >
+</url>
 </urlset>
