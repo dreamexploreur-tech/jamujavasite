@@ -529,10 +529,10 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
     <form id="carnetForm">
       <div class="carnet-form">
         <input type="email" id="carnetEmail" class="carnet-input" placeholder="Votre adresse email" aria-label="Adresse email" required>
-        <button class="carnet-btn" type="submit"><span data-fr="Recevoir le carnet →">Recevoir le carnet →</span><span data-en="Get the carnet →">Get the carnet →</span></button>
+        <button class="carnet-btn" type="submit" id="carnetSubmitBtn"><span data-fr="Voir le carnet →">Voir le carnet →</span><span data-en="See the carnet →">See the carnet →</span></button>
       </div>
       <p class="carnet-note" id="carnetNoteDefault"><span data-fr="Pas de spam, désinscription en un clic.">Pas de spam, désinscription en un clic.</span><span data-en="No spam, unsubscribe anytime.">No spam, unsubscribe anytime.</span></p>
-      <p class="carnet-note" id="carnetNoteConfirm" style="display:none;color:var(--terracotta)"><span data-fr="Merci ! Le carnet arrive par email. 🌿">Merci ! Le carnet arrive par email. 🌿</span><span data-en="Thank you! The carnet is on its way. 🌿">Thank you! The carnet is on its way. 🌿</span></p>
+      <p class="carnet-note" id="carnetNoteConfirm" style="display:none;color:var(--terracotta)"><span data-fr="Merci ! Ouverture du carnet… 🌿">Merci ! Ouverture du carnet… 🌿</span><span data-en="Thank you! Opening the carnet… 🌿">Thank you! Opening the carnet… 🌿</span></p>
     </form>
   </div>
 </section>
@@ -540,17 +540,26 @@ footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
 document.getElementById('carnetForm').addEventListener('submit', function(e){
   e.preventDefault();
   var email = document.getElementById('carnetEmail').value;
+  var btn = document.getElementById('carnetSubmitBtn');
+  btn.disabled = true;
   fetch('https://formspree.io/f/xlgynyww', {
     method: 'POST',
     headers: {'Content-Type':'application/json','Accept':'application/json'},
     body: JSON.stringify({ email: email, _subject: 'Demande Carnet de Yogyakarta — JAMU Java' })
   }).then(function(r){
-    if(r.ok){
-      document.getElementById('carnetNoteDefault').style.display = 'none';
-      document.getElementById('carnetNoteConfirm').style.display = 'block';
-      document.getElementById('carnetEmail').value = '';
-    }
-  }).catch(function(){});
+    document.getElementById('carnetNoteDefault').style.display = 'none';
+    document.getElementById('carnetNoteConfirm').style.display = 'block';
+    // La capture du lead est faite (ou tentée) côté Formspree ; on emmène
+    // la personne vers le carnet immédiatement, sans dépendre d'un email retour
+    // (l'autoresponder Formspree n'est pas disponible sur le plan gratuit).
+    setTimeout(function(){
+      window.location.href = 'carnet-yogyakarta.html';
+    }, 700);
+  }).catch(function(){
+    // Même en cas d'erreur réseau sur la capture, on ne bloque pas l'accès au carnet —
+    // l'expérience promise (voir le carnet) prime ; seul le lead risque de manquer ce jour-là.
+    window.location.href = 'carnet-yogyakarta.html';
+  });
 });
 </script>
 <!-- ════════ FIN CARNET DE YOGYAKARTA ════════ -->
