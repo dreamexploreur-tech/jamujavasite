@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — La fondatrice de JAMU Java</title>
+<meta name="description" content="JAMU Java est fondé par Fransisca. Sa mère est née à Yogyakarta — c'est là que sa famille prépare nos jamu, directement, sans intermédiaire.">
+<meta property="og:title" content="À propos — La fondatrice de JAMU Java">
+<meta property="og:description" content="JAMU Java est fondé par Fransisca. Sa famille prépare nos jamu à Yogyakarta, directement, sans intermédiaire.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://jamujava.com/a-propos.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Prevent letter overlap during font load */
+.hero-title{opacity:0;transition:opacity .3s ease}
+.fonts-loaded .hero-title{opacity:1}
+/* Fallback font metrics to minimise layout shift */
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:local('Georgia')}
+</style>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#F7F2E7;
+  --deep:#1C2118;
+  --gold:#A8763D;
+  --gold-light:#C99B5C;
+  --warm:#EDE4D3;
+  --muted:#74695B;
+  --green:#3D4A35;
+  --green-light:#7C8B6F;
+  --terracotta:#7A3B1E;
+  --root-brown:#5C3A21;
+  --font-serif:'Cormorant Garamond',Georgia,serif;
+  --font-sans:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--deep);font-family:var(--font-sans);font-weight:300;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;transition:background .4s,backdrop-filter .4s,border-color .4s;background:var(--cream);border-bottom:1px solid rgba(28,26,22,.08)}
+nav.scrolled{background:rgba(247,242,231,.92);backdrop-filter:blur(12px)}
+.nav-logo{font-family:var(--font-serif);font-size:1.6rem;font-weight:400;letter-spacing:.2em;color:var(--deep);text-decoration:none}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .4s}
+.nav-links a:hover{color:var(--terracotta)}
+.nav-cta{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;border:1px solid var(--deep);color:var(--deep);padding:.55rem 1.4rem;text-decoration:none;transition:all .3s}
+.nav-cta:hover{background:var(--terracotta);color:var(--cream) !important;border-color:var(--terracotta)}
+
+section{padding:8rem 3rem}
+[data-en]{display:none}
+html.lang-en [data-fr]{display:none}
+html.lang-en [data-en]{display:inline}
+html.lang-en [data-en].block{display:block}
+.lang-switch{display:flex;align-items:center;gap:.3rem;font-size:.68rem;letter-spacing:.1em}
+.lang-btn{background:none;border:none;color:var(--muted);cursor:pointer;padding:.2rem .4rem;opacity:.7;transition:opacity .3s,color .3s;font-family:var(--font-sans);font-size:.78rem;letter-spacing:.05em}
+.lang-btn.active{opacity:1;font-weight:600;color:var(--deep)}
+.lang-sep{opacity:.4;color:var(--muted)}
+
+.section-label{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--terracotta);margin-bottom:1.2rem}
+.section-title{font-family:var(--font-serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;line-height:1.12;color:var(--deep);letter-spacing:-.01em}
+.section-title em{font-style:italic;color:var(--terracotta)}
+.divider{width:40px;height:1px;background:var(--deep);margin:2rem 0}
+
+/* PAGE HEADER (sub-page hero, lighter than home hero) */
+.page-header{padding:9rem 3rem 4rem;max-width:760px}
+.breadcrumb-back{position:fixed;top:1.6rem;left:3rem;z-index:90;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
+.breadcrumb-back:hover{color:var(--terracotta)}
+
+/* FOUNDER SECTION */
+.founder{background:var(--cream);display:grid;grid-template-columns:.9fr 1.1fr;gap:5rem;align-items:start;max-width:1300px;margin:0 auto}
+.founder-visual{position:relative}
+.founder-portrait{aspect-ratio:4/5;background:linear-gradient(150deg,var(--warm) 0%,#D9C39A 55%,var(--gold) 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.founder-initial{font-family:var(--font-serif);font-size:7rem;font-weight:300;color:rgba(28,26,22,.18);letter-spacing:.05em}
+.founder-tag{position:absolute;bottom:0;left:0;background:var(--deep);color:var(--cream);padding:.7rem 1.1rem;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase}
+.founder-text p{font-size:1.02rem;line-height:1.95;color:var(--muted);margin-bottom:1.8rem;letter-spacing:.01em;max-width:560px}
+.founder-text p strong{color:var(--deep);font-weight:500}
+.founder-signature{font-family:var(--font-serif);font-size:1.6rem;font-style:italic;color:var(--terracotta);margin-top:1rem}
+.founder-role{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+
+@media(max-width:1024px){
+  .founder{grid-template-columns:1fr;gap:3rem}
+  .founder-portrait{max-width:420px}
+  section{padding:5rem 2rem}
+  .page-header{padding:8rem 2rem 3rem}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.2rem}
+  .nav-links{display:none}
+  section{padding:3.5rem 1.2rem}
+  .page-header{padding:7rem 1.2rem 2.5rem}
+  .breadcrumb-back{left:1.2rem;top:1.2rem}
+  .nav-logo{font-size:1.2rem}
+  .section-title{font-size:clamp(1.8rem,6vw,2.5rem)}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* FOOTER (shared) */
+footer{background:var(--deep);color:var(--cream);padding:5rem 3rem 3rem}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(250,248,243,.08)}
+.footer-logo{font-family:var(--font-serif);font-size:2rem;font-weight:400;letter-spacing:.2em;color:var(--cream);margin-bottom:.4rem}
+.footer-sub{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:1.2rem}
+.footer-tagline{font-size:.8rem;line-height:1.9;color:rgba(250,248,243,.4);max-width:240px;margin-bottom:2rem}
+.footer-social{display:flex;gap:1rem}
+.social-link{width:36px;height:36px;border:1px solid rgba(250,248,243,.15);display:flex;align-items:center;justify-content:center;font-size:.65rem;letter-spacing:.1em;color:rgba(250,248,243,.4);text-decoration:none;transition:all .3s}
+.social-link:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col-title{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(250,248,243,.3);margin-bottom:1.5rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.8rem}
+.footer-links a{font-size:.82rem;color:rgba(250,248,243,.45);text-decoration:none;transition:color .3s;letter-spacing:.02em}
+.footer-links a:hover{color:var(--cream)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.72rem;color:rgba(250,248,243,.25);letter-spacing:.05em}
+.footer-certs{display:flex;gap:1rem;flex-wrap:wrap}
+.cert-badge{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,248,243,.25);border:1px solid rgba(250,248,243,.1);padding:.3rem .7rem}
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;text-align:center}.footer-certs{justify-content:center}}
+
+/* PRODUCT PAGE (shared, required so showProductPage() works from this page too) */
+.product-page{display:none;background:var(--cream);min-height:100vh;position:fixed;inset:0;z-index:300;overflow-y:auto}
+.product-page.active{display:block}
+.main-site.hidden{display:none}
+.pp-hero{display:grid;grid-template-columns:1fr 1fr;min-height:90vh}
+.pp-gallery{background:var(--warm);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:600px}
+.pp-gallery-main{width:100%;height:100%;position:absolute;inset:0;transition:background .5s;background-size:cover;background-position:center}
+.pp-gallery-main::after{content:'';position:absolute;inset:30%;border-radius:50%;background:radial-gradient(ellipse,rgba(184,150,90,.3),transparent);animation:pulse 3s ease-in-out infinite}
+.pp-gallery-main.has-photo::after{display:none}
+.pp-gallery-thumbs{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem}
+.pp-thumb{width:40px;height:40px;cursor:pointer;border:2px solid transparent;transition:border-color .3s;overflow:hidden}
+.pp-thumb.active{border-color:var(--gold)}
+.pp-thumb div{width:100%;height:100%}
+.pp-info{padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:center;overflow-y:auto}
+.pp-breadcrumb{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+.pp-breadcrumb span{color:var(--gold)}
+.pp-name{font-family:var(--font-serif);font-size:3rem;font-weight:300;line-height:1.1;color:var(--deep);margin-bottom:.4rem}
+.pp-subtitle{font-size:.82rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem}
+.pp-taste{background:var(--warm);padding:1.2rem 1.5rem;margin-bottom:2rem;border-left:2px solid var(--gold)}
+.pp-taste-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.pp-taste-notes{display:flex;gap:.5rem;flex-wrap:wrap}
+.taste-note{font-size:.72rem;letter-spacing:.1em;border:1px solid var(--warm);padding:.25rem .7rem;color:var(--deep);background:var(--cream)}
+.pp-price-block{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem}
+.pp-price{font-family:var(--font-serif);font-size:2.4rem;font-weight:300;color:var(--deep)}
+.pp-price-note{font-size:.75rem;color:var(--muted)}
+.pp-add{width:100%;background:var(--deep);color:var(--cream);border:none;padding:1.1rem 2rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:all .3s;margin-bottom:.8rem;font-family:var(--font-sans);text-decoration:none;display:block;text-align:center}
+.pp-add:hover{background:var(--green)}
+.pp-contact{width:100%;background:transparent;color:var(--deep);border:1px solid var(--deep);padding:1rem 2rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:var(--font-sans);text-decoration:none;display:block;text-align:center}
+.pp-contact:hover{background:var(--warm)}
+.pp-perks{display:flex;gap:1.5rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--warm);flex-wrap:wrap}
+.perk{display:flex;align-items:center;gap:.4rem;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.perk-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.pp-details{padding:4rem 3rem;background:var(--cream)}
+.pp-details-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1200px;margin:0 auto}
+.pp-detail-block{padding:2.5rem;border:1px solid var(--warm)}
+.pp-detail-title{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.pp-detail-text{font-size:.85rem;line-height:1.9;color:var(--muted)}
+.pp-origin{background:var(--deep);color:var(--cream);padding:5rem 3rem;text-align:center}
+.pp-origin-label{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.pp-origin-title{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--cream);margin:1rem auto 1.5rem;max-width:620px;font-style:italic}
+.pp-origin-text{font-size:.9rem;line-height:2;color:rgba(250,248,243,.55);max-width:520px;margin:0 auto}
+.pp-origin-map{display:flex;justify-content:center;gap:4rem;margin-top:3rem;padding-top:3rem;border-top:1px solid rgba(250,248,243,.08);flex-wrap:wrap}
+.origin-fact-num{font-family:var(--font-serif);font-size:2.5rem;color:var(--gold)}
+.origin-fact-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,248,243,.4);margin-top:.3rem}
+.back-btn{position:fixed;top:1.5rem;left:1.5rem;z-index:310;background:var(--cream);border:1px solid var(--warm);padding:.6rem 1rem;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;display:none;align-items:center;gap:.5rem;color:var(--deep);font-family:var(--font-sans);transition:all .3s}
+.back-btn:hover{background:var(--deep);color:var(--cream)}
+.back-btn.visible{display:flex}
+.sticky-atc{position:fixed;bottom:0;left:0;right:0;z-index:305;background:var(--cream);border-top:1px solid var(--warm);padding:1rem 3rem;display:none;align-items:center;justify-content:space-between;transform:translateY(100%);transition:transform .4s}
+.sticky-atc.visible{display:flex}
+.sticky-atc.shown{transform:translateY(0)}
+.sticky-product-name{font-family:var(--font-serif);font-size:1.1rem;color:var(--deep)}
+.sticky-price{font-size:.75rem;color:var(--muted)}
+.sticky-add{background:var(--deep);color:var(--cream);border:none;padding:.75rem 2rem;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;font-family:var(--font-sans);transition:background .3s;text-decoration:none;display:inline-block}
+.sticky-add:hover{background:var(--green)}
+.pp-cross-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pp-cross-grid .product-img{height:200px}
+.product-card{background:var(--cream);cursor:pointer;transition:transform .4s,border-color .3s;position:relative;overflow:hidden;border:1px solid rgba(28,26,22,.1)}
+.product-card:hover{transform:translateY(-4px);border-color:var(--terracotta)}
+.product-img{height:300px;position:relative;overflow:hidden;border-bottom:1px solid rgba(28,26,22,.1)}
+.product-img-inner{position:absolute;inset:0;transition:transform .6s ease}
+.bg-temulawak{background:linear-gradient(160deg,#D9C9A8 0%,#B98F5C 100%)}
+.bg-kunyit{background:linear-gradient(160deg,#E0B873 0%,#A8763D 100%)}
+.bg-beraskencur{background:linear-gradient(160deg,#EDE4D3 0%,#C9A974 100%)}
+.bg-cafeijen250{background:linear-gradient(160deg,#6B4530 0%,#3A2417 100%)}
+.bg-cafeijen500{background:linear-gradient(160deg,#5C3A21 0%,#2B1A10 100%)}
+.bg-pack-bien{background:linear-gradient(160deg,#7C8B6F 0%,#4A5A3D 100%)}
+.bg-coffret{background:linear-gradient(160deg,#9C5A2E 0%,#5C3A21 100%)}
+.product-info{padding:1.8rem 1.8rem 2rem}
+.product-name{font-family:var(--font-serif);font-size:1.35rem;font-weight:400;color:var(--deep);margin-bottom:.4rem}
+.product-tag{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:.7rem}
+.product-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(28,26,22,.1);padding-top:1rem}
+.product-price{font-family:var(--font-serif);font-size:1.2rem;color:var(--deep)}
+.product-btn{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);text-decoration:none;display:flex;align-items:center;gap:.4rem;transition:gap .3s;background:none;border:none;cursor:pointer;font-family:var(--font-sans)}
+.product-btn:hover{gap:.8rem}
+.product-btn::after{content:'→'}
+@media(max-width:1024px){.story,.pp-hero{grid-template-columns:1fr}}
+@media(max-width:768px){
+  .pp-details-grid,.pp-cross-grid{grid-template-columns:1fr}
+  .pp-info{padding:2rem 1.2rem}
+  .pp-name{font-size:2.2rem}
+  .sticky-atc{padding:1rem 1.2rem;gap:1rem}
+  .pp-hero{grid-template-columns:1fr;min-height:auto}
+  .pp-gallery{min-height:300px}
+  .sticky-atc{flex-direction:column;gap:.8rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<button class="back-btn" id="backBtn" onclick="showMain()">← Retour à la collection</button>
+
+<!-- ═══════════════════════════════════════ MAIN SITE -->
+<div class="main-site" id="mainSite">
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">JAMU Java</a>
+  <ul class="nav-links">
+    <li><a href="index.html#produits"><span data-fr="Produits">Produits</span><span data-en="Products">Products</span></a></li>
+    <li><a href="qu-est-ce-que-le-jamu.html"><span data-fr="Qu'est-ce que le Jamu">Qu'est-ce que le Jamu</span><span data-en="What is Jamu">What is Jamu</span></a></li>
+    <li><a href="notre-histoire.html"><span data-fr="Notre Histoire">Notre Histoire</span><span data-en="Our Story">Our Story</span></a></li>
+    <li><a href="rituels.html"><span data-fr="Rituels">Rituels</span><span data-en="Rituals">Rituals</span></a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+  <a href="index.html#produits" class="nav-cta"><span data-fr="Commander">Commander</span><span data-en="Order">Order</span></a>
+</nav>
+
+<a href="index.html" class="breadcrumb-back"><span data-fr="← Retour à l'accueil">← Retour à l'accueil</span><span data-en="← Back to home">← Back to home</span></a>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <p class="section-label"><span data-fr="La Fondatrice">La Fondatrice</span><span data-en="The Founder">The Founder</span></p>
+  <h1 class="section-title"><span data-fr="block">Le visage <em>derrière le jamu.</em></span><span data-en="block">The face <em>behind the jamu.</em></span></h1>
+</header>
+
+<!-- FOUNDER -->
+<section class="founder">
+  <div class="founder-visual">
+    <div class="founder-portrait">
+      <span class="founder-initial">F</span>
+      <div class="founder-tag"><span data-fr="Fondatrice de JAMU Java">Fondatrice de JAMU Java</span><span data-en="Founder of JAMU Java">Founder of JAMU Java</span></div>
+    </div>
+  </div>
+  <div class="founder-text">
+    <p>
+      <span data-fr="JAMU Java est fondé par <strong>Fransisca</strong>. Sa mère est née à Yogyakarta — c'est là que se trouve la famille qui prépare nos jamu, selon ses propres recettes, transmises depuis plusieurs générations.">JAMU Java est fondé par <strong>Fransisca</strong>. Sa mère est née à Yogyakarta — c'est là que se trouve la famille qui prépare nos jamu, selon ses propres recettes, transmises depuis plusieurs générations.</span>
+      <span data-en="JAMU Java was founded by <strong>Fransisca</strong>. Her mother was born in Yogyakarta — that's where the family who makes our jamu is based, following their own recipes, passed down through generations.">JAMU Java was founded by <strong>Fransisca</strong>. Her mother was born in Yogyakarta — that's where the family who makes our jamu is based, following their own recipes, passed down through generations.</span>
+    </p>
+    <p>
+      <span data-fr="Le jamu vendu sur ce site n'est pas acheté à un fournisseur tiers. Il est préparé par cette même famille, à Yogyakarta. C'est la raison du sourcing direct : il n'a jamais été nécessaire de chercher ailleurs.">Le jamu vendu sur ce site n'est pas acheté à un fournisseur tiers. Il est préparé par cette même famille, à Yogyakarta. C'est la raison du sourcing direct : il n'a jamais été nécessaire de chercher ailleurs.</span>
+      <span data-en="The jamu sold on this site isn't bought from a third-party supplier. It's made by that same family, in Yogyakarta. That's the reason for our direct sourcing: there was never a need to look elsewhere.">The jamu sold on this site isn't bought from a third-party supplier. It's made by that same family, in Yogyakarta. That's the reason for our direct sourcing: there was never a need to look elsewhere.</span>
+    </p>
+    <p>
+      <span data-fr="JAMU Java est une marque jeune, basée en France. Notre rôle se limite à faire le lien — entre une préparation familiale à Yogyakarta, et une livraison chez vous.">JAMU Java est une marque jeune, basée en France. Notre rôle se limite à faire le lien — entre une préparation familiale à Yogyakarta, et une livraison chez vous.</span>
+      <span data-en="JAMU Java is a young brand, based in France. Our role is simply to make the connection — between a family preparation in Yogyakarta, and a delivery to your door.">JAMU Java is a young brand, based in France. Our role is simply to make the connection — between a family preparation in Yogyakarta, and a delivery to your door.</span>
+    </p>
+    <div class="divider"></div>
+    <div class="founder-signature">Fransisca</div>
+    <div class="founder-role"><span data-fr="Fondatrice, JAMU Java">Fondatrice, JAMU Java</span><span data-en="Founder, JAMU Java">Founder, JAMU Java</span></div>
+  </div>
+</section>
+
+<!-- LINK TO PRODUCT SELECTION -->
+<section style="background:var(--warm);text-align:center;padding:6rem 3rem">
+  <p class="section-label" style="justify-content:center;display:flex"><span data-fr="Le sourcing, en pratique">Sourcing, in practice</span><span data-en="Sourcing, in practice">Sourcing, in practice</span></p>
+  <h2 class="section-title" style="margin-bottom:2.5rem"><span data-fr="block">Goûter <em>la sélection.</em></span><span data-en="block">Taste <em>the selection.</em></span></h2>
+  <a href="index.html#produits" class="nav-cta" style="display:inline-block;padding:.9rem 2.2rem"><span data-fr="Voir la collection">Voir la collection</span><span data-en="See the collection">See the collection</span></a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">JAMU Java</div>
+      <div class="footer-sub"><span data-fr="Boissons de Java · Indonésie">Boissons de Java · Indonésie</span><span data-en="Drinks from Java · Indonesia">Drinks from Java · Indonesia</span></div>
+      <p class="footer-tagline"><span data-fr="Jamu ancestral et café d'altitude, sélectionnés directement auprès des producteurs de Yogyakarta. Livraison France, Belgique, Suisse.">Jamu ancestral et café d'altitude, sélectionnés directement auprès des producteurs de Yogyakarta. Livraison France, Belgique, Suisse.</span><span data-en="Ancestral jamu and high-altitude coffee, selected directly from Yogyakarta producers. Delivery to France, Belgium, Switzerland.">Ancestral jamu and high-altitude coffee, selected directly from Yogyakarta producers. Delivery to France, Belgium, Switzerland.</span></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/jamu_rituel_bien_etre_naturel/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">IG</a>
+        <a href="mailto:contact@jamujava.com" class="social-link" aria-label="Email">@</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title"><span data-fr="Produits">Produits</span><span data-en="Products">Products</span></div>
+      <ul class="footer-links">
+        <li><a href="#" onclick="showProductPage('temulawak');return false">Jamu Temulawak</a></li>
+        <li><a href="#" onclick="showProductPage('kunyit');return false">Jamu Kunyit Jahe</a></li>
+        <li><a href="#" onclick="showProductPage('beraskencur');return false">Jamu Beras Kencur</a></li>
+        <li><a href="#" onclick="showProductPage('cafe250');return false">Café Java Ijen 250g</a></li>
+        <li><a href="#" onclick="showProductPage('cafe500');return false">Café Java Ijen 500g</a></li>
+        <li><a href="#" onclick="showProductPage('coffret');return false">Coffret Découverte Java</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title"><span data-fr="La Marque">La Marque</span><span data-en="The Brand">The Brand</span></div>
+      <ul class="footer-links">
+        <li><a href="blog.html"><span data-fr="Notre Blog">Notre Blog</span><span data-en="Our Blog">Our Blog</span></a></li>
+        <li><a href="a-propos.html"><span data-fr="À propos">About</span><span data-en="About">About</span></a></li>
+        <li><a href="notre-histoire.html"><span data-fr="La tradition">La tradition</span><span data-en="The tradition">The tradition</span></a></li>
+        <li><a href="rituels.html"><span data-fr="Les Origines">Les Origines</span><span data-en="The Origins">The Origins</span></a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="https://www.instagram.com/jamu_rituel_bien_etre_naturel/" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:contact@jamujava.com">contact@jamujava.com</a></li>
+        <li><a href="index.html#produits"><span data-fr="Commander">Commander</span><span data-en="Order">Order</span></a></li>
+        <li><a href="faq.html"><span data-fr="Livraison & retours">Livraison & retours</span><span data-en="Shipping & returns">Shipping & returns</span></a></li>
+        <li><a href="https://www.instagram.com/jamu_rituel_bien_etre_naturel/" target="_blank">@jamu_rituel_bien_etre_naturel</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy"><span data-fr="© 2026 JAMU Java · Tous droits réservés · Boissons de Java, Indonésie">© 2026 JAMU Java · Tous droits réservés · Boissons de Java, Indonésie</span><span data-en="© 2026 JAMU Java · All rights reserved · Drinks from Java, Indonesia">© 2026 JAMU Java · All rights reserved · Drinks from Java, Indonesia</span></div>
+    <div class="footer-certs">
+      <a href="cgv.html" style="font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,248,243,.25);text-decoration:none;border:1px solid rgba(250,248,243,.1);padding:.3rem .7rem;transition:color .3s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(250,248,243,.25)'"><span data-fr="CGV & Mentions légales">CGV & Mentions légales</span><span data-en="Terms & Legal Notice">Terms & Legal Notice</span></a>
+      <span class="cert-badge"><span data-fr="100% Naturel">100% Naturel</span><span data-en="100% Natural">100% Natural</span></span>
+      <span class="cert-badge"><span data-fr="Sourcing Direct">Sourcing Direct</span><span data-en="Direct Sourcing">Direct Sourcing</span></span>
+      <span class="cert-badge"><span data-fr="Sans Additifs">Sans Additifs</span><span data-en="No Additives">No Additives</span></span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /main-site -->
+
+<!-- ═══════════════════════════════════════ PRODUCT PAGE (shared across all pages) -->
+<div class="product-page" id="productPage">
+  <div style="padding-top:5rem">
+    <div class="pp-hero">
+      <div class="pp-gallery">
+        <div class="pp-gallery-main" id="ppGalleryBg"></div>
+        <div class="pp-gallery-thumbs">
+          <div class="pp-thumb active" onclick="selectThumb(this)"><div id="thumb0" style="width:100%;height:100%"></div></div>
+          <div class="pp-thumb" onclick="selectThumb(this)"><div id="thumb1" style="width:100%;height:100%;background:rgba(0,0,0,.2)"></div></div>
+          <div class="pp-thumb" onclick="selectThumb(this)"><div id="thumb2" style="width:100%;height:100%;background:rgba(255,255,255,.1)"></div></div>
+        </div>
+      </div>
+      <div class="pp-info">
+        <div class="pp-breadcrumb">Collection / <span id="ppBreadcrumb">Jamu</span></div>
+        <h2 class="pp-name" id="ppName">Jamu Temulawak</h2>
+        <div class="pp-subtitle" id="ppSubtitle">Racine reine de Java</div>
+        <div class="pp-taste">
+          <div class="pp-taste-label">Notes de dégustation</div>
+          <div class="pp-taste-notes" id="ppTasteNotes"></div>
+        </div>
+        <div class="pp-price-block">
+          <div class="pp-price" id="ppPrice">16,90€</div>
+          <div class="pp-price-note" id="ppPriceNote">Format 150g · Livraison offerte dès 45€</div>
+        </div>
+        <a href="#" class="pp-add" id="ppAddLink" target="_blank" rel="noopener"><span data-fr="Commander">Commander</span><span data-en="Order now">Order now</span></a>
+        <a href="mailto:contact@jamujava.com" class="pp-contact"><span data-fr="Une question avant de commander ?">Une question avant de commander ?</span><span data-en="A question before ordering?">A question before ordering?</span></a>
+        <div class="pp-perks">
+          <div class="perk"><div class="perk-dot"></div><span data-fr="Paiement sécurisé · Stripe">Paiement sécurisé · Stripe</span><span data-en="Secure payment · Stripe">Secure payment · Stripe</span></div>
+          <div class="perk"><div class="perk-dot"></div><span data-fr="Livraison 5–7 jours">Livraison 5–7 jours</span><span data-en="5–7 day delivery">5–7 day delivery</span></div>
+          <div class="perk"><div class="perk-dot"></div><span data-fr="Satisfait ou remboursé · 14 jours">Satisfait ou remboursé · 14 jours</span><span data-en="Satisfaction guaranteed · 14 days">Satisfaction guaranteed · 14 days</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pp-details">
+      <div class="pp-details-grid">
+        <div class="pp-detail-block">
+          <div class="pp-detail-title">Les Bienfaits</div>
+          <p class="pp-detail-text" id="ppBenefits"></p>
+        </div>
+        <div class="pp-detail-block">
+          <div class="pp-detail-title">La Préparation</div>
+          <p class="pp-detail-text" id="ppPrep"></p>
+        </div>
+        <div class="pp-detail-block">
+          <div class="pp-detail-title">Les Ingrédients</div>
+          <p class="pp-detail-text" id="ppIngredients"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pp-origin">
+      <p class="pp-origin-label">Origine</p>
+      <h2 class="pp-origin-title">"Chaque tasse raconte l'histoire d'un territoire et d'un producteur."</h2>
+      <p class="pp-origin-text" id="ppOriginText"></p>
+      <div class="pp-origin-map" id="ppOriginMap"></div>
+    </div>
+
+    <section style="padding:6rem 3rem;background:var(--warm)">
+      <p class="section-label">Complétez votre rituel</p>
+      <h2 class="section-title" style="margin-bottom:3rem">Vous aimerez <em>aussi.</em></h2>
+      <div class="pp-cross-grid" id="crossSell"></div>
+    </section>
+  </div>
+</div>
+
+<!-- STICKY ATC -->
+<div class="sticky-atc" id="stickyAtc">
+  <div>
+    <div class="sticky-product-name" id="stickyName">Jamu Temulawak</div>
+    <div class="sticky-price" id="stickyPrice">16,90€ · 150g</div>
+  </div>
+  <a href="#" class="sticky-add" id="stickyLink" target="_blank" rel="noopener"><span data-fr="Commander">Commander</span><span data-en="Order now">Order now</span></a>
+</div>
+
+<script>
+const PRODUCTS={
+  premierrituel:{
+    stripeUrl:'https://buy.stripe.com/7sY8wPgWabk3gRB54o4wM09',
+    name:'Premier Rituel — Beras Kencur',subtitle:'Le format découverte · 30g',price:'6,90€',
+    priceNote:'Format 30g · Env. 6 préparations',
+    bg:'linear-gradient(145deg,#E8DCC0 0%,#C9B07A 45%,#8B6A2F 100%)',
+    image:'images/beraskencur-hero.webp',
+    cat:'Le tonus · Format découverte',
+    tastes:['Riz doux','Kencur frais et épicé','Notes florales','Fond chaleureux'],
+    benefits:'Vous découvrez le jamu pour la première fois ? Ce format réduit existe pour une seule raison : vous laisser goûter sans engagement. Le Beras Kencur — riz et kencur pilés selon la recette des marchés de Yogyakarta — est notre porte d\'entrée la plus douce vers cette tradition. Si le goût vous convient, la version complète (150g) vous attend.',
+    prep:'1 c.à.c dans 200ml d\'eau à 70°C, infuser 5 min, filtrer. Pur par défaut ; un trait de miel ou de sucre de coco selon votre goût, comme sur les marchés de Yogyakarta.',
+    ingredients:'Riz trempé et kencur (Kaempferia galanga) pilés selon la méthode artisanale, gingembre. Pur, sans additif, sans conservateur, sans sucre ajouté. Format réduit de notre Jamu Beras Kencur signature.',
+    origin:'Le kencur ne se cultive pas en Europe — c\'est une racine propre aux sous-bois d\'Asie du Sud-Est. Ce petit format est sourcé exactement comme notre format complet, directement auprès de petits producteurs de la région de Yogyakarta.',
+    originFacts:[{num:'30g',label:'Format découverte'},{num:'6',label:'Préparations'},{num:'0',label:'Engagement'},{num:'100%',label:'Même qualité'}],
+    cross:['beraskencur','temulawak','kunyit']
+  },
+  temulawak:{
+    stripeUrl:'https://buy.stripe.com/aFa8wPdJYdsbatdeEY4wM00',
+    name:'Jamu Temulawak',subtitle:'Synergie de plantes ancestrales · 150g',price:'16,90€',
+    priceNote:'Format 150g · Env. 30 préparations',
+    bg:'linear-gradient(145deg,#B8965A 0%,#8B6A2F 50%,#5A3A10 100%)',
+    image:'images/temulawak-hero.webp',
+    cat:'La résistance · Jamu ancestral',
+    tastes:['Racine terreuse','Légère amertume noble','Notes boisées','Finish épicé'],
+    benefits:'Ce n\'est pas du curcuma. Le Jamu Temulawak est une synergie de plantes javanaises — temulawak, poivre noir, gingembre rouge, racines et herbes pilées ensemble selon la recette ancestrale de Yogyakarta. Le jamu, en tant que tradition, est inscrit au patrimoine immatériel de l\'UNESCO depuis 2023. Son goût est incomparable à tout ce qu\'on trouve en Europe : plus profond, plus complexe, vivant.',
+    prep:'Pur : 1 c.à.c dans 200ml d\'eau à 70°C, infuser 3–5 min. Latté : avec 150ml de lait de coco tiède moussé. Smoothie : mixé avec banane, lait de coco froid et poivre noir. À votre convenance : ajoutez miel, sucre de coco, lait d\'amande — le rituel vous appartient.',
+    ingredients:'Synergie de plantes : Curcuma xanthorrhiza (Temulawak), poivre noir de Java, gingembre rouge indonésien, herbes et racines complémentaires. Pilé selon la méthode artisanale de Yogyakarta. Sans additif, sans conservateur, sans sucre ajouté.',
+    origin:'Notre Jamu Temulawak est élaboré à partir de plantes cultivées dans les plaines fertiles de Yogyakarta, sur un sol volcanique riche en minéraux. Ces racines ne se cultivent pas en Europe — leur goût reste introuvable ailleurs. Sourcé directement, sans intermédiaire.',
+    originFacts:[{num:'UNESCO',label:'Patrimoine 2023'},{num:'Yogyakarta',label:'Région d\'origine'},{num:'0',label:'Intermédiaire'},{num:'Synergie',label:'De plantes ancestrales'}],
+    cross:['kunyit','beraskencur','coffret']
+  },
+  kunyit:{
+    stripeUrl:'https://buy.stripe.com/4gM28rfS60Fp58T68s4wM01',
+    name:'Jamu Kunyit Jahe',subtitle:'Curcuma de Java & gingembre rouge indonésien · 150g',price:'16,90€',
+    priceNote:'Format 150g · Env. 30 préparations',
+    bg:'linear-gradient(145deg,#D4A843 0%,#B8965A 50%,#8B4A2F 100%)',
+    image:'images/kunyit-hero.webp',
+    cat:'Le confort · Jamu ancestral',
+    tastes:['Curcuma chaud','Gingembre piquant','Notes citronnées','Chaleur persistante'],
+    benefits:'L\'alliance du kunyit (curcuma de Java) et du jahe merah — un gingembre rouge exclusivement récolté en Indonésie, introuvable sous cette variété en Europe. Ce duo, transmis depuis des générations à Yogyakarta, est la base de la majorité des préparations jamu traditionnelles. Un goût incomparable à ce que propose le commerce occidental.',
+    prep:'1 cuillère à café (2g) pour 200ml d\'eau à 70°C. Infuser 5 minutes, filtrer. Pur par défaut, sans sucre ajouté : à vous d\'ajuster avec un trait de miel ou une touche de sucre de coco, comme le veut la tradition de Yogyakarta. Peut se préparer en cold brew la veille.',
+    ingredients:'Curcuma longa (Kunyit) de Java et Zingiber officinale var. rubrum (Jahe merah, gingembre rouge indonésien) séchés et pilés. Mélange traditionnel de Yogyakarta. 100% naturel, sans sucre ajouté.',
+    origin:'Le gingembre rouge javanais — le jahe merah — pousse exclusivement dans les régions côtières de Java, à des altitudes plus faibles que le curcuma qui vient des hauteurs de Yogyakarta. Deux terroirs, une alliance ancestrale qu\'aucune culture occidentale ne reproduit.',
+    originFacts:[{num:'Java centrale',label:'Terroir curcuma'},{num:'Java côtière',label:'Terroir gingembre rouge'},{num:'Indonésie',label:'Seule terre du jahe merah'},{num:'100%',label:'Pur, sans sucre ajouté'}],
+    cross:['temulawak','beraskencur','coffret']
+  },
+  beraskencur:{
+    stripeUrl:'https://buy.stripe.com/6oUeVd0Xc9bV8l5gN64wM06',
+    name:'Jamu Beras Kencur',subtitle:'Riz et kencur pilés, recette des marchés de Yogyakarta · 150g',price:'17,90€',
+    priceNote:'Format 150g · Env. 30 préparations',
+    bg:'linear-gradient(145deg,#E8DCC0 0%,#C9B07A 45%,#8B6A2F 100%)',
+    image:'images/beraskencur-hero.webp',
+    cat:'Le tonus · Jamu ancestral',
+    tastes:['Riz doux','Kencur frais et épicé','Notes florales','Fond chaleureux'],
+    benefits:'Le beras kencur est l\'un des jamu les plus appréciés sur les marchés de Yogyakarta — un accord de riz trempé et de kencur, une racine aromatique propre à l\'Asie du Sud-Est, introuvable sous cette forme en Europe. Sa texture est celle d\'une vraie infusion de plante pilée : on sent le travail, pas le laboratoire. Réputé pour accompagner le tonus au quotidien.',
+    prep:'1 cuillère à café (2g) pour 200ml d\'eau à 70°C. Infuser 5 minutes, filtrer légèrement — un léger dépôt naturel au fond de la tasse est normal et signe d\'une vraie infusion de plante. Pur par défaut ; un trait de miel ou de sucre de coco selon votre goût, comme sur les marchés de Yogyakarta.',
+    ingredients:'Riz trempé et kencur (Kaempferia galanga) pilés selon la méthode artisanale, gingembre. Pur, sans additif, sans conservateur, sans sucre ajouté. Recette transmise par les vendeuses de jamu de Yogyakarta.',
+    origin:'Le kencur ne se cultive pas en Europe — c\'est une racine propre aux sous-bois d\'Asie du Sud-Est, à l\'arôme plus frais et plus prononcé que le gingembre commun. Notre riz et notre kencur sont sourcés directement auprès de petits producteurs de la région de Yogyakarta.',
+    originFacts:[{num:'Yogyakarta',label:'Recette de marché'},{num:'Asie du SE',label:'Seule terre du kencur'},{num:'100%',label:'Pur, sans sucre ajouté'},{num:'Nouveau',label:'Dans notre sélection'}],
+    cross:['temulawak','kunyit','cafe250']
+  },
+  cafe250:{
+    stripeUrl:'https://buy.stripe.com/6oUbJ16hwafZbxh7cw4wM02',
+    name:'Café Java Ijen 250g',subtitle:'Arabica d\'altitude · Volcan Ijen',price:'16,90€',
+    priceNote:'250g · Torréfaction artisanale',
+    bg:'linear-gradient(145deg,#3D2010 0%,#5A2D14 50%,#8B4A2F 100%)',
+    image:'images/cafe250-hero.webp',
+    cat:'Le tonus · Café d\'altitude',
+    tastes:['Chocolat noir','Notes fruitées','Corps velouté','Finale douce'],
+    benefits:'L\'altitude du volcan Ijen (1800m) et son sol volcanique acide confèrent à cet arabica une densité aromatique exceptionnelle. Faible en acidité, riche en corps, c\'est un café de contemplation — à savourer lentement.',
+    prep:'Mouture selon votre méthode préférée. Idéal en filtre V60 ou cafetière à piston pour préserver les arômes délicats. Eau à 92°C. Ratio 1:15 café/eau. Évitez l\'espresso qui effacerait les notes fines du terroir.',
+    ingredients:'100% Arabica Java Ijen. Cueilli à la main sur les flancs du volcan Ijen, Java Est. Procédé honey wash. Torréfaction artisanale à Yogyakarta. Aucun additif.',
+    origin:'Le Gunung Ijen, volcan actif de Java Est, offre un microclimat unique : altitude, brume matinale, sol acide et riche. Les caféiers y poussent à l\'ombre des arbres forestiers. Nos grains sont cueillis à la main à maturité optimale.',
+    originFacts:[{num:'1800m',label:'Altitude de récolte'},{num:'Arabica',label:'Variété pure'},{num:'Mains',label:'Cueillette manuelle'},{num:'Ijen',label:'Volcan d\'origine'}],
+    cross:['cafe500','coffret','beraskencur']
+  },
+  cafe500:{
+    stripeUrl:'https://buy.stripe.com/fZu9AT0Xcewf6cX8gA4wM03',
+    name:'Café Java Ijen 500g',subtitle:'Arabica d\'altitude · Format famille',price:'29,90€',
+    priceNote:'500g · Meilleure valeur au kg',
+    bg:'linear-gradient(145deg,#2D1408 0%,#3D2010 50%,#6B3A20 100%)',
+    image:'images/cafe500-hero.webp',
+    cat:'Le tonus · Café d\'altitude',
+    tastes:['Chocolat noir','Notes fruitées','Corps velouté','Finale douce'],
+    benefits:'Le même arabica d\'exception du volcan Ijen, dans le format idéal pour les amateurs quotidiens. À 29,90€ pour 500g, c\'est le meilleur rapport qualité-prix de notre sélection — et une façon de faire durer le rituel.',
+    prep:'Mouture selon votre méthode. Idéal en filtre V60 ou cafetière à piston. Eau à 92°C. Ratio 1:15 café/eau. Pour conserver les arômes au maximum, stockez dans un contenant hermétique à l\'abri de la lumière.',
+    ingredients:'100% Arabica Java Ijen. Cueilli à la main sur les flancs du volcan Ijen, Java Est. Procédé honey wash. Torréfaction artisanale à Yogyakarta. Aucun additif.',
+    origin:'Identique à notre format 250g — même terroir, même producteur, même torréfaction. Simplement le format pensé pour ceux qui ont fait du café Ijen leur compagnon du matin quotidien.',
+    originFacts:[{num:'1800m',label:'Altitude'},{num:'500g',label:'Format famille'},{num:'Ijen',label:'Terroir volcanique'},{num:'Direct',label:'Producteur unique'}],
+    cross:['cafe250','coffret','beraskencur']
+  },
+  packbien:{
+    stripeUrl:'https://buy.stripe.com/aFabJ1gWa9bVeJt68s4wM08',
+    name:'Pack Bien-être Jamu',subtitle:'Trois jamu ancestraux réunis',price:'44,90€',
+    priceNote:'3 × 150g · Économie vs. achat séparé',
+    bg:'linear-gradient(145deg,#2D4A3E 0%,#4A7A6A 50%,#B8965A 100%)',
+    image:'images/packbien-hero.webp',
+    cat:'Le rituel complet · Coffret',
+    tastes:['Curcuma terreux','Gingembre piquant','Riz et kencur frais','Racines de Java'],
+    benefits:'Le Pack Bien-être réunit les trois piliers de la tradition jamu de Yogyakarta : le Temulawak Murni, le Kunyit Jahe et le Beras Kencur. Trois racines, trois caractères, un seul terroir — le rituel complet pour découvrir l\'étendue du jamu javanais.',
+    prep:'Alternez selon votre moment du jour : Temulawak le matin, Kunyit Jahe après le repas, Beras Kencur pour le tonus de l\'après-midi. Les trois se préparent de la même façon : 1 c.à.c pour 200ml d\'eau à 70°C, pur ou ajusté au miel selon votre goût.',
+    ingredients:'Jamu Temulawak Murni 150g + Jamu Kunyit Jahe 150g + Jamu Beras Kencur 150g. 100% naturel. Sans additif, sans sucre ajouté.',
+    origin:'Les trois jamu proviennent de la même région : les plaines et hauts plateaux de Yogyakarta. Trois racines, un terroir commun — celui des femmes jamu gendong qui portaient leurs préparations de maison en maison.',
+    originFacts:[{num:'3',label:'Jamu ancestraux'},{num:'450g',label:'Au total'},{num:'Yogyakarta',label:'Origine commune'},{num:'100%',label:'Pur, sans sucre ajouté'}],
+    cross:['temulawak','kunyit','beraskencur']
+  },
+  coffret:{
+    stripeUrl:'https://buy.stripe.com/6oU00jaxM5ZJeJt8gA4wM07',
+    name:'Coffret Découverte Java',subtitle:'L\'intégrale JAMU Java',price:'54,90€',
+    priceNote:'3 Jamu + Café Ijen 250g · Idéal cadeau',
+    bg:'linear-gradient(145deg,#1A3028 0%,#2D4A3E 40%,#B8965A 80%,#D4B47A 100%)',
+    image:'images/coffret-hero.webp',
+    cat:'Le rituel complet · Coffret',
+    tastes:['Racines javanaises','Riz et kencur frais','Arabica volcanique','L\'âme de Java'],
+    benefits:'La porte d\'entrée idéale vers l\'univers JAMU Java. Les trois Jamu ancestraux et le café d\'altitude du volcan Ijen réunis dans un coffret cadeau. Pour offrir ou pour s\'offrir l\'intégralité de l\'expérience javanaise.',
+    prep:'Commencez par le Temulawak le matin. Le Kunyit Jahe après le repas. Le Beras Kencur pour le tonus de l\'après-midi. Le Café Ijen pour le plaisir pur — une tasse de contemplation à préparer en filtre, lentement. Quatre moments, une même île.',
+    ingredients:'Jamu Temulawak Murni 150g + Jamu Kunyit Jahe 150g + Jamu Beras Kencur 150g + Café Java Ijen 250g. Emballé avec soin à Yogyakarta. 100% naturel. Aucun additif.',
+    origin:'Quatre produits, une île : Java. Du sol volcanique de Yogyakarta aux flancs du Gunung Ijen, chaque produit de ce coffret raconte un fragment du même territoire — l\'un des plus généreux et des plus diversifiés de l\'archipel indonésien.',
+    originFacts:[{num:'4',label:'Produits de Java'},{num:'42,90€',label:'Prix du coffret'},{num:'Java',label:'Île unique'},{num:'Cadeau',label:'Idéal pour offrir'}],
+    cross:['temulawak','kunyit','beraskencur']
+  }
+};
+
+const CROSS_CSS={
+  premierrituel:'bg-beraskencur',temulawak:'bg-temulawak',kunyit:'bg-kunyit',beraskencur:'bg-beraskencur',
+  cafe250:'bg-cafeijen250',cafe500:'bg-cafeijen500',
+  packbien:'bg-pack-bien',coffret:'bg-coffret'
+};
+
+function showProductPage(id){
+  const p=PRODUCTS[id];
+  document.getElementById('ppName').textContent=p.name;
+  document.getElementById('ppSubtitle').textContent=p.subtitle;
+  document.getElementById('ppPrice').textContent=p.price;
+  document.getElementById('ppPriceNote').textContent=p.priceNote;
+  document.getElementById('ppBenefits').textContent=p.benefits;
+  document.getElementById('ppPrep').textContent=p.prep;
+  document.getElementById('ppIngredients').textContent=p.ingredients;
+  document.getElementById('ppBreadcrumb').textContent=p.cat;
+  const ppGallery=document.getElementById('ppGalleryBg');
+  if(p.image){
+    ppGallery.style.backgroundImage='url('+p.image+')';
+    ppGallery.classList.add('has-photo');
+  }else{
+    ppGallery.style.backgroundImage='none';
+    ppGallery.style.background=p.bg;
+    ppGallery.classList.remove('has-photo');
+  }
+  document.getElementById('ppOriginText').textContent=p.origin;
+  document.getElementById('stickyName').textContent=p.name;
+  document.getElementById('stickyPrice').textContent=p.price;
+  document.getElementById('ppAddLink').href=p.stripeUrl;
+  document.getElementById('ppAddLink').setAttribute('target','_blank');
+  document.getElementById('ppAddLink').setAttribute('rel','noopener');
+  document.getElementById('stickyLink').href=p.stripeUrl;
+  document.getElementById('stickyLink').setAttribute('target','_blank');
+  document.getElementById('stickyLink').setAttribute('rel','noopener');
+  document.getElementById('ppTasteNotes').innerHTML=p.tastes.map(t=>`<span class="taste-note">${t}</span>`).join('');
+  document.getElementById('ppOriginMap').innerHTML=p.originFacts.map(f=>`<div><div class="origin-fact-num">${f.num}</div><div class="origin-fact-label">${f.label}</div></div>`).join('');
+  document.getElementById('crossSell').innerHTML=p.cross.map(cid=>{
+    const cp=PRODUCTS[cid];
+    return `<div class="product-card" onclick="showProductPage('${cid}')" role="button" tabindex="0">
+      <div class="product-img"><div class="product-img-inner ${CROSS_CSS[cid]}"></div></div>
+      <div class="product-info">
+        <div class="product-tag">${cp.cat}</div>
+        <h3 class="product-name">${cp.name}</h3>
+        <div class="product-footer"><span class="product-price">${cp.price}</span><button class="product-btn" onclick="event.stopPropagation();showProductPage('${cid}')">Explorer</button></div>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('mainSite').classList.add('hidden');
+  document.getElementById('productPage').classList.add('active');
+  document.getElementById('backBtn').classList.add('visible');
+  const sa=document.getElementById('stickyAtc');
+  sa.classList.add('visible');
+  window.scrollTo(0,0);
+  setTimeout(()=>sa.classList.add('shown'),600);
+}
+
+function showMain(){
+  document.getElementById('mainSite').classList.remove('hidden');
+  document.getElementById('productPage').classList.remove('active');
+  document.getElementById('backBtn').classList.remove('visible');
+  const sa=document.getElementById('stickyAtc');
+  sa.classList.remove('shown');
+  setTimeout(()=>sa.classList.remove('visible'),400);
+  window.scrollTo(0,0);
+}
+
+function selectThumb(el){
+  document.querySelectorAll('.pp-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+const mainNav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  mainNav.classList.toggle('scrolled',window.scrollY>80);
+  const pp=document.getElementById('productPage');
+  if(pp.classList.contains('active')){
+    const sa=document.getElementById('stickyAtc');
+    if(window.scrollY>500){sa.classList.add('shown')}else{sa.classList.remove('shown')}
+  }
+});
+</script>
+<script>
+// Font load observer — removes overlap flash on hero title
+if(document.fonts){
+  document.fonts.ready.then(()=>{
+    document.documentElement.classList.add('fonts-loaded');
+  });
+}else{
+  document.documentElement.classList.add('fonts-loaded');
+}
+setTimeout(()=>{
+  document.documentElement.classList.add('fonts-loaded');
+},1200);
+</script>
+<script>
+function setLang(lang){
+  document.documentElement.classList.toggle('lang-en', lang==='en');
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  try{localStorage.setItem('jamuLang', lang);}catch(e){}
+}
+(function(){
+  try{
+    var saved = localStorage.getItem('jamuLang');
+    if(saved === 'en') setLang('en');
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
